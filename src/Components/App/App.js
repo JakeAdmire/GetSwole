@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
-import { View } from 'react-native';
-import WelcomePage from '../WelcomePage/WelcomePage';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { rootReducer } from '../../Reducers/index';
+import AppNavigator from '../../AppNavigator';
+
+const store = createStore(rootReducer);
 
 export default class App extends Component {
-
+  
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <Header backgroundColor="#7CABCC"
-          barStyle="light-content" />
-        <WelcomePage />
-      </View>
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
     );
   }
 }
