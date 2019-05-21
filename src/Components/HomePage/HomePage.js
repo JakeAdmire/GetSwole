@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, BackHandler } from 'react-native';
+import { connect } from 'react-redux';
 
-export default class Homepage extends React.Component {
+class Homepage extends React.Component {
   static navigationOptions = {
     header: null
   }
@@ -20,16 +21,20 @@ export default class Homepage extends React.Component {
   };
 
   render() {
-    const { navigation } = this.props;
-    const name = navigation.getParam('name');
 
     return (
       <View style={styles.container}>
-        <Text>Hello {name}</Text>
+        <Text>Hello {this.props.name}</Text>
       </View>
     );
   }
 }
+
+export const mapStateToProps = (state) => ({
+  name: state.user
+});
+
+export default connect(mapStateToProps)(Homepage);
 
 const styles = StyleSheet.create({
   container: {

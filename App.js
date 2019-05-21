@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import GeneralStatusBarColor from './src/Components/Styles/GeneralStatusBarColor';
-import { View } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { rootReducer } from './src/Reducers/index';
 import AppNavigator from './src/AppNavigator';
 
-export default class App extends Component {
+const store = createStore(rootReducer);
 
+export default class App extends Component {
+  
   render() {
     return (
-      // <View style={{ flex: 1 }}>
-      //   <GeneralStatusBarColor backgroundColor="#7CABCC"
-      //     barStyle="light-content" />
+      <Provider store={store}>
         <AppNavigator />
+      </Provider>
     );
   }
 }

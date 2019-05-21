@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import Dimensions from 'Dimensions';
 import { ThemeProvider, Button } from 'react-native-elements';
-
+import { AddUser } from '../../Actions';
+import { connect } from 'react-redux';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -21,8 +22,7 @@ const theme = {
   }
 }
 
-
-export default class WelcomePage extends Component {
+class WelcomePage extends Component {
   static navigationOptions = {
     header: null
   }
@@ -38,6 +38,12 @@ export default class WelcomePage extends Component {
     this.setState({ userName: name })
   }
 
+  handleSave = () => {
+    const { userName } = this.state;
+    this.props.AddUser(userName);
+    this.props.navigation.navigate('homePage');
+  }
+
   render() {
     return (
       <DismissKeyboard>
@@ -50,7 +56,7 @@ export default class WelcomePage extends Component {
             </View>
             <TextInput style={styles.textBox} onChangeText={(name) => this.handleChange(name)} placeholder=' ex. Chad...' />
             <ThemeProvider theme={theme}>
-              <Button title="Let's get started" raised={true} onPress={() => this.props.navigation.navigate('homePage', { name: this.state.userName })} />
+              <Button title="Let's get started" raised={true} onPress={this.handleSave} />
             </ThemeProvider>
           </View>
         </View>
@@ -59,6 +65,11 @@ export default class WelcomePage extends Component {
   }
 }
 
+export const mapDispatchToProps = (dispatch) => ({
+  AddUser: (name) => dispatch(AddUser(name))
+});
+
+export default connect(null, mapDispatchToProps)(WelcomePage);
 
 const styles = StyleSheet.create({
   headerText: {
