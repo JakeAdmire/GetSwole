@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import Dimensions from 'Dimensions';
 import { ThemeProvider, Button } from 'react-native-elements';
+
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 const theme = {
   colors: {
@@ -19,7 +26,7 @@ export default class WelcomePage extends Component {
   static navigationOptions = {
     header: null
   }
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -28,24 +35,26 @@ export default class WelcomePage extends Component {
   }
 
   handleChange = (name) => {
-    this.setState({userName: name})
+    this.setState({ userName: name })
   }
 
   render() {
     return (
-      <View style={styles.background}>
-        <View>
-          <View style = {styles.headerText}>
-            <Text style={styles.headerTextOne}>Welcome to</Text>
-            <Text style={styles.headerTextTwo}>Get<Text style={styles.headerTextThree}>Swole</Text></Text>
-            <Text style={styles.headerTextFour}>What should we call you?</Text>
+      <DismissKeyboard>
+        <View style={styles.background}>
+          <View>
+            <View style={styles.headerText}>
+              <Text style={styles.headerTextOne}>Welcome to</Text>
+              <Text style={styles.headerTextTwo}>Get<Text style={styles.headerTextThree}>Swole</Text></Text>
+              <Text style={styles.headerTextFour}>What should we call you?</Text>
+            </View>
+            <TextInput style={styles.textBox} onChangeText={(name) => this.handleChange(name)} placeholder=' ex. Chad...' />
+            <ThemeProvider theme={theme}>
+              <Button title="Let's get started" raised={true} onPress={() => this.props.navigation.navigate('homePage', { name: this.state.userName })} />
+            </ThemeProvider>
           </View>
-          <TextInput style={styles.textBox} onChangeText={(name) => this.handleChange(name)} placeholder=' ex. Chad...' />
-          <ThemeProvider theme={theme}>
-            <Button title="Let's get started" raised={true}  onPress={() => this.props.navigation.navigate('homePage', {name: this.state.userName})}/>
-          </ThemeProvider>
         </View>
-      </View>
+      </DismissKeyboard>
     )
   }
 }
@@ -86,6 +95,6 @@ const styles = StyleSheet.create({
     height: 40,
     fontSize: 25,
     marginTop: 20,
-    marginBottom: 100
+    marginBottom: 20
   }
 });
