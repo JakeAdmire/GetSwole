@@ -16,23 +16,33 @@ const theme = {
 
 
 export default class WelcomePage extends Component {
-  constructor() {
-    super();
+  static navigationOptions = {
+    header: null
+  }
+  
+  constructor(props) {
+    super(props);
     this.state = {
-      userInfo: {}
+      userName: ''
     }
+  }
+
+  handleChange = (name) => {
+    this.setState({userName: name})
   }
 
   render() {
     return (
       <View style={styles.background}>
         <View>
-          <Text style={styles.headerTextOne}>Welcome to</Text>
-          <Text style={styles.headerTextTwo}>Get<Text style={styles.headerTextThree}>Swole</Text></Text>
-          <Text style={styles.headerTextFour}>What should we call you?</Text>
-          <TextInput style={styles.textBox} placeholder=' ex. Chad...' />
+          <View style = {styles.headerText}>
+            <Text style={styles.headerTextOne}>Welcome to</Text>
+            <Text style={styles.headerTextTwo}>Get<Text style={styles.headerTextThree}>Swole</Text></Text>
+            <Text style={styles.headerTextFour}>What should we call you?</Text>
+          </View>
+          <TextInput style={styles.textBox} onChangeText={(name) => this.handleChange(name)} placeholder=' ex. Chad...' />
           <ThemeProvider theme={theme}>
-            <Button title="Let's get started" raised={true} />
+            <Button title="Let's get started" raised={true}  onPress={() => this.props.navigation.navigate('homePage', {name: this.state.userName})}/>
           </ThemeProvider>
         </View>
       </View>
@@ -42,6 +52,9 @@ export default class WelcomePage extends Component {
 
 
 const styles = StyleSheet.create({
+  headerText: {
+    marginTop: -100
+  },
   background: {
     alignItems: 'center',
     paddingTop: 200,
@@ -58,7 +71,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 70,
     marginTop: -10,
-    marginBottom: 50
+    marginBottom: 150
   },
   headerTextThree: {
     color: '#D3E2EB',
@@ -73,6 +86,6 @@ const styles = StyleSheet.create({
     height: 40,
     fontSize: 25,
     marginTop: 20,
-    marginBottom: 20
+    marginBottom: 100
   }
 });
