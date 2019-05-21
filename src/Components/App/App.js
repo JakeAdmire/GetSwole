@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import GeneralStatusBarColor from './src/Components/Styles/GeneralStatusBarColor';
+import Header from '../Header/Header';
 import { View } from 'react-native';
-import WelcomePage from './src/Components/WelcomePage/WelcomePage';
+import WelcomePage from '../WelcomePage/WelcomePage';
 
 export default class App extends Component {
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <GeneralStatusBarColor backgroundColor="#7CABCC"
+        <Header backgroundColor="#7CABCC"
           barStyle="light-content" />
         <WelcomePage />
       </View>
