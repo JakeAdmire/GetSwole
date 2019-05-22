@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import Dimensions from 'Dimensions';
 import { ThemeProvider, Button } from 'react-native-elements';
-import { AddUser } from '../../Actions';
+import { addUser } from '../../Actions';
 import { connect } from 'react-redux';
 
 const DismissKeyboard = ({ children }) => (
@@ -40,7 +40,7 @@ class WelcomePage extends Component {
 
   handleSave = () => {
     const { userName } = this.state;
-    this.props.AddUser(userName);
+    this.props.addNewUser(userName);
     this.props.navigation.navigate('homePage');
   }
 
@@ -66,7 +66,7 @@ class WelcomePage extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  AddUser: (name) => dispatch(AddUser(name))
+  addNewUser: (name) => dispatch(addUser(name))
 });
 
 export default connect(null, mapDispatchToProps)(WelcomePage);

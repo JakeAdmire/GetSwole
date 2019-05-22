@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
+import { addDateToStore } from '../../Actions/index'
+import { connect } from 'react-redux'
 
-export default class Calendar extends Component {
+export class Calendar extends Component {
   constructor() {
     super()
     this.state = {
@@ -17,9 +19,8 @@ export default class Calendar extends Component {
     this.setState({ exercises })
   }
 
-  grabDate = (e) => {
-    console.log(e)
-    // console.log(date)
+  grabDate = (date) => {
+    this.props.addDateToStore(date)
   }
 
   render() {
@@ -51,6 +52,15 @@ export default class Calendar extends Component {
   }
 }
 
+export const mapStateToProps = (state) => ({
+  date: state.date
+})
+
+export const mapDispatchToProps = (dispatch) => ({
+  addDateToStore: (date) => dispatch(addDateToStore(date))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar)
 
 const styles = StyleSheet.create({
   calendar: {
