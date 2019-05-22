@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, BackHandler } from 'react-native';
 import { connect } from 'react-redux';
+import Calendar from '../Calendar/Calendar';
+import Dimensions from 'Dimensions';
 
 class Homepage extends React.Component {
   static navigationOptions = {
@@ -25,6 +27,8 @@ class Homepage extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Hello, {this.props.name}</Text>
+        <Text>Select a day to view it's routines!</Text>
+        <Calendar/>
       </View>
     );
   }
@@ -38,9 +42,8 @@ export default connect(mapStateToProps)(Homepage);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#7CABCC',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height
   },
 });

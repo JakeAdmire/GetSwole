@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { rootReducer } from '../../Reducers/index';
-import AppNavigator from '../../AppNavigator';
+import { rootReducer } from './src/Reducers/index';
+import AppNavigator from './src/AppNavigator';
 
 const store = createStore(rootReducer);
 
