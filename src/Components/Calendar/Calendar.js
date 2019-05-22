@@ -17,6 +17,11 @@ export default class Calendar extends Component {
     this.setState({ exercises })
   }
 
+  grabDate = (e) => {
+    console.log(e)
+    // console.log(date)
+  }
+
   render() {
     return (
       <View style={styles.calendar}>
@@ -38,6 +43,7 @@ export default class Calendar extends Component {
           disabledDateNameStyle={{ color: 'grey' }}
           disabledDateNumberStyle={{ color: 'grey' }}
           iconContainer={{ flex: 0.1 }}
+          onDateSelected={(date) => this.grabDate(date)}
         />
         <Button title='work' onPress={this.fetchExercises}/>
       </View>
