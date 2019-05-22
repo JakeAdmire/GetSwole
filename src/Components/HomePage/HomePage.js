@@ -30,8 +30,7 @@ class Homepage extends React.Component {
       <View style={styles.container}>
         <Text>Hello, {this.props.name}</Text>
         <Text>Select a day to view it's routines!</Text>
-        <Calendar/>
-        <Container />
+        <Calendar />
       </View>
     );
   }

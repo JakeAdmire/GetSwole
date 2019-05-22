@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet, Button, Text } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
 import { addDateToStore } from '../../Actions/index'
 import { connect } from 'react-redux'
+import Container from '../Container/Container'
 
 export class Calendar extends Component {
   constructor() {
     super()
     this.state = {
-      exercises: []
+      exercises: [],
+      contain: false
     }
   }
 
@@ -20,10 +22,14 @@ export class Calendar extends Component {
   }
 
   grabDate = (date) => {
-    this.props.addDateToStore(date)
+    this.props.addDateToStore(JSON.stringify(date))
+    this.setState({contain: true})
   }
 
   render() {
+
+    
+
     return (
       <View style={styles.calendar}>
         <CalendarStrip
@@ -46,6 +52,7 @@ export class Calendar extends Component {
           iconContainer={{ flex: 0.1 }}
           onDateSelected={(date) => this.grabDate(date)}
         />
+        { this.state.contain ? <Container /> : <Text>Please select a date.</Text> } 
         <Button title='work' onPress={this.fetchExercises}/>
       </View>
     );

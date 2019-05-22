@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import Dimensions from 'Dimensions';
 import { ThemeProvider, Button } from 'react-native-elements';
-import { addUser } from '../../Actions';
+import { addUser, addExercises } from '../../Actions';
 import { connect } from 'react-redux';
 
 const DismissKeyboard = ({ children }) => (
@@ -66,10 +66,15 @@ class WelcomePage extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  addNewUser: (name) => dispatch(addUser(name))
+  addNewUser: (name) => dispatch(addUser(name)),
+  addExercises: (exercises) => dispatch(addExercises(exercises))
 });
 
-export default connect(null, mapDispatchToProps)(WelcomePage);
+export const mapStateToProps = state => ({
+  exercises: state.exercises
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomePage);
 
 const styles = StyleSheet.create({
   headerText: {

@@ -7,7 +7,6 @@ import AppNavigator from './src/AppNavigator';
 const store = createStore(rootReducer);
 
 export default class App extends Component {
-  
   render() {
     return (
       <Provider store={store}>
@@ -16,3 +15,6 @@ export default class App extends Component {
     );
   }
 }
+
+
+
