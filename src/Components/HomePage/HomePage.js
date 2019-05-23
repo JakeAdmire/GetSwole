@@ -40,7 +40,7 @@ export const mapStateToProps = (state) => ({
   name: state.user
 });
 
-export default connect(mapStateToProps)(Homepage);
+export default connect(mapStateToProps, null)(Homepage);
 
 const styles = StyleSheet.create({
   container: {

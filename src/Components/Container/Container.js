@@ -1,46 +1,43 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
-import { Card } from 'react-native-elements'
+import { Card } from 'react-native-elements';
+// 
+import { fetchRoutines } from '../../Thunks/fetchRoutines';
 
 export class Container extends Component  {
-  constructor() {
-    super()
-    this.state = {
-      routines: {}
-    }
-  }
-
-  async componentDidMount() {
-    const { date } = this.props
-    const cleanDate = date.slice(0, 11)
-    const url = `https://warm-cove-89223.herokuapp.com/api/v1/my_routines?date=${cleanDate}&id=1`
-    const response = await fetch(url)
-    const routines = await response.json()
-    await this.setState({ routines }) 
-  }
 
   displayCards = () => {
-    const { routines } = this.state;
-    return routines.data
-      ? routines.data[0].attributes.exercises.map(exercise => (
-        <View>
+    const { routines } = this.props;
+    return routines.data && routines.data.length
+      ? routines.data.map(routine => (
+        <View key={routine.id}>
           <Card>
-            <Text>{exercise.name}</Text>
-            <Text>{exercise.category}</Text>
+            <Text>{routine.attributes.name}</Text>
+            {
+              routine.attributes.exercises.map(exercise => (
+                <Text key={exercise.id}>{exercise.name}</Text>
+              ))
+            }
           </Card>
         </View>
       ))
-      : <Text>TEXT</Text>
+      : <Text>No routines scheduled for this day</Text>
   }
 
   render () {
-    return this.displayCards()
+    const { date, routines, loading } = this.props;
+
+    return loading
+      ? <Text>loading..</Text>
+      : <View>{ this.displayCards() }</View>
   }
 }
 
 export const mapStateToProps = (state) => ({
-  date: state.date
+  date: state.date,
+  routines: state.routines,
+  loading: state.loading
 })
 
-export default connect(mapStateToProps)(Container)
+export default connect(mapStateToProps, null)(Container);

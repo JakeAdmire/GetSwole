@@ -1,35 +1,21 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
-import CalendarStrip from 'react-native-calendar-strip';
-import { addDateToStore } from '../../Actions/index'
 import { connect } from 'react-redux'
-import Container from '../Container/Container'
+import CalendarStrip from 'react-native-calendar-strip';
+// 
+import { addDateToStore, loadRoutines } from '../../Actions/index'
+import { fetchRoutines } from '../../Thunks/fetchRoutines';
+import Container from '../Container/Container';
 
 export class Calendar extends Component {
-  constructor() {
-    super()
-    this.state = {
-      exercises: [],
-      contain: false
-    }
-  }
-
-  fetchExercises = async () => {
-    const url = 'https://warm-cove-89223.herokuapp.com/api/v1/exercises'
-    const response = await fetch(url)
-    const exercises = await response.json()
-    this.setState({ exercises })
-  }
 
   grabDate = (date) => {
-    this.props.addDateToStore(JSON.stringify(date))
-    this.setState({contain: true})
+    let slicedDate = JSON.stringify(date).slice(1, 11);
+    this.props.addDateToStore(slicedDate);
+    this.props.fetchRoutines(slicedDate);
   }
 
   render() {
-
-    
-
     return (
       <View style={styles.calendar}>
         <CalendarStrip
@@ -52,26 +38,31 @@ export class Calendar extends Component {
           iconContainer={{ flex: 0.1 }}
           onDateSelected={(date) => this.grabDate(date)}
         />
-        { this.state.contain ? <Container /> : <Text>Please select a date.</Text> } 
-        <Button title='work' onPress={this.fetchExercises}/>
+        { 
+          this.props.date 
+            ? <Container /> 
+            : <Text>Please select a date.</Text> 
+        } 
       </View>
-    );
+    )
   }
 }
 
 export const mapStateToProps = (state) => ({
   date: state.date
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
-  addDateToStore: (date) => dispatch(addDateToStore(date))
-})
+  addDateToStore: (date) => dispatch(addDateToStore(date)),
+  fetchRoutines: (date) => dispatch(fetchRoutines(date))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar)
 
 const styles = StyleSheet.create({
+
   calendar: {
     paddingTop: 50,
-  }
-})
+  },
 
+})

@@ -55,7 +55,7 @@ class WelcomePage extends Component {
     const { userName } = this.state;
 
     if (userName) {
-      this.props.AddUser(userName);
+      this.props.addNewUser(userName);
       this.props.navigation.navigate('homePage');
     } else {
       this.setState({showError: true});
