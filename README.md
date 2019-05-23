@@ -55,4 +55,4 @@ This project was assigned by David Whitaker and Will Mitchell
 *@ Turing School of Software and Design, Denver, CO.*
 
 ---
-**[Back to top](https://github.com/JakeAdmire/JA-DC-EF-TA--GetSwol/blob/master/README.md#getswole)**
+**[Back to top](https://github.com/JakeAdmire/JA-DC-EF-TA--GetSwole/edit/master/README.md)**
