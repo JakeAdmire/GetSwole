@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Button } from 'react-native-elements';
 // 
 import { fetchRoutines } from '../../Thunks/fetchRoutines';
 
-export class Container extends Component  {
+export class Container extends Component {
 
   displayCards = () => {
     const { routines } = this.props;
@@ -20,17 +20,23 @@ export class Container extends Component  {
               ))
             }
           </Card>
+          <Button title="Add New Routine" raised={false} />
         </View>
       ))
-      : <Text>No routines scheduled for this day</Text>
+      : <View>
+          <Text>No routines scheduled for this day</Text>
+          <Button title="Add New Routine" raised={false} />
+        </View>
   }
 
-  render () {
+  render() {
     const { date, routines, loading } = this.props;
 
     return loading
       ? <Text>loading..</Text>
-      : <View>{ this.displayCards() }</View>
+      : <View>
+        {this.displayCards()}
+      </View>
   }
 }
 
