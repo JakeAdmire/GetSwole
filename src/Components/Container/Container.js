@@ -1,11 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Text, View } from 'react-native';
-import { Card } from 'react-native-elements';
-// 
-import { fetchRoutines } from '../../Thunks/fetchRoutines';
+import Dimensions from 'Dimensions'
+import { Text, View, StyleSheet } from 'react-native';
+import { Card, Button, ThemeProvider } from 'react-native-elements';
 
-export class Container extends Component  {
+let accentOne = '#7C9DB1';
+
+const theme = {
+
+  colors: {
+    primary: accentOne,
+  },
+
+  Button: {
+    titleStyle: { color: 'white', fontFamily: 'raleway' },
+    width: Dimensions.get('window').width - 50,
+  }
+}
+
+export class Container extends Component {
+
+  handleAddNewRoutine = () => {
+    this.props.navTool.navigate('routine');
+  }
 
   displayCards = () => {
     const { routines } = this.props;
@@ -20,17 +37,25 @@ export class Container extends Component  {
               ))
             }
           </Card>
+          <ThemeProvider theme={theme}>
+            <Button title="Add New Routine" raised={false} onPress={this.handleAddNewRoutine} />
+          </ThemeProvider>
         </View>
       ))
-      : <Text>No routines scheduled for this day</Text>
+      : <View>
+          <Text>No routines scheduled for this day</Text>
+          <Button title="Add New Routine" raised={false} onPress={this.handleAddNewRoutine} />
+        </View>
   }
 
-  render () {
+  render() {
     const { date, routines, loading } = this.props;
 
     return loading
       ? <Text>loading..</Text>
-      : <View>{ this.displayCards() }</View>
+      : <View>
+        {this.displayCards()}
+      </View>
   }
 }
 
@@ -40,4 +65,4 @@ export const mapStateToProps = (state) => ({
   loading: state.loading
 })
 
-export default connect(mapStateToProps, null)(Container);
+export default connect(mapStateToProps)(Container);

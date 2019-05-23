@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
 import { connect } from 'react-redux'
 import CalendarStrip from 'react-native-calendar-strip';
-// 
 import { addDateToStore, loadRoutines } from '../../Actions/index'
 import { fetchRoutines } from '../../Thunks/fetchRoutines';
 import Container from '../Container/Container';
@@ -40,7 +39,7 @@ export class Calendar extends Component {
         />
         { 
           this.props.date 
-            ? <Container /> 
+            ? <Container navTool={this.props.navTool} /> 
             : <Text>Please select a date.</Text> 
         } 
       </View>
