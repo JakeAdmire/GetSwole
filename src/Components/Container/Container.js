@@ -21,7 +21,7 @@ const theme = {
 export class Container extends Component {
 
   handleAddNewRoutine = () => {
-    this.props.navTool.navigate('routine');
+    this.props.navTool.navigate('routinePage');
   }
 
   displayCards = () => {
