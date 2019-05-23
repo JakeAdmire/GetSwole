@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import Dimensions from 'Dimensions';
 import { ThemeProvider, Button } from 'react-native-elements';
-import { AddUser } from '../../Actions';
+import { addUser, addExercises } from '../../Actions';
 import { connect } from 'react-redux';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 
@@ -102,10 +102,15 @@ class WelcomePage extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  AddUser: (name) => dispatch(AddUser(name))
+  addNewUser: (name) => dispatch(addUser(name)),
+  addExercises: (exercises) => dispatch(addExercises(exercises))
 });
 
-export default connect(null, mapDispatchToProps)(WelcomePage);
+export const mapStateToProps = state => ({
+  exercises: state.exercises
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomePage);
 
 
 const styles = StyleSheet.create({

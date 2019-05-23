@@ -3,9 +3,9 @@ import App from '../App/App'
 import { shallow } from 'enzyme'
 
 describe('App', () => {
-  let wrapper
-  it('should match the snapshot', () => {
-    wrapper = shallow(<App />)
-    expect(wrapper).toMatchSnapshot()
-  })
+  // let wrapper
+  // it('should match the snapshot', () => {
+  //   wrapper = shallow(<App />)
+  //   expect(wrapper).toMatchSnapshot()
+  // })
 })
