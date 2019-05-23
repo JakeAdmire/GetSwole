@@ -4,6 +4,7 @@ import Dimensions from 'Dimensions';
 import { ThemeProvider, Button } from 'react-native-elements';
 import { addUser, addExercises } from '../../Actions';
 import { connect } from 'react-redux';
+import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -11,53 +12,88 @@ const DismissKeyboard = ({ children }) => (
   </TouchableWithoutFeedback>
 );
 
+let themeColor = '#667D90';
+let accentOne = '#7C9DB1';
+let accentTwo = '#ACC6D0';
+let windowHeight = Dimensions.get('window').height;
+let windowWidth = Dimensions.get('window').width;
+
 const theme = {
+
   colors: {
-    primary: '#D3E2EB',
+    primary: accentOne,
   },
+
   Button: {
-    titleStyle: {
-      color: 'black',
-    },
-  }
+    titleStyle: { color: 'white', fontFamily: 'raleway' },
+    width: Dimensions.get('window').width - 50,
+  },
+
 }
 
 class WelcomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: '',
+      showError: false
+    }
+  }
+
   static navigationOptions = {
     header: null
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: ''
-    }
-  }
-
   handleChange = (name) => {
-    this.setState({ userName: name })
+    this.setState({ 
+      userName: name, 
+      showError: false 
+    });
   }
 
   handleSave = () => {
     const { userName } = this.state;
-    this.props.addNewUser(userName);
-    this.props.navigation.navigate('homePage');
+
+    if (userName) {
+      this.props.AddUser(userName);
+      this.props.navigation.navigate('homePage');
+    } else {
+      this.setState({showError: true});
+    }
+
+  }
+
+  renderSubmit = () => {
+    let buttonTitle = this.state.showError ? 'First, Enter A Name' : "Let's Get Started";
+
+    return (
+      <ThemeProvider theme={theme}>
+        {
+          this.state.userName
+            ? <Button title={buttonTitle} raised={false} onPress={this.handleSave} />
+            : <Button title={buttonTitle} raised={false} onPress={this.handleSave} />
+        }
+      </ThemeProvider>
+    )
   }
 
   render() {
     return (
       <DismissKeyboard>
         <View style={styles.background}>
-          <View>
-            <View style={styles.headerText}>
-              <Text style={styles.headerTextOne}>Welcome to</Text>
-              <Text style={styles.headerTextTwo}>Get<Text style={styles.headerTextThree}>Swole</Text></Text>
-              <Text style={styles.headerTextFour}>What should we call you?</Text>
-            </View>
-            <TextInput style={styles.textBox} onChangeText={(name) => this.handleChange(name)} placeholder=' ex. Chad...' />
-            <ThemeProvider theme={theme}>
-              <Button title="Let's get started" raised={true} onPress={this.handleSave} />
-            </ThemeProvider>
+          <View style={styles.header}>
+            <RalewayText text="Welcome To" style={styles.welcomeText} />
+            <Text style={styles.getText}>Get<Text style={styles.swoleText}>Swole</Text></Text>
+          </View>
+          <View style={styles.inputArea}>
+
+            <RalewayText style={styles.promptText} text="What should we call you?" />
+            <TextInput style={styles.textBox} onChangeText={this.handleChange} placeholder=' ex. Chad...' />
+          </View>
+          <View style={styles.submitButton}>
+          { 
+            this.renderSubmit() 
+          }
           </View>
         </View>
       </DismissKeyboard>
@@ -76,41 +112,61 @@ export const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(WelcomePage);
 
+
 const styles = StyleSheet.create({
-  headerText: {
-    marginTop: -100
-  },
+
   background: {
+    flex: 3,
     alignItems: 'center',
-    paddingTop: 200,
-    backgroundColor: '#7CABCC',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height
+    justifyContent: 'space-between',
+    backgroundColor: themeColor,
+    padding: 20,
   },
-  headerTextOne: {
-    color: '#D3E2EB',
-    fontSize: 30,
-    marginLeft: -12
+
+  header: {
+    flex: 1,
+    justifyContent: 'center',
   },
-  headerTextTwo: {
-    color: '#ffffff',
-    fontSize: 70,
-    marginTop: -10,
-    marginBottom: 150
-  },
-  headerTextThree: {
-    color: '#D3E2EB',
-  },
-  headerTextFour: {
+
+  welcomeText: {
+    color: accentTwo,
     fontSize: 20,
-    color: '#D3E2EB',
-    marginBottom: -15
   },
+
+  getText: {
+    color: '#FFF',
+    fontSize: 60,
+    marginTop: -10,
+    fontFamily: 'raleway-bold',
+  },
+
+  swoleText: {
+    color: accentTwo,
+  },
+
+  inputArea: {
+    flex: 1,
+    justifyContent: 'center',
+    width: windowWidth - 50,
+  },
+
+  promptText: {
+    fontSize: 20,
+    color: accentTwo,
+  },
+
   textBox: {
-    backgroundColor: '#ffffff',
+    backgroundColor: accentOne,
     height: 40,
-    fontSize: 25,
-    marginTop: 20,
-    marginBottom: 20
+    fontSize: 20,
+    color: '#FFF',
+    padding: 5,
+  },
+
+  submitButton: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    width: windowWidth - 50,
   }
+
 });
