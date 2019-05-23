@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { rootReducer } from './src/Reducers/index';
 import AppNavigator from './src/AppNavigator';
+import React, { Component } from 'react';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
 import { Font, AppLoading } from "expo";
+import { Provider } from 'react-redux';
+import { rootReducer } from './src/Reducers/index';
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+
 
 export default class App extends Component {
   state = { fontLoaded: false, };
