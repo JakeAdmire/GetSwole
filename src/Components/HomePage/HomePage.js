@@ -3,8 +3,6 @@ import { StyleSheet, Text, View, BackHandler } from 'react-native';
 import { connect } from 'react-redux';
 import Calendar from '../Calendar/Calendar';
 import Dimensions from 'Dimensions';
-import Container from '../Container/Container'
-
 
 class Homepage extends React.Component {
   static navigationOptions = {
@@ -25,12 +23,12 @@ class Homepage extends React.Component {
   };
 
   render() {
-
+    const { navigation } = this.props
     return (
       <View style={styles.container}>
         <Text>Hello, {this.props.name}</Text>
         <Text>Select a day to view it's routines!</Text>
-        <Calendar />
+        <Calendar navTool={navigation} />
       </View>
     );
   }
