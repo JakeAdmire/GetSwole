@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { InputAutoSuggest } from 'react-native-autocomplete-search';
-
 
 export class RoutineCreater extends Component {
   constructor() {
@@ -33,7 +32,7 @@ export class RoutineCreater extends Component {
       return exercise.attributes.name === selectedExercise.name
     });
     if (foundExercise) {
-      this.setState({ exerciseList: [...this.state.exerciseList, foundExercise.id] })
+      this.setState({ exerciseList: [...this.state.exerciseList, {id: foundExercise.id, name: selectedExercise.name}] })
     }
   }
 
@@ -43,18 +42,41 @@ export class RoutineCreater extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <InputAutoSuggest
           style={{ flex: 1 }}
+          inputStyle={styles.input}
+          itemTextStyle={styles.item}
           staticData={this.state.exercisesCleaned}
           onDataSelectedChange={data => this.setState({ selectedExercise: data })}
         />
         <Button title='Add Exercise to Routine' onPress={this.saveExercise} />
-        <Button title='Add Routine' onPress={this.saveRoutine} />
+        <View>
+          {this.state.exerciseList.map(exercise => {
+            return <Text>{exercise.name}</Text>
+          })}
+        </View>
+        
+        <Button title='Create New Routine' onPress={this.saveRoutine} />
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#667D90',
+    height: 400
+  },
+  item: {
+    color: '#FFFFFF',
+    backgroundColor: '#ACC6D0'
+  },
+  input: {
+    color: '#667D90',
+    backgroundColor: '#ACC6D0'
+  }
+});
 
 
 export const mapStateToProps = (state) => ({
