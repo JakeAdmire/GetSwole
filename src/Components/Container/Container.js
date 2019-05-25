@@ -28,7 +28,8 @@ export class Container extends Component {
     this.props.navTool.navigate('routinePage');
   }
 
-  displayCard = () => {
+  displayCards = () => {
+
     const { routines, semanticDate } = this.props;
 
     return routines.data && routines.data.length
