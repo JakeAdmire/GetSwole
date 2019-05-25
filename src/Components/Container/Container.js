@@ -29,7 +29,6 @@ export class Container extends Component {
   }
 
   displayCards = () => {
-
     const { routines, semanticDate } = this.props;
 
     return routines.data && routines.data.length
@@ -72,7 +71,7 @@ export class Container extends Component {
           <Image style={styles.loader} source={require('../../../assets/images/loading.gif')} />
         </View>
         
-      : <View>{ this.displayCard() }</View>
+      : <View>{ this.displayCards() }</View>
   }
 }
 
