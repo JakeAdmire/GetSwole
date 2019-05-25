@@ -32,13 +32,13 @@ export class RoutineCreater extends Component {
     let foundExercise = this.props.exercises.data.find(exercise => {
       return exercise.attributes.name === selectedExercise.name
     });
-    if(foundExercise) {
+    if (foundExercise) {
       this.setState({ exerciseList: [...this.state.exerciseList, foundExercise.id] })
     }
   }
 
   saveRoutine = () => {
-    
+
   }
 
   render() {
@@ -47,7 +47,7 @@ export class RoutineCreater extends Component {
         <InputAutoSuggest
           style={{ flex: 1 }}
           staticData={this.state.exercisesCleaned}
-          onDataSelectedChange={data => this.setState({selectedExercise: data})}
+          onDataSelectedChange={data => this.setState({ selectedExercise: data })}
         />
         <Button title='Add Exercise to Routine' onPress={this.saveExercise} />
         <Button title='Add Routine' onPress={this.saveRoutine} />
