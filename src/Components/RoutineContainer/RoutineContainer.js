@@ -1,14 +1,39 @@
 import React, { Component } from 'react'
-import { View, Text, Picker } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableHighlight } from 'react-native'
 import Dimensions from 'Dimensions'
+import { connect } from 'react-redux';
+import { setPreMadeRoutine } from '../../Thunks/setPreMadeRoutine'
+
+const styles = StyleSheet.create({
+  routineContainer: {
+    flex: 1,
+    paddingTop: 1,
+    alignItems: 'center',
+    backgroundColor: '#7CABCC',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height
+  },
+  container: {
+    paddingTop: 60,
+    alignItems: 'center'
+  },
+  button: {
+    marginBottom: 5,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: '#2196F3'
+  },
+  buttonText: {
+    padding: 20,
+    color: 'white'
+  }
+});
 
 export class RoutineContainer extends Component {
   constructor() {
     super()
     this.state = {
-      showSelector: true,
-      routines: [],
-      pickerValue: ''
+      routines: []
     }
   }
 
@@ -19,38 +44,46 @@ export class RoutineContainer extends Component {
     this.setState({ routines });
   }
 
+  handleChooseRoutine = (routine, date) => {
+    this.props.addPreMadeRoutine(routine, date)
+  }
+
   displayCards = () => {
     const { routines } = this.state;
     return routines.data && routines.data.length
-      ? <Picker
-         style={{width: Dimensions.get('window').width}}
-         selectedValue={this.state && this.state.pickerValue}
-         onValueChange={(value) => {
-           this.setState({pickerValue: value})
-           this.handleChooseRoutine(value)
-         }}
-         >
-        {
-          routines.data.map(routine => (
-            <Picker.Item value={routine} label={routine.attributes.name} key={routine.id}/>
-          ))
-        }
-      </Picker>
+      ? routines.data.map(routine => {
+        return <View style={styles.container}>
+          <TouchableHighlight onPress={() => this.handleChooseRoutine(routine, this.props.date)} underlayColor="white">
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>{routine.attributes.name}</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
+      })
       : <Text>loading...</Text>
-  }
-
-  handleChooseRoutine = (routine) => {
-    console.log('Entire single routine', routine)
   }
 
   render() {
     return (
-      <View>
-        <Text>Select an Existing Routine</Text>
-        {this.displayCards()}
-      </View>
+        <View style={styles.routineContainer}>
+          <View style={styles.container}>
+            <Text style={styles.welcomeText}>Select an Existing Routine</Text>
+          </View>
+          <ScrollView>
+            {this.displayCards()}
+          </ScrollView>
+        </View>
     )
   }
 }
 
-export default RoutineContainer
+export const mapStateToProps = state => ({
+  date: state.date,
+  newRoutine: state.newRoutine
+})
+
+export const mapDispatchToProps = dispatch => ({
+  addPreMadeRoutine: (routine, date) => dispatch(setPreMadeRoutine(routine, date))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RoutineContainer)

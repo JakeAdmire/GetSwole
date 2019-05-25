@@ -25,15 +25,15 @@ export class Container extends Component {
   }
 
   displayCards = () => {
-    const { routines } = this.props;
+    const { routines } = this.props
     return routines.data && routines.data.length
       ? routines.data.map(routine => (
-        <View key={routine.id}>
-          <Card>
-            <Text>{routine.attributes.name}</Text>
+        <View title={routine.id}>
+          <Card >
+              <Text>{routine.attributes.name}</Text>
             {
               routine.attributes.exercises.map(exercise => (
-                <Text key={exercise.id}>{exercise.name}</Text>
+                  <Text key={exercise.id}>{exercise.name}</Text>
               ))
             }
           </Card>
@@ -43,7 +43,7 @@ export class Container extends Component {
         </View>
       ))
       : <View>
-          <Text>No routines scheduled for this day</Text>
+          <Text>No Routines Scheduled Yet</Text>
           <Button title="Add New Routine" raised={false} onPress={this.handleAddNewRoutine} />
         </View>
   }
