@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, Picker } from 'react-native'
+import { View, Text, Picker } from 'react-native';
+import { Button } from 'react-native-elements';
 import Dimensions from 'Dimensions'
+import RoutineCreater from '../RoutineCreater/RoutineCreater';
 
 export class RoutineContainer extends Component {
   constructor() {
@@ -23,16 +25,16 @@ export class RoutineContainer extends Component {
     const { routines } = this.state;
     return routines.data && routines.data.length
       ? <Picker
-         style={{width: Dimensions.get('window').width}}
-         selectedValue={this.state && this.state.pickerValue}
-         onValueChange={(value) => {
-           this.setState({pickerValue: value})
-           this.handleChooseRoutine(value)
-         }}
-         >
+        style={{ width: Dimensions.get('window').width }}
+        selectedValue={this.state && this.state.pickerValue}
+        onValueChange={(value) => {
+          this.setState({ pickerValue: value })
+          this.handleChooseRoutine(value)
+        }}
+      >
         {
           routines.data.map(routine => (
-            <Picker.Item value={routine} label={routine.attributes.name} key={routine.id}/>
+            <Picker.Item value={routine} label={routine.attributes.name} key={routine.id} />
           ))
         }
       </Picker>
@@ -43,14 +45,20 @@ export class RoutineContainer extends Component {
     console.log('Entire single routine', routine)
   }
 
+  handleCreateRoutine = () => {
+    this.setState({ showSelector: false })
+  }
+
   render() {
     return (
       <View>
         <Text>Select an Existing Routine</Text>
         {this.displayCards()}
+        <Button onPress={this.handleCreateRoutine} title={'Create New Routine'} />
+        {!this.state.showSelector && <RoutineCreater />}
       </View>
     )
   }
 }
 
-export default RoutineContainer
+export default RoutineContainer;
