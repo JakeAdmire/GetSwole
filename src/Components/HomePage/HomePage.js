@@ -1,15 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View, BackHandler } from 'react-native';
 import { connect } from 'react-redux';
-import Dimensions from 'Dimensions';
-// 
+import { addExercises } from '../../Actions';
 import Calendar from '../Calendar/Calendar';
+import Dimensions from 'Dimensions';
 import Container from '../Container/Container';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 
 class Homepage extends React.Component {
   static navigationOptions = {
     header: null
+  }
+
+  async componentDidMount() {
+    const response = await fetch('https://warm-cove-89223.herokuapp.com/api/v1/exercises');
+    const data = await response.json();
+    this.props.addExercises(data)
   }
 
   componentWillMount() {
@@ -58,7 +64,11 @@ export const mapStateToProps = (state) => ({
   date: state.date
 });
 
-export default connect(mapStateToProps, null)(Homepage);
+export const mapDispatchToProps = (dispatch) => ({
+  addExercises: (exercises) => dispatch(addExercises(exercises))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
 
 const styles = StyleSheet.create({
 
