@@ -1,7 +1,7 @@
 export const dateReducer = (state = '', action) => {
   switch (action.type) {
 
-    case 'ADD_DATE_TO_STORE':
+    case 'SET_DATE':
       return action.date;
 
     default:

@@ -3,8 +3,13 @@ export const addUser = (name) => ({
   name
 })
 
-export const addDateToStore = (date) => ({
-  type: 'ADD_DATE_TO_STORE',
+export const setDate = (date) => ({
+  type: 'SET_DATE',
+  date
+})
+
+export const setSemanticDate = (date) => ({
+  type: 'SET_SEMANTIC_DATE',
   date
 })
 
@@ -12,16 +17,6 @@ export const addExercises = (exercises) => ({
   type: 'ADD_EXERCISES',
   exercises
 })
-
-// export const loadRoutines = (boolean) => ({
-//   type: 'LOAD_ROUTINES',
-//   boolean
-// })
-
-// export const unloadRoutines = (boolean) => ({
-//   type: 'UNLOAD_ROUTINES',
-//   boolean
-// })
 
 export const isLoading = (boolean) => ({
   type: 'IS_LOADING',
