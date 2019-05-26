@@ -9,7 +9,7 @@ describe('Homepage', () => {
   let mockDate = '2019 5 25';
   let semanticDateMock = '25th March, 2019';
   let loadingMock = false;
-  let mockUser = {name: 'John'}
+  let mockUser = { name: 'John' }
   let routinesMock = {
     data: [
       {
@@ -67,23 +67,25 @@ describe('Homepage', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
-  
+
   describe('mapDispatchToProps', () => {
     it('should dispatch ADD EXERCISES if the props function is triggered', () => {
       const mockDispatch = jest.fn()
-      const mockExercises = {exercises: [
-        {
-          id: 50,
-          name: "Pushups",
-          category: "Strength",
-          equipment_required: "Body Only",
-          muscle: "Chest",
-          reps: 10,
-          sets: 4,
-          duration: null,
-          weight: null
-        }
-      ]}
+      const mockExercises = {
+        exercises: [
+          {
+            id: 50,
+            name: "Pushups",
+            category: "Strength",
+            equipment_required: "Body Only",
+            muscle: "Chest",
+            reps: 10,
+            sets: 4,
+            duration: null,
+            weight: null
+          }
+        ]
+      }
       const actionToDispatch = addExercises(mockExercises)
       const mappedProps = mapDispatchToProps(mockDispatch)
       mappedProps.addExercises(mockExercises)
@@ -108,7 +110,13 @@ describe('Homepage', () => {
     })
   })
 
-  describe('componentDidMount', async () => {
-
+  describe('componentDidMount', () => {
+    it('should call handleAddExercises', () => {
+      const instance = wrapper.instance()
+      jest.spyOn(instance, 'handleAddExercises')
+      instance.componentDidMount()
+      expect(instance.handleAddExercises).toHaveBeenCalled()
+    })
   })
+  
 })

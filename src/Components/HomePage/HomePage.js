@@ -12,7 +12,11 @@ export class Homepage extends React.Component {
     header: null
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.handleAddExercises()
+  }
+
+  handleAddExercises = async () => {
     const response = await fetch('https://warm-cove-89223.herokuapp.com/api/v1/exercises');
     const data = await response.json();
     this.props.addExercises(data)
