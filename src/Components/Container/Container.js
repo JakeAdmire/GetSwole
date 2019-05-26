@@ -35,12 +35,22 @@ export class Container extends Component {
     return routines.data && routines.data.length
       ? <View style={styles.cardContainer}>
           <RalewayText style={styles.emptyMessage} text="Here's the schedule for" />
-          <RalewayBoldText style={styles.emptyMessage} text={semanticDate} />
+          <RalewayBoldText style={{ ...styles.emptyMessage, marginBottom: 10 }} text={semanticDate} />
           {
-            routines.data.map(routine => (
+            routines.data.map((routine, index) => (
               <ListItem key={routine.id}
-                        containerStyle={{ backgroundColor: '#7C9DB1' }}
-                        chevron
+                        containerStyle=
+                        {
+                          routines.data.length - 1 === index
+                            ? { backgroundColor: '#7C9DB1', marginBottom: 10 }
+                            : { backgroundColor: '#7C9DB1' }
+                        }
+                        chevron=
+                        {
+                          <Icon name='chevron-circle-right'
+                                type='font-awesome' 
+                                color='#FFF' />
+                        }
                         bottomDivider={ routines.data.length > 1 ? true : false }
                         title={routine.attributes.name}
                         titleStyle={{ color: '#FFF', fontFamily: 'raleway' }}
@@ -48,19 +58,30 @@ export class Container extends Component {
                         subtitleStyle={{ color: '#ACC6D0', fontFamily: 'raleway' }} />
             ))
           }
-          <Button title="Add New Routine"
-                  titleStyle={{ fontFamily: 'raleway' }}
-                  raised={false} 
-                  onPress={this.handleAddNewRoutine} />
+          { this.renderButton() }
         </View>
       : <View style={styles.cardContainer}>
           <RalewayText style={styles.emptyMessage} text="You don't yet have anything scheduled for" />
-          <RalewayBoldText style={styles.emptyMessage} text={semanticDate} />
-          <Button title="Add New Routine" 
-                  titleStyle={{ fontFamily: 'raleway' }} 
-                  raised={false} 
-                  onPress={this.handleAddNewRoutine} />
+          <RalewayBoldText style={{ ...styles.emptyMessage, marginBottom: 10 }} text={semanticDate} />
+          { this.renderButton() }
         </View>
+  }
+
+  renderButton() {
+    return <Button  buttonStyle={{ backgroundColor: '#7C9DB1', position: 'relative' }}
+                    title="Add New Routine" 
+                    titleStyle={{ fontFamily: 'raleway-bold' }} 
+                    icon=
+                    {
+                      <Icon name='plus'
+                            type='font-awesome'
+                            size={18}
+                            iconStyle={{ position: 'absolute', right: -75 }} 
+                            color='#FFF' />
+                    } 
+                    iconRight
+                    testID="add-routine-button"
+                    onPress={this.handleAddNewRoutine} />
   }
 
   render() {
@@ -72,7 +93,7 @@ export class Container extends Component {
           <Image style={styles.loader} source={require('../../../assets/images/loading.gif')} />
         </View>
         
-      : <View>{ this.displayCard() }</View>
+      : <View>{ this.displayCards() }</View>
   }
 }
 
