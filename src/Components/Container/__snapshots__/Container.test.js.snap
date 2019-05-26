@@ -1,0 +1,343 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container displayCards() should match snapshot 1`] = `[MockFunction]`;
+
+exports[`Container displayCards() should match snapshot 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": <Component
+        style={
+          Object {
+            "backgroundColor": "#667D90",
+            "color": "#ACC6D0",
+            "height": 1149,
+            "padding": 20,
+            "width": 750,
+          }
+        }
+      >
+        <RalewayText
+          style={
+            Object {
+              "color": "#ACC6D0",
+              "fontSize": 16,
+            }
+          }
+          text="Here's the schedule for"
+        />
+        <RalewayBoldText
+          style={
+            Object {
+              "color": "#ACC6D0",
+              "fontSize": 16,
+              "marginBottom": 10,
+            }
+          }
+          text="25th March, 2019"
+        />
+        <Themed.ListItem
+          bottomDivider={true}
+          chevron={
+            <Themed.Icon
+              color="#FFF"
+              name="chevron-circle-right"
+              type="font-awesome"
+            />
+          }
+          containerStyle={
+            Object {
+              "backgroundColor": "#7C9DB1",
+            }
+          }
+          subtitle="1 exercises"
+          subtitleStyle={
+            Object {
+              "color": "#ACC6D0",
+              "fontFamily": "raleway",
+            }
+          }
+          title="Arm Day"
+          titleStyle={
+            Object {
+              "color": "#FFF",
+              "fontFamily": "raleway",
+            }
+          }
+        />
+        <Themed.ListItem
+          bottomDivider={true}
+          chevron={
+            <Themed.Icon
+              color="#FFF"
+              name="chevron-circle-right"
+              type="font-awesome"
+            />
+          }
+          containerStyle={
+            Object {
+              "backgroundColor": "#7C9DB1",
+              "marginBottom": 10,
+            }
+          }
+          subtitle="1 exercises"
+          subtitleStyle={
+            Object {
+              "color": "#ACC6D0",
+              "fontFamily": "raleway",
+            }
+          }
+          title="Leg Day"
+          titleStyle={
+            Object {
+              "color": "#FFF",
+              "fontFamily": "raleway",
+            }
+          }
+        />
+        <ForwardRef(Themed.Button)
+          buttonStyle={
+            Object {
+              "backgroundColor": "#7C9DB1",
+              "position": "relative",
+            }
+          }
+          icon={
+            <Themed.Icon
+              color="#FFF"
+              iconStyle={
+                Object {
+                  "position": "absolute",
+                  "right": -75,
+                }
+              }
+              name="plus"
+              size={18}
+              type="font-awesome"
+            />
+          }
+          iconRight={true}
+          onPress={[Function]}
+          testID="add-routine-button"
+          title="Add New Routine"
+          titleStyle={
+            Object {
+              "fontFamily": "raleway-bold",
+            }
+          }
+        />
+      </Component>,
+    },
+  ],
+}
+`;
+
+exports[`Container displayCards() should match snapshot 3`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": <Component
+        style={
+          Object {
+            "backgroundColor": "#667D90",
+            "color": "#ACC6D0",
+            "height": 1149,
+            "padding": 20,
+            "width": 750,
+          }
+        }
+      >
+        <RalewayText
+          style={
+            Object {
+              "color": "#ACC6D0",
+              "fontSize": 16,
+            }
+          }
+          text="Here's the schedule for"
+        />
+        <RalewayBoldText
+          style={
+            Object {
+              "color": "#ACC6D0",
+              "fontSize": 16,
+              "marginBottom": 10,
+            }
+          }
+          text="25th March, 2019"
+        />
+        <Themed.ListItem
+          bottomDivider={true}
+          chevron={
+            <Themed.Icon
+              color="#FFF"
+              name="chevron-circle-right"
+              type="font-awesome"
+            />
+          }
+          containerStyle={
+            Object {
+              "backgroundColor": "#7C9DB1",
+            }
+          }
+          subtitle="1 exercises"
+          subtitleStyle={
+            Object {
+              "color": "#ACC6D0",
+              "fontFamily": "raleway",
+            }
+          }
+          title="Arm Day"
+          titleStyle={
+            Object {
+              "color": "#FFF",
+              "fontFamily": "raleway",
+            }
+          }
+        />
+        <Themed.ListItem
+          bottomDivider={true}
+          chevron={
+            <Themed.Icon
+              color="#FFF"
+              name="chevron-circle-right"
+              type="font-awesome"
+            />
+          }
+          containerStyle={
+            Object {
+              "backgroundColor": "#7C9DB1",
+              "marginBottom": 10,
+            }
+          }
+          subtitle="1 exercises"
+          subtitleStyle={
+            Object {
+              "color": "#ACC6D0",
+              "fontFamily": "raleway",
+            }
+          }
+          title="Leg Day"
+          titleStyle={
+            Object {
+              "color": "#FFF",
+              "fontFamily": "raleway",
+            }
+          }
+        />
+        <ForwardRef(Themed.Button)
+          buttonStyle={
+            Object {
+              "backgroundColor": "#7C9DB1",
+              "position": "relative",
+            }
+          }
+          icon={
+            <Themed.Icon
+              color="#FFF"
+              iconStyle={
+                Object {
+                  "position": "absolute",
+                  "right": -75,
+                }
+              }
+              name="plus"
+              size={18}
+              type="font-awesome"
+            />
+          }
+          iconRight={true}
+          onPress={[Function]}
+          testID="add-routine-button"
+          title="Add New Routine"
+          titleStyle={
+            Object {
+              "fontFamily": "raleway-bold",
+            }
+          }
+        />
+      </Component>,
+    },
+    Object {
+      "type": "return",
+      "value": <Component
+        style={
+          Object {
+            "backgroundColor": "#667D90",
+            "color": "#ACC6D0",
+            "height": 1149,
+            "padding": 20,
+            "width": 750,
+          }
+        }
+      >
+        <RalewayText
+          style={
+            Object {
+              "color": "#ACC6D0",
+              "fontSize": 16,
+            }
+          }
+          text="You don't yet have anything scheduled for"
+        />
+        <RalewayBoldText
+          style={
+            Object {
+              "color": "#ACC6D0",
+              "fontSize": 16,
+              "marginBottom": 10,
+            }
+          }
+          text="25th March, 2019"
+        />
+        <ForwardRef(Themed.Button)
+          buttonStyle={
+            Object {
+              "backgroundColor": "#7C9DB1",
+              "position": "relative",
+            }
+          }
+          icon={
+            <Themed.Icon
+              color="#FFF"
+              iconStyle={
+                Object {
+                  "position": "absolute",
+                  "right": -75,
+                }
+              }
+              name="plus"
+              size={18}
+              type="font-awesome"
+            />
+          }
+          iconRight={true}
+          onPress={[Function]}
+          testID="add-routine-button"
+          title="Add New Routine"
+          titleStyle={
+            Object {
+              "fontFamily": "raleway-bold",
+            }
+          }
+        />
+      </Component>,
+    },
+  ],
+}
+`;
+
+exports[`Container renderButton() should match snapshot 1`] = `[MockFunction]`;
+
+exports[`Container should match snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`Container should match snapshot 2`] = `ShallowWrapper {}`;
