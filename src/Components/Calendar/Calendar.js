@@ -4,7 +4,6 @@ import CalendarStrip from 'react-native-calendar-strip';
 import { connect } from 'react-redux'
 import Dimensions from 'Dimensions';
 import moment from 'moment'
-// 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import { setDate, loadRoutines, setSemanticDate } from '../../Actions/index'
 import { fetchRoutines } from '../../Thunks/fetchRoutines';
@@ -41,7 +40,6 @@ export class Calendar extends Component {
   }
 
   determineDate = (year, month, day) => {
-    console.log(year, month, day)
     let monthDay = this.determineDay(day);
     let yearMonth = this.determineMonth(month);
     this.props.setSemanticDate(`${monthDay} ${yearMonth} ${year}`);

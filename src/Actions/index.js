@@ -1,6 +1,6 @@
-export const addUser = (name) => ({
+export const addUser = (user) => ({
   type: 'ADD_USER',
-  name
+  user
 })
 
 export const setDate = (date) => ({
