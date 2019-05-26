@@ -38,7 +38,7 @@ class Homepage extends React.Component {
 
         <View style={styles.downwardShadow}>
           <View style={styles.header}>
-            <RalewayText style={styles.headerText} text={`Welcome, ${this.props.name}`} />
+            <RalewayText style={styles.headerText} text={`Welcome, ${this.props.user.name}`} />
           </View>
 
           <View style={styles.prompt}>
@@ -60,7 +60,7 @@ class Homepage extends React.Component {
 }
 
 export const mapStateToProps = (state) => ({
-  name: state.user,
+  user: state.user,
   date: state.date
 });
 
