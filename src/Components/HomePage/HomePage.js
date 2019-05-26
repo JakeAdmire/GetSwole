@@ -49,7 +49,9 @@ class Homepage extends React.Component {
         <Calendar />
         { 
           date 
-            ? <Container navTool={navigation} /> 
+            ? <View style={styles.downwardShadow}>
+                <Container navTool={navigation} />
+              </View>
             : <View style={styles.placeholder}>
                 <Text style={styles.placeholderText}>Please select a date</Text>
               </View>
@@ -83,10 +85,9 @@ const styles = StyleSheet.create({
     // shadowOffset: { width: 0, height: 12, },
     // shadowOpacity: 0.58,
     // shadowRadius: 16.00,
-    elevation: 24,
-
-    width: Dimensions.get('window').width,
-    height: 185
+    elevation: 11,
+    borderWidth: 2,
+    borderColor: 'black'
   },
 
   header: {
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 10,
     paddingLeft: 10,
+    elevation: 12
   },
 
   headerText: {
@@ -106,6 +108,7 @@ const styles = StyleSheet.create({
     height: 115,
     backgroundColor: '#667D90',
     justifyContent: 'center',
+    elevation: 11
   },
 
   promptText: {
@@ -120,7 +123,9 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     padding: 30,
     alignItems: 'center',
-    elevation: 24,
+    elevation: 11,
+    borderWidth: 2,
+    borderColor: 'black'
   },
 
   placeholderText: {
