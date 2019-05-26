@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableHighlight } from 'react-native'
 import Dimensions from 'Dimensions'
+import { Button } from 'react-native-elements'
 import { connect } from 'react-redux';
+import RoutineCreator from '../RoutineCreator/RoutineCreator'
 import { setPreMadeRoutine } from '../../Thunks/setPreMadeRoutine'
 
 const styles = StyleSheet.create({
@@ -33,7 +35,8 @@ export class RoutineContainer extends Component {
   constructor() {
     super()
     this.state = {
-      routines: []
+      routines: [],
+      showSelector: true
     }
   }
 
@@ -46,6 +49,10 @@ export class RoutineContainer extends Component {
 
   handleChooseRoutine = (routine, date) => {
     this.props.addPreMadeRoutine(routine, date)
+  }
+
+  handleCreateRoutine = () => {
+    this.setState({ showSelector: false })
   }
 
   displayCards = () => {
@@ -65,14 +72,16 @@ export class RoutineContainer extends Component {
 
   render() {
     return (
-        <View style={styles.routineContainer}>
-          <View style={styles.container}>
-            <Text style={styles.welcomeText}>Select an Existing Routine</Text>
-          </View>
-          <ScrollView>
-            {this.displayCards()}
-          </ScrollView>
+      <View style={styles.routineContainer}>
+        <View style={styles.container}>
+          <Text style={styles.welcomeText}>Select an Existing Routine</Text>
         </View>
+        <ScrollView>
+          {this.displayCards()}
+        </ScrollView>
+        <Button onPress={this.handleCreateRoutine} title={'Create New Routine'} />
+        {!this.state.showSelector && <RoutineCreator />}
+      </View>
     )
   }
 }

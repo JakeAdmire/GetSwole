@@ -36,12 +36,14 @@ class Homepage extends React.Component {
     return (
       <View style={styles.container}>
 
-        <View style={styles.header}>
-          <RalewayText style={styles.headerText} text={`Welcome, ${this.props.name}`} />
-        </View>
+        <View style={styles.downwardShadow}>
+          <View style={styles.header}>
+            <RalewayText style={styles.headerText} text={`Welcome, ${this.props.user.name}`} />
+          </View>
 
-        <View style={styles.prompt}>
-          <Text style={styles.promptText}>Select a day to start scheduling workouts</Text>
+          <View style={styles.prompt}>
+            <Text style={styles.promptText}>Select a day to start scheduling workouts</Text>
+          </View>
         </View>
         
         <Calendar />
@@ -60,7 +62,7 @@ class Homepage extends React.Component {
 }
 
 export const mapStateToProps = (state) => ({
-  name: state.user,
+  user: state.user,
   date: state.date
 });
 

@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { InputAutoSuggest } from 'react-native-autocomplete-search';
 
-export class RoutineCreater extends Component {
+export class RoutineCreator extends Component {
   constructor() {
     super();
     this.state = {
@@ -56,7 +56,6 @@ export class RoutineCreater extends Component {
             return <Text>{exercise.name}</Text>
           })}
         </View>
-        
         <Button title='Create New Routine' onPress={this.saveRoutine} />
       </View>
     )
@@ -84,4 +83,4 @@ export const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps)(RoutineCreater);
+export default connect(mapStateToProps)(RoutineCreator);

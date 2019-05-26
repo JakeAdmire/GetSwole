@@ -29,7 +29,6 @@ export class Container extends Component {
   }
 
   displayCards = () => {
-
     const { routines, semanticDate } = this.props;
 
     return routines.data && routines.data.length

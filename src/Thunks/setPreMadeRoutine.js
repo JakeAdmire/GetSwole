@@ -5,7 +5,7 @@ export const setPreMadeRoutine = (routine, date) => {
     try {
       dispatch(isLoading(true))
       const url = `https://warm-cove-89223.herokuapp.com/api/v1/my_routines`
-      const response = await (fetch(url, {
+      const response = await fetch(url, {
         method: 'POST',
         body: {
           routine_id: routine.id,
@@ -15,7 +15,7 @@ export const setPreMadeRoutine = (routine, date) => {
         headers: {
           "Content-Type": "application/json"
         }
-      }))
+      })
       if (!response.ok) {
         throw new Error(response.statusText)
       }

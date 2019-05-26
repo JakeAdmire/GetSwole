@@ -5,6 +5,7 @@ import { ThemeProvider, Button } from 'react-native-elements';
 import { addUser } from '../../Actions';
 import { connect } from 'react-redux';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
+import { addUserThunk } from '../../Thunks/addUserThunk'
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -60,7 +61,6 @@ class WelcomePage extends Component {
     } else {
       this.setState({showError: true});
     }
-
   }
 
   renderSubmit = () => {
@@ -102,11 +102,12 @@ class WelcomePage extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  addNewUser: (name) => dispatch(addUser(name))
+  addNewUser: (name) => dispatch(addUserThunk(name))
 });
 
 export const mapStateToProps = state => ({
-  exercises: state.exercises
+  exercises: state.exercises,
+  user: state.user
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WelcomePage);
