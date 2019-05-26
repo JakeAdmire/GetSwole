@@ -7,7 +7,7 @@ import Dimensions from 'Dimensions';
 import Container from '../Container/Container';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 
-class Homepage extends React.Component {
+export class Homepage extends React.Component {
   static navigationOptions = {
     header: null
   }
