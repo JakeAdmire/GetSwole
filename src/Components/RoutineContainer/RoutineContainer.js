@@ -11,13 +11,16 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 1,
     alignItems: 'center',
-    backgroundColor: '#7CABCC',
+    backgroundColor: '#667D90',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height
   },
   container: {
     paddingTop: 60,
     alignItems: 'center'
+  },
+  scroll: {
+    height: Dimensions.get('window').height * .10
   },
   button: {
     marginBottom: 5,
@@ -32,6 +35,12 @@ const styles = StyleSheet.create({
 });
 
 export class RoutineContainer extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: '#7C9DB1',
+    },
+  };
+
   constructor() {
     super()
     this.state = {
@@ -73,13 +82,17 @@ export class RoutineContainer extends Component {
   render() {
     return (
       <View style={styles.routineContainer}>
-        <View style={styles.container}>
-          <Text style={styles.welcomeText}>Select an Existing Routine</Text>
-        </View>
-        <ScrollView>
-          {this.displayCards()}
-        </ScrollView>
-        <Button onPress={this.handleCreateRoutine} title={'Create New Routine'} />
+        {this.state.showSelector && 
+          <View>
+            <View style={styles.container}>
+              <Text style={styles.welcomeText}>Select an Existing Routine</Text>
+            </View>
+            <ScrollView style={styles.scroll}>
+              {this.displayCards()}
+            </ScrollView>
+            <Button onPress={this.handleCreateRoutine} title={'Create New Routine'} />
+          </View>
+        }
         {!this.state.showSelector && <RoutineCreator />}
       </View>
     )

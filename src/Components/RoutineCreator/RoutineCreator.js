@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { InputAutoSuggest } from 'react-native-autocomplete-search';
 import Dimensions from 'Dimensions';
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 export class RoutineCreator extends Component {
   constructor() {
@@ -29,9 +35,14 @@ export class RoutineCreator extends Component {
 
   saveExercise = () => {
     const { selectedExercise } = this.state;
-    let foundExercise = this.props.exercises.data.find(exercise => {
-      return exercise.attributes.name === selectedExercise.name
-    });
+    let foundExercise;
+
+    if(selectedExercise) {
+      foundExercise = this.props.exercises.data.find(exercise => {
+        return exercise.attributes.name === selectedExercise.name
+      });
+    }
+
     if (foundExercise) {
       this.setState({ exerciseList: [...this.state.exerciseList, { id: foundExercise.id, name: selectedExercise.name }] })
     }
@@ -50,32 +61,33 @@ export class RoutineCreator extends Component {
       }
     }
     const response = await fetch(url, options)
-    console.log(response.json())
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <InputAutoSuggest
-          inputStyle={styles.input}
-          itemTextStyle={styles.item}
-          staticData={this.state.exercisesCleaned}
-          onDataSelectedChange={data => this.setState({ selectedExercise: data })}
-        />
-        <Button titleStyle={styles.text}
-                buttonStyle={styles.button}
-                title='Add Exercise to Routine'
-                onPress={this.saveExercise} />
-        <View>
-          {this.state.exerciseList.map(exercise => {
-            return <Text style={styles.text} key={exercise.name}>{exercise.name}</Text>
-          })}
+      <DismissKeyboard>
+        <View style={styles.container}>
+          <InputAutoSuggest
+            inputStyle={styles.input}
+            itemTextStyle={styles.item}
+            staticData={this.state.exercisesCleaned}
+            onDataSelectedChange={data => this.setState({ selectedExercise: data })}
+          />
+          <Button titleStyle={styles.text}
+            buttonStyle={styles.button}
+            title='Add Exercise to Routine'
+            onPress={this.saveExercise} />
+          <View>
+            {this.state.exerciseList.map(exercise => {
+              return <Text style={styles.text} key={exercise.name}>{exercise.name}</Text>
+            })}
+          </View>
+          <Button titleStyle={styles.text}
+            buttonStyle={styles.button}
+            title='Create New Routine'
+            onPress={this.saveRoutine} />
         </View>
-        <Button titleStyle={styles.text}
-                buttonStyle={styles.button}
-                title='Create New Routine'
-                onPress={this.saveRoutine} />
-      </View>
+      </DismissKeyboard>
     )
   }
 }
@@ -85,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#667D90',
     height: 400,
     width: Dimensions.get('window').width,
-    justifyContent: 'center'
+    alignItems: 'center'
   },
   item: {
     color: '#667D90',
@@ -93,13 +105,16 @@ const styles = StyleSheet.create({
     fontFamily: 'raleway-bold'
   },
   input: {
-    color: '#FFFFFFCD',
+    color: '#FFFFFF',
     backgroundColor: '#7C9DB1',
-    fontFamily: 'raleway-bold'
+    fontFamily: 'raleway-bold',
+    width: Dimensions.get('window').width * .90,
+    marginTop: 60,
+    height: 40
   },
   button: {
     backgroundColor: '#7C9DB1',
-    width: Dimensions.get('window').width * .75
+    width: Dimensions.get('window').width * .90
   },
   text: {
     fontFamily: 'raleway-bold',
