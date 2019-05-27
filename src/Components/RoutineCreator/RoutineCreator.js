@@ -57,19 +57,24 @@ export class RoutineCreator extends Component {
     return (
       <View style={styles.container}>
         <InputAutoSuggest
-          style={{ flex: 1 }}
           inputStyle={styles.input}
           itemTextStyle={styles.item}
           staticData={this.state.exercisesCleaned}
           onDataSelectedChange={data => this.setState({ selectedExercise: data })}
         />
-        <Button title='Add Exercise to Routine' onPress={this.saveExercise} />
+        <Button titleStyle={styles.text}
+                buttonStyle={styles.button}
+                title='Add Exercise to Routine'
+                onPress={this.saveExercise} />
         <View>
           {this.state.exerciseList.map(exercise => {
-            return <Text key={exercise.name}>{exercise.name}</Text>
+            return <Text style={styles.text} key={exercise.name}>{exercise.name}</Text>
           })}
         </View>
-        <Button title='Create New Routine' onPress={this.saveRoutine} />
+        <Button titleStyle={styles.text}
+                buttonStyle={styles.button}
+                title='Create New Routine'
+                onPress={this.saveRoutine} />
       </View>
     )
   }
@@ -79,15 +84,26 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#667D90',
     height: 400,
-    width: Dimensions.get('window').width
+    width: Dimensions.get('window').width,
+    justifyContent: 'center'
   },
   item: {
-    color: '#FFFFFF',
-    backgroundColor: '#ACC6D0'
+    color: '#667D90',
+    backgroundColor: '#ACC6D0',
+    fontFamily: 'raleway-bold'
   },
   input: {
-    color: '#667D90',
-    backgroundColor: '#ACC6D0'
+    color: '#FFFFFFCD',
+    backgroundColor: '#7C9DB1',
+    fontFamily: 'raleway-bold'
+  },
+  button: {
+    backgroundColor: '#7C9DB1',
+    width: Dimensions.get('window').width * .75
+  },
+  text: {
+    fontFamily: 'raleway-bold',
+    color: '#FFFFFF'
   }
 });
 
