@@ -3,6 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { InputAutoSuggest } from 'react-native-autocomplete-search';
+import Dimensions from 'Dimensions';
 
 export class RoutineCreator extends Component {
   constructor() {
@@ -32,12 +33,24 @@ export class RoutineCreator extends Component {
       return exercise.attributes.name === selectedExercise.name
     });
     if (foundExercise) {
-      this.setState({ exerciseList: [...this.state.exerciseList, {id: foundExercise.id, name: selectedExercise.name}] })
+      this.setState({ exerciseList: [...this.state.exerciseList, { id: foundExercise.id, name: selectedExercise.name }] })
     }
   }
 
-  saveRoutine = () => {
-
+  saveRoutine = async () => {
+    const exerciseIds = this.state.exerciseList.map(exercise => {
+      return exercise.id
+    });
+    const url = 'https://warm-cove-89223.herokuapp.com/api/v1/routines?user_id=1';
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({ name: 'swolio', exerciseIds }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const response = await fetch(url, options)
+    console.log(response.json())
   }
 
   render() {
@@ -53,7 +66,7 @@ export class RoutineCreator extends Component {
         <Button title='Add Exercise to Routine' onPress={this.saveExercise} />
         <View>
           {this.state.exerciseList.map(exercise => {
-            return <Text>{exercise.name}</Text>
+            return <Text key={exercise.name}>{exercise.name}</Text>
           })}
         </View>
         <Button title='Create New Routine' onPress={this.saveRoutine} />
@@ -65,7 +78,8 @@ export class RoutineCreator extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#667D90',
-    height: 400
+    height: 400,
+    width: Dimensions.get('window').width
   },
   item: {
     color: '#FFFFFF',
@@ -79,7 +93,8 @@ const styles = StyleSheet.create({
 
 
 export const mapStateToProps = (state) => ({
-  exercises: state.exercises
+  exercises: state.exercises,
+  user: state.user
 })
 
 

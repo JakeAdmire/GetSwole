@@ -59,7 +59,7 @@ export class RoutineContainer extends Component {
     const { routines } = this.state;
     return routines.data && routines.data.length
       ? routines.data.map(routine => {
-        return <View style={styles.container}>
+        return <View key={routine.id} style={styles.container}>
           <TouchableHighlight onPress={() => this.handleChooseRoutine(routine, this.props.date)} underlayColor="white">
             <View style={styles.button}>
               <Text style={styles.buttonText}>{routine.attributes.name}</Text>
