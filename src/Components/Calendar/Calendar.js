@@ -5,7 +5,6 @@ import CalendarStrip from 'react-native-calendar-strip';
 import { connect } from 'react-redux'
 import Dimensions from 'Dimensions';
 import moment from 'moment'
-// 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import { setDate, loadRoutines, setSemanticDate } from '../../Actions/index';
 import { fetchRoutines } from '../../Thunks/fetchRoutines';
@@ -25,7 +24,7 @@ export class Calendar extends Component {
     let slicedDate = JSON.stringify(date).slice(1, 11);
     this.determineDate(slicedDate.slice(0, 4), slicedDate.slice(5, 7), slicedDate.slice(8, 10))
     this.props.setDate(slicedDate);
-    this.props.fetchRoutines(slicedDate);
+    this.props.fetchRoutines(slicedDate, this.props.user);
   }
 
   determineDay = (day) => {
@@ -91,13 +90,14 @@ export class Calendar extends Component {
 
 export const mapStateToProps = (state) => ({
   date: state.date,
-  semanticDate: state.semanticDate
+  semanticDate: state.semanticDate,
+  user: state.user
 });
 
 export const mapDispatchToProps = (dispatch) => ({
   setDate: (date) => dispatch(setDate(date)),
   setSemanticDate: (date) => dispatch(setSemanticDate(date)),
-  fetchRoutines: (date) => dispatch(fetchRoutines(date))
+  fetchRoutines: (date, user) => dispatch(fetchRoutines(date, user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar)

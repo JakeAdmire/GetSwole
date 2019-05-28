@@ -17,7 +17,7 @@ export const addUserThunk = (name) => {
       }
       const user = await response.json()
       const userObject = {
-        id: user.id,
+        id: user.user.data.id,
         name
     }
       dispatch(isLoading(false))
