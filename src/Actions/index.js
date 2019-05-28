@@ -38,3 +38,7 @@ export const addPreMadeRoutine = (routine) => ({
   routine
 })
  
+export const setSelectedRoutine = (routine) => ({
+  type: 'SET_SELECTED_ROUTINE',
+  routine
+})
