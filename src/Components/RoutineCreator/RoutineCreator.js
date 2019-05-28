@@ -19,7 +19,8 @@ export class RoutineCreator extends Component {
       selectedExercise: {},
       exerciseList: [],
       routineName: '',
-      showError: false
+      showError: false,
+      displayedExercises: []
     }
   }
 
@@ -42,8 +43,8 @@ export class RoutineCreator extends Component {
     });
   }
 
-  saveExercise = () => {
-    const { selectedExercise } = this.state;
+
+  saveExercise = (selectedExercise) => {
     let foundExercise;
 
     if (selectedExercise) {
@@ -77,28 +78,45 @@ export class RoutineCreator extends Component {
     }
   }
 
+  handleSearch = (event) => {
+    let searchQuery = event.toLowerCase();
+    let displayedExercises = this.state.exercisesCleaned.filter(function (el) {
+      let searchValue = el.name.toLowerCase();
+
+      return searchValue.indexOf(searchQuery) !== -1;
+    });
+
+    this.setState({
+      displayedExercises: displayedExercises.slice(0,10)
+    });
+  }
+
   render() {
+    console.log(this.state.displayedExercises)
     return (
       <DismissKeyboard>
         <View style={styles.container}>
-          <InputAutoSuggest
+          {/* <InputAutoSuggest
             inputStyle={styles.input}
             itemTextStyle={styles.item}
             staticData={this.state.exercisesCleaned}
             onDataSelectedChange={data => this.setState({ selectedExercise: data })}
-          />
-          <Button titleStyle={styles.text}
-            buttonStyle={styles.addButton}
-            title='Add Exercise to Routine'
-            onPress={this.saveExercise} />
+          /> */}
+          <Input onChangeText={this.handleSearch}
+            placeholder='Search' />
+          {
+            this.state.displayedExercises.map(exercise => {
+              return <Text onPress={() => this.saveExercise(exercise)}>{exercise.name}</Text>
+            })
+          }
           <View style={styles.exercises}>
             <Input placeholder='Enter a name for routine'
               onChangeText={this.handleChange} />
-              {this.state.showError && 
-                <Text>Please enter Routine Name</Text>
-              }
+            {this.state.showError &&
+              <Text>Please enter Routine Name</Text>
+            }
             {this.state.exerciseList.map(exercise => {
-              return <Text style={styles.exerciseItem} key={exercise.name}>{exercise.name}</Text>
+              return <Text key={exercise.id} style={styles.exerciseItem} key={exercise.name}>{exercise.name}</Text>
             })}
           </View>
           <Button titleStyle={styles.text}
