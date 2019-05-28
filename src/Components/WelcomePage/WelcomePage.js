@@ -57,7 +57,7 @@ class WelcomePage extends Component {
 
     if (userName) {
       this.props.addNewUser(userName);
-      this.props.navigation.navigate('homePage');
+      this.props.navigation.navigate('MainApp');
     } else {
       this.setState({showError: true});
     }

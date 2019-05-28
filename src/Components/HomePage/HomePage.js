@@ -45,16 +45,16 @@ class Homepage extends React.Component {
             <Text style={styles.promptText}>Select a day to start scheduling workouts</Text>
           </View>
         </View>
-        
+
         <Calendar />
-        { 
-          date 
+        {
+          date
             ? <View style={styles.downwardShadow}>
-                <Container navTool={navigation} />
-              </View>
+              <Container navTool={navigation} />
+            </View>
             : <View style={styles.placeholder}>
-                <Text style={styles.placeholderText}>Please select a date</Text>
-              </View>
+              <Text style={styles.placeholderText}>Please select a date</Text>
+            </View>
         }
       </View>
     );
