@@ -5,6 +5,7 @@ import { Button } from 'react-native-elements'
 import { connect } from 'react-redux';
 import RoutineCreator from '../RoutineCreator/RoutineCreator'
 import { setPreMadeRoutine } from '../../Thunks/setPreMadeRoutine'
+import { fetchRoutines } from '../../Thunks/fetchRoutines'
 
 const styles = StyleSheet.create({
   routineContainer: {
@@ -56,8 +57,10 @@ export class RoutineContainer extends Component {
     this.setState({ routines });
   }
 
-  handleChooseRoutine = (routine, date) => {
-    this.props.addPreMadeRoutine(routine, date)
+  handleChooseRoutine = async (routine, date, user) => {
+    await this.props.addPreMadeRoutine(routine, date, user)
+    this.props.fetchRoutines(this.props.date, this.props.user)
+    this.props.navigation.navigate('homePage')
   }
 
   handleCreateRoutine = () => {
@@ -69,7 +72,7 @@ export class RoutineContainer extends Component {
     return routines.data && routines.data.length
       ? routines.data.map(routine => {
         return <View key={routine.id} style={styles.container}>
-          <TouchableHighlight onPress={() => this.handleChooseRoutine(routine, this.props.date)} underlayColor="white">
+          <TouchableHighlight onPress={() => this.handleChooseRoutine(routine, this.props.date, this.props.user)} underlayColor="white">
             <View style={styles.button}>
               <Text style={styles.buttonText}>{routine.attributes.name}</Text>
             </View>
@@ -101,11 +104,13 @@ export class RoutineContainer extends Component {
 
 export const mapStateToProps = state => ({
   date: state.date,
-  newRoutine: state.newRoutine
+  newRoutine: state.newRoutine,
+  user: state.user
 })
 
 export const mapDispatchToProps = dispatch => ({
-  addPreMadeRoutine: (routine, date) => dispatch(setPreMadeRoutine(routine, date))
+  addPreMadeRoutine: (routine, date, user) => dispatch(setPreMadeRoutine(routine, date, user)),
+  fetchRoutines: (date, user) => dispatch(fetchRoutines(date, user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoutineContainer)

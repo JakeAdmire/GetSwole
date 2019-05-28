@@ -1,17 +1,17 @@
 import { isLoading, hasError, addPreMadeRoutine } from '../Actions'
 
-export const setPreMadeRoutine = (routine, date) => {
+export const setPreMadeRoutine = (routine, date, user) => {
   return async (dispatch) => {
     try {
       dispatch(isLoading(true))
       const url = `https://warm-cove-89223.herokuapp.com/api/v1/my_routines`
       const response = await fetch(url, {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           routine_id: routine.id,
           date: date,
-          user_id: 1,
-        },
+          user_id: user.id,
+        }),
         headers: {
           "Content-Type": "application/json"
         }
