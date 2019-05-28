@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, BackHandler } from 'react-native';
+import { Header } from 'react-native-elements';
 import { connect } from 'react-redux';
+// 
 import { addExercises } from '../../Actions';
 import Calendar from '../Calendar/Calendar';
 import Dimensions from 'Dimensions';
 import Container from '../Container/Container';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
+import * as palette from '../../Utilities/styleIndex';
 
 export class Homepage extends React.Component {
   static navigationOptions = {
@@ -35,30 +38,33 @@ export class Homepage extends React.Component {
     return true;
   };
 
+  welcomeText = () => {
+    return  <Text style={styles.headerText}>Welcome, 
+              <Text style={{ fontFamily: 'raleway-bold', color: palette.darkAccent }}> {this.props.user.name}</Text>
+            </Text>
+  }
+
   render() {
     const { navigation, date } = this.props;
     return (
-      <View style={styles.container}>
+      <View style={styles.HomePage}>
 
-        <View style={styles.downwardShadow}>
-          <View style={styles.header}>
-            <RalewayText style={styles.headerText} text={`Welcome, ${this.props.user.name}`} />
-          </View>
+        <Header centerComponent={this.welcomeText}
+                containerStyle={{ backgroundColor: '#FFF', elevation: 12 }} />
 
-          <View style={styles.prompt}>
-            <Text style={styles.promptText}>Select a day to start scheduling workouts</Text>
-          </View>
+        <View style={styles.prompt}>
+          <Text style={styles.promptText}>Select a day to start scheduling workouts</Text>
         </View>
-        
+
         <Calendar />
         { 
           date 
-            ? <View style={styles.downwardShadow}>
+            ? <View>
                 <Container navTool={navigation} />
               </View>
             : <View style={styles.placeholder}>
-                <Text style={styles.placeholderText}>Please select a date</Text>
-              </View>
+              <Text style={styles.placeholderText}>Please select a date</Text>
+            </View>
         }
       </View>
     );
@@ -78,63 +84,54 @@ export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
 
 const styles = StyleSheet.create({
 
-  container: {
+  HomePage: {
     // backgroundColor: '#667D90',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height
   },
 
-  downwardShadow: {
-    // shadowColor: "#000",
-    // shadowOffset: { width: 0, height: 12, },
-    // shadowOpacity: 0.58,
-    // shadowRadius: 16.00,
-    elevation: 11,
-    borderWidth: 2,
-    borderColor: 'black'
-  },
-
   header: {
-    backgroundColor: '#7C9DB1',
-    height: 70,
+    position: 'relative',
+    top: -10,
+
+    backgroundColor: '#FFF',
+    height: 80,
     paddingTop: 30,
-    paddingBottom: 10,
-    paddingLeft: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
     elevation: 12
   },
 
   headerText: {
+    fontFamily: 'raleway',
     fontSize: 24,
-    color: '#FFF',
+    color: palette.backgroundColor,
   },
 
   prompt: {
-    height: 115,
-    backgroundColor: '#667D90',
+    height: 100,
+    backgroundColor: palette.backgroundColor,
     justifyContent: 'center',
     elevation: 11
   },
 
   promptText: {
-    color: '#ACC6D0',
+    color: palette.lightAccent,
     fontSize: 20,
     padding: 10,
   },
 
   placeholder: {
-    backgroundColor: '#667D90',
+    backgroundColor: palette.backgroundColor,
     height: Dimensions.get('window').height - 185,
-    // justifyContent: 'center',
     padding: 30,
-    alignItems: 'center',
-    elevation: 11,
-    borderWidth: 2,
-    borderColor: 'black'
+    alignItems: 'center'
   },
 
   placeholderText: {
     fontFamily: 'raleway-bold',
-    color: '#ACC6D0',
+    color: palette.lightAccent,
     fontSize: 30
   }
 

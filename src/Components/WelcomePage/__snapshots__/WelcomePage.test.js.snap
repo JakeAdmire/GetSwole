@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WelcomePage renderSubmit() should match snapshot 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "flex-end",
+      "width": 730,
+    }
+  }
+>
+  <ForwardRef(Themed.Button)
+    buttonStyle={
+      Object {
+        "backgroundColor": "#FFF",
+        "borderRadius": 10,
+        "elevation": 2,
+        "position": "relative",
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 0.2,
+        "shadowRadius": 1.41,
+      }
+    }
+    icon={
+      <Themed.Icon
+        color="#104D80"
+        iconStyle={
+          Object {
+            "position": "absolute",
+            "right": -125,
+          }
+        }
+        name="angle-double-right"
+        size={25}
+        type="font-awesome"
+      />
+    }
+    iconRight={true}
+    onPress={[Function]}
+    testID="add-user-button"
+    title="Submit"
+    titleStyle={
+      Object {
+        "color": "#104D80",
+        "fontFamily": "raleway-bold",
+        "fontSize": 20,
+      }
+    }
+  />
+</Component>
+`;
+
+exports[`WelcomePage renderSubmit() should match snapshot 2`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "flex-end",
+      "width": 730,
+    }
+  }
+>
+  <ForwardRef(Themed.Button)
+    buttonStyle={
+      Object {
+        "backgroundColor": "#FFF",
+        "borderRadius": 10,
+        "elevation": 2,
+        "position": "relative",
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 0.2,
+        "shadowRadius": 1.41,
+      }
+    }
+    icon={
+      <Themed.Icon
+        color="#104D80"
+        iconStyle={
+          Object {
+            "position": "absolute",
+            "right": -125,
+          }
+        }
+        name="angle-double-right"
+        size={25}
+        type="font-awesome"
+      />
+    }
+    iconRight={true}
+    onPress={[Function]}
+    testID="add-user-button"
+    title="Submit"
+    titleStyle={
+      Object {
+        "color": "#104D80",
+        "fontFamily": "raleway-bold",
+        "fontSize": 20,
+      }
+    }
+  />
+</Component>
+`;
+
+exports[`WelcomePage should match snapshot 1`] = `ShallowWrapper {}`;

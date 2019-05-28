@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
+import { Icon } from 'react-native-elements';
 import CalendarStrip from 'react-native-calendar-strip';
 import { connect } from 'react-redux'
 import Dimensions from 'Dimensions';
 import moment from 'moment'
+// 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
-import { setDate, loadRoutines, setSemanticDate } from '../../Actions/index'
+import { setDate, loadRoutines, setSemanticDate } from '../../Actions/index';
 import { fetchRoutines } from '../../Thunks/fetchRoutines';
-
+import * as palette from '../../Utilities/styleIndex';
 
 
 export class Calendar extends Component {
@@ -63,20 +65,22 @@ export class Calendar extends Component {
             }/>
           <RalewayText style={styles.headerDate} text={semanticDate}/>
         </View>
+        <View style={styles.accentStrip}></View>
         <CalendarStrip
           calendarAnimation={{ type: 'parallel', duration: 300 }}
-          daySelectionAnimation={{ type: 'background', duration: 200, highlightColor: '#7C9DB1', }}
+          daySelectionAnimation={{ type: 'background', duration: 200, highlightColor: palette.backgroundColor, }}
           style={{ height: 80 }}
           calendarHeaderStyle={{  display: 'none' }}
-          calendarColor={'#ACC6D0'}
+          calendarColor={palette.darkAccent}
 
-          dateNumberStyle={{ color: 'white', fontFamily: 'raleway' }}
-          dateNameStyle={{ fontFamily: 'raleway-bold', color: '#EAEAEA' }}
+          dateNameStyle={{ color: palette.lightAccent, fontFamily: 'raleway-bold' }}
+          dateNumberStyle={{ color: '#FFF', fontFamily: 'raleway' }}
 
-          highlightDateNumberStyle={{ color: 'white' }}
-          highlightDateNameStyle={{ color: 'white' }}
+          highlightDateNumberStyle={{ color: '#FFF' }}
+          highlightDateNameStyle={{ color: '#FFF' }}
           
-          iconContainer={{ flex: 0.1 }}
+          iconLeft={require('../../../assets/images/left-arrow.png')}
+          iconRight={require('../../../assets/images/right-arrow.png')}
           onDateSelected={(date) => this.grabDate(date)}
         />
          
@@ -101,13 +105,19 @@ export default connect(mapStateToProps, mapDispatchToProps)(Calendar)
 const styles = StyleSheet.create({
 
   header: {
-    backgroundColor: '#93A5B1',
+    backgroundColor: palette.deepAccent,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: Dimensions.get('window').width,
     height: 50,
     padding: 10,
+  },
+
+  accentStrip: {
+    width: Dimensions.get('window').width,
+    height: 1,
+    backgroundColor: palette.backgroundColor
   },
 
   headerMonth: {

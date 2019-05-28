@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+<<<<<<< HEAD
 exports[`Homepage should match the snapshot 1`] = `ShallowWrapper {}`;
 
 exports[`Homepage should match the snapshot 2`] = `ShallowWrapper {}`;
+=======
+exports[`HomePage should match snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`HomePage welcomeText() should match snapshot 1`] = `
+<Component
+  style={
+    Object {
+      "color": "#2D71A8",
+      "fontFamily": "raleway",
+      "fontSize": 24,
+    }
+  }
+>
+  Welcome,
+  <Component
+    style={
+      Object {
+        "color": "#104D80",
+        "fontFamily": "raleway-bold",
+      }
+    }
+  >
+     
+    Jim
+  </Component>
+</Component>
+`;
+>>>>>>> dd8075c0cc4d7abb498ef17e217e0a4b76ee6ce6

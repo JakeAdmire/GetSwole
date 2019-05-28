@@ -2,22 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
 import { Text, View, StyleSheet, Image } from 'react-native';
-import { Card, Icon, ListItem, Button, ThemeProvider } from 'react-native-elements';
+import { Card, Icon, ListItem, Button } from 'react-native-elements';
+// 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
+import * as palette from '../../Utilities/styleIndex';
 
-let accentOne = '#7C9DB1';
-
-const theme = {
-
-  colors: {
-    primary: accentOne,
-  },
-
-  Button: {
-    titleStyle: { color: 'white', fontFamily: 'raleway' },
-    width: Dimensions.get('window').width - 50,
-  }
-}
 
 export class Container extends Component {
   constructor() {
@@ -33,54 +22,68 @@ export class Container extends Component {
 
     return routines.data && routines.data.length
       ? <View style={styles.cardContainer}>
-          <RalewayText style={styles.emptyMessage} text="Here's the schedule for" />
-          <RalewayBoldText style={{ ...styles.emptyMessage, marginBottom: 10 }} text={semanticDate} />
+          <View style={styles.fullText}>
+            <RalewayText style={{color: palette.lightAccent, fontSize: 16}} text="Here's the schedule for" />
+            <RalewayBoldText style={{color: '#FFF', fontSize: 16, marginBottom: 10 }} text={semanticDate} />
+          </View>
           {
             routines.data.map((routine, index) => (
               <ListItem key={routine.id}
                         containerStyle=
                         {
                           routines.data.length - 1 === index
-                            ? { backgroundColor: '#7C9DB1', marginBottom: 10 }
-                            : { backgroundColor: '#7C9DB1' }
+                            ? {...styles.listItem, marginBottom: 10}
+                            : {...styles.listItem}
                         }
                         chevron=
                         {
                           <Icon name='chevron-circle-right'
                                 type='font-awesome' 
-                                color='#FFF' />
+                                color={palette.backgroundColor} />
                         }
                         bottomDivider={ routines.data.length > 1 ? true : false }
                         title={routine.attributes.name}
-                        titleStyle={{ color: '#FFF', fontFamily: 'raleway' }}
+                        titleStyle={{ color: palette.backgroundColor, fontFamily: 'raleway' }}
                         subtitle={`${routine.attributes.exercises.length} exercises`}
-                        subtitleStyle={{ color: '#ACC6D0', fontFamily: 'raleway' }} />
+                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }} />
             ))
           }
+          <View style={styles.fullText}>
+            <RalewayText  text="Still not tired? Add another routine:" 
+                          style={{ color: palette.lightAccent, fontSize: 16, marginTop: 30, marginBottom: 10 }} />
+          </View>
           { this.renderButton() }
         </View>
       : <View style={styles.cardContainer}>
-          <RalewayText style={styles.emptyMessage} text="You don't yet have anything scheduled for" />
-          <RalewayBoldText style={{ ...styles.emptyMessage, marginBottom: 10 }} text={semanticDate} />
+          <View style={styles.fullText}>
+            <RalewayText style={{color: palette.lightAccent, fontSize: 16}} text="You don't yet have anything scheduled for" />
+            <RalewayBoldText style={{color: '#FFF', fontSize: 16, marginBottom: 10 }} text={semanticDate} />
+          </View>
+          <View style={styles.fullText}>
+            <RalewayText  text="Let's Fix That:" 
+                          style={{ color: palette.lightAccent, fontSize: 16, marginTop: 30, marginBottom: 10 }} />
+          </View>
           { this.renderButton() }
         </View>
   }
 
   renderButton() {
-    return <Button  buttonStyle={{ backgroundColor: '#7C9DB1', position: 'relative' }}
+    return  <View style={{ width: Dimensions.get('window').width - 20 }}>
+              <Button  buttonStyle={{ backgroundColor: '#FFF', borderRadius: 10 }}
                     title="Add New Routine" 
-                    titleStyle={{ fontFamily: 'raleway-bold' }} 
+                    titleStyle={{ fontFamily: 'raleway-bold', color: palette.backgroundColor }} 
                     icon=
                     {
                       <Icon name='plus'
                             type='font-awesome'
                             size={18}
                             iconStyle={{ position: 'absolute', right: -75 }} 
-                            color='#FFF' />
+                            color={palette.backgroundColor} />
                     } 
                     iconRight
                     testID="add-routine-button"
                     onPress={this.handleAddNewRoutine} />
+            </View>
   }
 
   render() {
@@ -108,34 +111,18 @@ export default connect(mapStateToProps)(Container);
 const styles = StyleSheet.create({
 
   cardContainer: {
-    height: Dimensions.get('window').height - 185,
+    height: '100%',
     width: Dimensions.get('window').width,
-    backgroundColor: '#667D90',
+    backgroundColor: palette.backgroundColor,
     color: '#ACC6D0',
-    padding: 20
-  },
-
-  routineCard: {
-    backgroundColor: '#7C9DB1',
-    borderWidth: 0
-  },
-
-  cardTitle: {
-    color: '#FFF',
-    fontSize: 20,
-    margin: 0,
-    alignSelf: 'flex-start',
-    fontFamily: 'raleway'
-  },
-
-  exerciseContainer: {
-    backgroundColor: '#7C9DB1'
+    padding: 20,
+    alignItems: 'center'
   },
 
   loadingContainer: {
-    height: Dimensions.get('window').height - 185,
+    height: '100%',
     width: Dimensions.get('window').width,
-    backgroundColor: '#667D90',
+    backgroundColor: palette.backgroundColor,
     alignItems: 'center'
   },
 
@@ -147,5 +134,15 @@ const styles = StyleSheet.create({
     color: '#ACC6D0',
     fontSize: 16,
   },
+
+  fullText: {
+    width: Dimensions.get('window').width - 20
+  },
+
+  listItem: {
+    backgroundColor: '#FFF', 
+    borderRadius: 10,
+    width: Dimensions.get('window').width - 20
+  }
 
 })
