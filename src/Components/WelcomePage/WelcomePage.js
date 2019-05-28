@@ -66,6 +66,8 @@ export class WelcomePage extends Component {
                         iconStyle={{...buttonIcon, position: 'absolute' }} 
                         color={palette.darkAccent} />
                 } 
+
+                
                 iconRight
                 // raised
                 testID='add-user-button'
@@ -168,7 +170,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1, },
     shadowOpacity: 0.20,
     shadowRadius: 1.41,
-
     elevation: 2,
   }
 

@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import { Card, Icon, ListItem, Button } from 'react-native-elements';
-// 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import * as palette from '../../Utilities/styleIndex';
-
+import { deleteRoutineThunk } from '../../Thunks/deleteRoutineThunk'
+import { fetchRoutines } from '../../Thunks/fetchRoutines'
 
 export class Container extends Component {
   constructor() {
@@ -15,6 +15,11 @@ export class Container extends Component {
 
   handleAddNewRoutine = () => {
     this.props.navTool.navigate('routinePage');
+  }
+
+  handleDeleteRoutine = async (routineId) => {
+    await this.props.deleteRoutine(this.props.user, routineId, this.props.date)
+    this.props.fetchRoutines(this.props.date, this.props.user)
   }
 
   displayCards = () => {
@@ -35,17 +40,25 @@ export class Container extends Component {
                             ? {...styles.listItem, marginBottom: 10}
                             : {...styles.listItem}
                         }
-                        chevron=
+                        rightIcon=
                         {
                           <Icon name='chevron-circle-right'
                                 type='font-awesome' 
                                 color={palette.backgroundColor} />
                         }
+
+                        leftIcon=
+                        {
+                          <Icon name='chevron-circle-right'
+                                type='font-awesome' 
+                                color={palette.backgroundColor}
+                                onPress={() => this.handleDeleteRoutine(routine.id)} />
+                        }
                         bottomDivider={ routines.data.length > 1 ? true : false }
                         title={routine.attributes.name}
                         titleStyle={{ color: palette.backgroundColor, fontFamily: 'raleway' }}
                         subtitle={`${routine.attributes.exercises.length} exercises`}
-                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }} />
+                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }} />            
             ))
           }
           <View style={styles.fullText}>
@@ -103,10 +116,17 @@ export const mapStateToProps = (state) => ({
   date: state.date,
   semanticDate: state.semanticDate,
   routines: state.routines,
-  loading: state.loading
+  loading: state.loading,
+  user: state.user
 })
 
-export default connect(mapStateToProps)(Container);
+export const mapDispatchToProps = (dispatch) => ({
+  deleteRoutine: (user, routineId, date) => dispatch(deleteRoutineThunk(user, routineId, date)),
+  fetchRoutines: (date, user) => dispatch(fetchRoutines(date, user))
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);
 
 const styles = StyleSheet.create({
 
