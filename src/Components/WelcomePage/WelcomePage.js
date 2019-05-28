@@ -3,8 +3,6 @@ import { Text, View, StyleSheet, Keyboard, TouchableWithoutFeedback } from 'reac
 import Dimensions from 'Dimensions';
 import { Button, Input, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-
-// import { addUser } from '../../Actions';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import { addUserThunk } from '../../Thunks/addUserThunk';
 import * as palette from '../../Utilities/styleIndex';
@@ -15,7 +13,6 @@ const DismissKeyboard = ({ children }) => (
   </TouchableWithoutFeedback>
 );
 
-let windowHeight = Dimensions.get('window').height;
 let windowWidth = Dimensions.get('window').width;
 
 export class WelcomePage extends Component {
@@ -40,7 +37,6 @@ export class WelcomePage extends Component {
 
   handleSave = () => {
     const { userName } = this.state;
-
     if (userName) {
       this.props.addNewUser(userName);
       this.props.navigation.navigate('MainApp');
@@ -66,10 +62,7 @@ export class WelcomePage extends Component {
                         iconStyle={{...buttonIcon, position: 'absolute' }} 
                         color={palette.darkAccent} />
                 } 
-
-                
                 iconRight
-                // raised
                 testID='add-user-button'
                 onPress={this.handleSave} />
       </View>
@@ -87,7 +80,6 @@ export class WelcomePage extends Component {
             <Text style={styles.getText}>Get<Text style={{ color: palette.lightAccent }}>Swole</Text></Text>
           </View>
           <View style={styles.inputArea}>
-
             <RalewayText style={styles.promptText} text="What should we call you?" />
             <Input  inputContainerStyle={{...styles.nameInput, borderColor: inputColor}}
                     inputStyle={{ marginLeft: 5, color: palette.lightAccent }}
@@ -112,7 +104,6 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(null, mapDispatchToProps)(WelcomePage);
-
 
 const styles = StyleSheet.create({
 
@@ -172,5 +163,4 @@ const styles = StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
   }
-
 });

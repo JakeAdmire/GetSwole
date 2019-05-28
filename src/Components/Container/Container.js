@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
-import { Text, View, StyleSheet, Image } from 'react-native';
-import { Card, Icon, ListItem, Button } from 'react-native-elements';
+import { View, StyleSheet, Image } from 'react-native';
+import { Icon, ListItem, Button } from 'react-native-elements';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import * as palette from '../../Utilities/styleIndex';
 import { deleteRoutineThunk } from '../../Thunks/deleteRoutineThunk'
@@ -49,7 +49,7 @@ export class Container extends Component {
 
                         leftIcon=
                         {
-                          <Icon name='chevron-circle-right'
+                          <Icon name= 'trash'
                                 type='font-awesome' 
                                 color={palette.backgroundColor}
                                 onPress={() => this.handleDeleteRoutine(routine.id)} />
@@ -100,7 +100,7 @@ export class Container extends Component {
   }
 
   render() {
-    const { date, routines, loading } = this.props;
+    const { loading } = this.props;
 
     return loading
 
@@ -123,7 +123,6 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   deleteRoutine: (user, routineId, date) => dispatch(deleteRoutineThunk(user, routineId, date)),
   fetchRoutines: (date, user) => dispatch(fetchRoutines(date, user))
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Container);
@@ -164,5 +163,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: Dimensions.get('window').width - 20
   }
-
 })

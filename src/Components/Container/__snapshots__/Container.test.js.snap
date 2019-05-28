@@ -61,7 +61,7 @@ exports[`Container displayCards() should match snapshot 2`] = `
           leftIcon={
             <Themed.Icon
               color="#2D71A8"
-              name="chevron-circle-right"
+              name="trash"
               onPress={[Function]}
               type="font-awesome"
             />
@@ -101,7 +101,7 @@ exports[`Container displayCards() should match snapshot 2`] = `
           leftIcon={
             <Themed.Icon
               color="#2D71A8"
-              name="chevron-circle-right"
+              name="trash"
               onPress={[Function]}
               type="font-awesome"
             />
@@ -253,7 +253,7 @@ exports[`Container displayCards() should match snapshot 3`] = `
           leftIcon={
             <Themed.Icon
               color="#2D71A8"
-              name="chevron-circle-right"
+              name="trash"
               onPress={[Function]}
               type="font-awesome"
             />
@@ -293,7 +293,7 @@ exports[`Container displayCards() should match snapshot 3`] = `
           leftIcon={
             <Themed.Icon
               color="#2D71A8"
-              name="chevron-circle-right"
+              name="trash"
               onPress={[Function]}
               type="font-awesome"
             />

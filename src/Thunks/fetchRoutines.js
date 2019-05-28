@@ -14,7 +14,6 @@ export const fetchRoutines = (date, user) => {
       dispatch(hasError(error.message));
     }
   }
-
 }
 
 export default fetchRoutines
