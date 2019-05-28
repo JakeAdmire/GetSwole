@@ -13,58 +13,69 @@ exports[`Container displayCards() should match snapshot 2`] = `
       "value": <Component
         style={
           Object {
-            "backgroundColor": "#667D90",
+            "alignItems": "center",
+            "backgroundColor": "#2D71A8",
             "color": "#ACC6D0",
-            "height": 1149,
+            "height": "100%",
             "padding": 20,
             "width": 750,
           }
         }
       >
-        <RalewayText
+        <Component
           style={
             Object {
-              "color": "#ACC6D0",
-              "fontSize": 16,
+              "width": 730,
             }
           }
-          text="Here's the schedule for"
-        />
-        <RalewayBoldText
-          style={
-            Object {
-              "color": "#ACC6D0",
-              "fontSize": 16,
-              "marginBottom": 10,
+        >
+          <RalewayText
+            style={
+              Object {
+                "color": "#53CFFF",
+                "fontSize": 16,
+              }
             }
-          }
-          text="25th March, 2019"
-        />
+            text="Here's the schedule for"
+          />
+          <RalewayBoldText
+            style={
+              Object {
+                "color": "#FFF",
+                "fontSize": 16,
+                "marginBottom": 10,
+              }
+            }
+            text="25th March, 2019"
+          />
+        </Component>
         <Themed.ListItem
           bottomDivider={true}
           chevron={
             <Themed.Icon
-              color="#FFF"
+              color="#2D71A8"
               name="chevron-circle-right"
               type="font-awesome"
             />
           }
           containerStyle={
             Object {
-              "backgroundColor": "#7C9DB1",
+              "backgroundColor": "#FFF",
+              "borderRadius": 10,
+              "width": 730,
             }
           }
           subtitle="1 exercises"
           subtitleStyle={
             Object {
-              "color": "#ACC6D0",
+              "color": "#53CFFF",
               "fontFamily": "raleway",
             }
           }
           title="Arm Day"
           titleStyle={
             Object {
-              "color": "#FFF",
+              "color": "#2D71A8",
               "fontFamily": "raleway",
             }
           }
@@ -73,63 +84,93 @@ exports[`Container displayCards() should match snapshot 2`] = `
           bottomDivider={true}
           chevron={
             <Themed.Icon
-              color="#FFF"
+              color="#2D71A8"
               name="chevron-circle-right"
               type="font-awesome"
             />
           }
           containerStyle={
             Object {
-              "backgroundColor": "#7C9DB1",
+              "backgroundColor": "#FFF",
+              "borderRadius": 10,
               "marginBottom": 10,
+              "width": 730,
             }
           }
           subtitle="1 exercises"
           subtitleStyle={
             Object {
-              "color": "#ACC6D0",
+              "color": "#53CFFF",
               "fontFamily": "raleway",
             }
           }
           title="Leg Day"
           titleStyle={
             Object {
-              "color": "#FFF",
+              "color": "#2D71A8",
               "fontFamily": "raleway",
             }
           }
         />
-        <ForwardRef(Themed.Button)
-          buttonStyle={
+        <Component
+          style={
             Object {
-              "backgroundColor": "#7C9DB1",
-              "position": "relative",
+              "width": 730,
             }
           }
-          icon={
-            <Themed.Icon
-              color="#FFF"
-              iconStyle={
-                Object {
-                  "position": "absolute",
-                  "right": -75,
-                }
+        >
+          <RalewayText
+            style={
+              Object {
+                "color": "#53CFFF",
+                "fontSize": 16,
+                "marginBottom": 10,
+                "marginTop": 30,
               }
-              name="plus"
-              size={18}
-              type="font-awesome"
-            />
-          }
-          iconRight={true}
-          onPress={[Function]}
-          testID="add-routine-button"
-          title="Add New Routine"
-          titleStyle={
+            }
+            text="Still not tired? Add another routine:"
+          />
+        </Component>
+        <Component
+          style={
             Object {
-              "fontFamily": "raleway-bold",
+              "width": 730,
             }
           }
-        />
+        >
+          <ForwardRef(Themed.Button)
+            buttonStyle={
+              Object {
+                "backgroundColor": "#FFF",
+                "borderRadius": 10,
+              }
+            }
+            icon={
+              <Themed.Icon
+                color="#2D71A8"
+                iconStyle={
+                  Object {
+                    "position": "absolute",
+                    "right": -75,
+                  }
+                }
+                name="plus"
+                size={18}
+                type="font-awesome"
+              />
+            }
+            iconRight={true}
+            onPress={[Function]}
+            testID="add-routine-button"
+            title="Add New Routine"
+            titleStyle={
+              Object {
+                "color": "#2D71A8",
+                "fontFamily": "raleway-bold",
+              }
+            }
+          />
+        </Component>
       </Component>,
     },
   ],
@@ -148,58 +189,69 @@ exports[`Container displayCards() should match snapshot 3`] = `
       "value": <Component
         style={
           Object {
-            "backgroundColor": "#667D90",
+            "alignItems": "center",
+            "backgroundColor": "#2D71A8",
             "color": "#ACC6D0",
-            "height": 1149,
+            "height": "100%",
             "padding": 20,
             "width": 750,
           }
         }
       >
-        <RalewayText
+        <Component
           style={
             Object {
-              "color": "#ACC6D0",
-              "fontSize": 16,
+              "width": 730,
             }
           }
-          text="Here's the schedule for"
-        />
-        <RalewayBoldText
-          style={
-            Object {
-              "color": "#ACC6D0",
-              "fontSize": 16,
-              "marginBottom": 10,
+        >
+          <RalewayText
+            style={
+              Object {
+                "color": "#53CFFF",
+                "fontSize": 16,
+              }
             }
-          }
-          text="25th March, 2019"
-        />
+            text="Here's the schedule for"
+          />
+          <RalewayBoldText
+            style={
+              Object {
+                "color": "#FFF",
+                "fontSize": 16,
+                "marginBottom": 10,
+              }
+            }
+            text="25th March, 2019"
+          />
+        </Component>
         <Themed.ListItem
           bottomDivider={true}
           chevron={
             <Themed.Icon
-              color="#FFF"
+              color="#2D71A8"
               name="chevron-circle-right"
               type="font-awesome"
             />
           }
           containerStyle={
             Object {
-              "backgroundColor": "#7C9DB1",
+              "backgroundColor": "#FFF",
+              "borderRadius": 10,
+              "width": 730,
             }
           }
           subtitle="1 exercises"
           subtitleStyle={
             Object {
-              "color": "#ACC6D0",
+              "color": "#53CFFF",
               "fontFamily": "raleway",
             }
           }
           title="Arm Day"
           titleStyle={
             Object {
-              "color": "#FFF",
+              "color": "#2D71A8",
               "fontFamily": "raleway",
             }
           }
@@ -208,63 +260,93 @@ exports[`Container displayCards() should match snapshot 3`] = `
           bottomDivider={true}
           chevron={
             <Themed.Icon
-              color="#FFF"
+              color="#2D71A8"
               name="chevron-circle-right"
               type="font-awesome"
             />
           }
           containerStyle={
             Object {
-              "backgroundColor": "#7C9DB1",
+              "backgroundColor": "#FFF",
+              "borderRadius": 10,
               "marginBottom": 10,
+              "width": 730,
             }
           }
           subtitle="1 exercises"
           subtitleStyle={
             Object {
-              "color": "#ACC6D0",
+              "color": "#53CFFF",
               "fontFamily": "raleway",
             }
           }
           title="Leg Day"
           titleStyle={
             Object {
-              "color": "#FFF",
+              "color": "#2D71A8",
               "fontFamily": "raleway",
             }
           }
         />
-        <ForwardRef(Themed.Button)
-          buttonStyle={
+        <Component
+          style={
             Object {
-              "backgroundColor": "#7C9DB1",
-              "position": "relative",
+              "width": 730,
             }
           }
-          icon={
-            <Themed.Icon
-              color="#FFF"
-              iconStyle={
-                Object {
-                  "position": "absolute",
-                  "right": -75,
-                }
+        >
+          <RalewayText
+            style={
+              Object {
+                "color": "#53CFFF",
+                "fontSize": 16,
+                "marginBottom": 10,
+                "marginTop": 30,
               }
-              name="plus"
-              size={18}
-              type="font-awesome"
-            />
-          }
-          iconRight={true}
-          onPress={[Function]}
-          testID="add-routine-button"
-          title="Add New Routine"
-          titleStyle={
+            }
+            text="Still not tired? Add another routine:"
+          />
+        </Component>
+        <Component
+          style={
             Object {
-              "fontFamily": "raleway-bold",
+              "width": 730,
             }
           }
-        />
+        >
+          <ForwardRef(Themed.Button)
+            buttonStyle={
+              Object {
+                "backgroundColor": "#FFF",
+                "borderRadius": 10,
+              }
+            }
+            icon={
+              <Themed.Icon
+                color="#2D71A8"
+                iconStyle={
+                  Object {
+                    "position": "absolute",
+                    "right": -75,
+                  }
+                }
+                name="plus"
+                size={18}
+                type="font-awesome"
+              />
+            }
+            iconRight={true}
+            onPress={[Function]}
+            testID="add-routine-button"
+            title="Add New Routine"
+            titleStyle={
+              Object {
+                "color": "#2D71A8",
+                "fontFamily": "raleway-bold",
+              }
+            }
+          />
+        </Component>
       </Component>,
     },
     Object {
@@ -272,64 +354,101 @@ exports[`Container displayCards() should match snapshot 3`] = `
       "value": <Component
         style={
           Object {
-            "backgroundColor": "#667D90",
+            "alignItems": "center",
+            "backgroundColor": "#2D71A8",
             "color": "#ACC6D0",
-            "height": 1149,
+            "height": "100%",
             "padding": 20,
             "width": 750,
           }
         }
       >
-        <RalewayText
+        <Component
           style={
             Object {
-              "color": "#ACC6D0",
-              "fontSize": 16,
+              "width": 730,
             }
           }
-          text="You don't yet have anything scheduled for"
-        />
-        <RalewayBoldText
-          style={
-            Object {
-              "color": "#ACC6D0",
-              "fontSize": 16,
-              "marginBottom": 10,
-            }
-          }
-          text="25th March, 2019"
-        />
-        <ForwardRef(Themed.Button)
-          buttonStyle={
-            Object {
-              "backgroundColor": "#7C9DB1",
-              "position": "relative",
-            }
-          }
-          icon={
-            <Themed.Icon
-              color="#FFF"
-              iconStyle={
-                Object {
-                  "position": "absolute",
-                  "right": -75,
-                }
+        >
+          <RalewayText
+            style={
+              Object {
+                "color": "#53CFFF",
+                "fontSize": 16,
               }
-              name="plus"
-              size={18}
-              type="font-awesome"
-            />
-          }
-          iconRight={true}
-          onPress={[Function]}
-          testID="add-routine-button"
-          title="Add New Routine"
-          titleStyle={
+            }
+            text="You don't yet have anything scheduled for"
+          />
+          <RalewayBoldText
+            style={
+              Object {
+                "color": "#FFF",
+                "fontSize": 16,
+                "marginBottom": 10,
+              }
+            }
+            text="25th March, 2019"
+          />
+        </Component>
+        <Component
+          style={
             Object {
-              "fontFamily": "raleway-bold",
+              "width": 730,
             }
           }
-        />
+        >
+          <RalewayText
+            style={
+              Object {
+                "color": "#53CFFF",
+                "fontSize": 16,
+                "marginBottom": 10,
+                "marginTop": 30,
+              }
+            }
+            text="Let's Fix That:"
+          />
+        </Component>
+        <Component
+          style={
+            Object {
+              "width": 730,
+            }
+          }
+        >
+          <ForwardRef(Themed.Button)
+            buttonStyle={
+              Object {
+                "backgroundColor": "#FFF",
+                "borderRadius": 10,
+              }
+            }
+            icon={
+              <Themed.Icon
+                color="#2D71A8"
+                iconStyle={
+                  Object {
+                    "position": "absolute",
+                    "right": -75,
+                  }
+                }
+                name="plus"
+                size={18}
+                type="font-awesome"
+              />
+            }
+            iconRight={true}
+            onPress={[Function]}
+            testID="add-routine-button"
+            title="Add New Routine"
+            titleStyle={
+              Object {
+                "color": "#2D71A8",
+                "fontFamily": "raleway-bold",
+              }
+            }
+          />
+        </Component>
       </Component>,
     },
   ],

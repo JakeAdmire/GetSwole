@@ -82,5 +82,4 @@ export const mapStateToProps = (state) => ({
   exercises: state.exercises
 })
 
-
 export default connect(mapStateToProps)(RoutineCreator);

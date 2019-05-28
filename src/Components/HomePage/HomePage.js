@@ -10,7 +10,7 @@ import Container from '../Container/Container';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import * as palette from '../../Utilities/styleIndex';
 
-class Homepage extends React.Component {
+export class Homepage extends React.Component {
   static navigationOptions = {
     header: null
   }

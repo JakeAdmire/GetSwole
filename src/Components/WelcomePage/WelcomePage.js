@@ -4,9 +4,9 @@ import Dimensions from 'Dimensions';
 import { Button, Input, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 
-import { addUser } from '../../Actions';
+// import { addUser } from '../../Actions';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
-import { addUserThunk } from '../../Thunks/addUserThunk'
+import { addUserThunk } from '../../Thunks/addUserThunk';
 import * as palette from '../../Utilities/styleIndex';
 
 const DismissKeyboard = ({ children }) => (
@@ -18,7 +18,7 @@ const DismissKeyboard = ({ children }) => (
 let windowHeight = Dimensions.get('window').height;
 let windowWidth = Dimensions.get('window').width;
 
-class WelcomePage extends Component {
+export class WelcomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,7 +93,8 @@ class WelcomePage extends Component {
                     errorStyle={{ color: palette.deepAccent, paddingLeft: 10, fontFamily: 'raleway' }}
                     onChangeText={this.handleChange} 
                     leftIcon={{ name: 'account-circle', color: inputColor }}
-                    placeholder='ex. Chad...' />
+                    placeholder='ex. Chad...'
+                    testID='name-input' />
           </View>
           { 
             this.renderSubmit() 
@@ -108,12 +109,7 @@ export const mapDispatchToProps = (dispatch) => ({
   addNewUser: (name) => dispatch(addUserThunk(name))
 });
 
-export const mapStateToProps = state => ({
-  exercises: state.exercises,
-  user: state.user
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(WelcomePage);
+export default connect(null, mapDispatchToProps)(WelcomePage);
 
 
 const styles = StyleSheet.create({

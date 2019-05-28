@@ -7,7 +7,7 @@ import Dimensions from 'Dimensions';
 import moment from 'moment'
 // 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
-import { setDate, loadRoutines, setSemanticDate } from '../../Actions/index'
+import { setDate, loadRoutines, setSemanticDate } from '../../Actions/index';
 import { fetchRoutines } from '../../Thunks/fetchRoutines';
 import * as palette from '../../Utilities/styleIndex';
 
