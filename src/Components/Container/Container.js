@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import { Card, Icon, ListItem, Button } from 'react-native-elements';
-// 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import * as palette from '../../Utilities/styleIndex';
 

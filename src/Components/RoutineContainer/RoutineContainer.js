@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 1,
     alignItems: 'center',
-    backgroundColor: '#667D90',
+    backgroundColor: '#2D71A8',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height
   },
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 export class RoutineContainer extends Component {
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: '#7C9DB1',
+      backgroundColor: '#FFFFFF',
     },
   };
 
