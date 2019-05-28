@@ -35,17 +35,16 @@ export class RoutineCreator extends Component {
   }
 
   handleChange = (name) => {
-    this.setState({ 
-      RoutineName: name, 
+    this.setState({
+      RoutineName: name,
     });
   }
 
   saveExercise = () => {
-    console.log('oi')
     const { selectedExercise } = this.state;
     let foundExercise;
 
-    if(selectedExercise) {
+    if (selectedExercise) {
       foundExercise = this.props.exercises.data.find(exercise => {
         return exercise.attributes.name === selectedExercise.name
       });
@@ -69,6 +68,7 @@ export class RoutineCreator extends Component {
       }
     }
     const response = await fetch(url, options)
+    this.props.navTool.navigate('homePage')
   }
 
   render() {
@@ -87,7 +87,7 @@ export class RoutineCreator extends Component {
             onPress={this.saveExercise} />
           <View style={styles.exercises}>
             <Input placeholder='Enter a name for routine'
-                   onChangeText={this.handleChange}/>
+              onChangeText={this.handleChange} />
             {this.state.exerciseList.map(exercise => {
               return <Text style={styles.exerciseItem} key={exercise.name}>{exercise.name}</Text>
             })}

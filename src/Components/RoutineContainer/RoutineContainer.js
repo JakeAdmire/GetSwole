@@ -96,7 +96,7 @@ export class RoutineContainer extends Component {
             <Button onPress={this.handleCreateRoutine} title={'Create New Routine'} />
           </View>
         }
-        {!this.state.showSelector && <RoutineCreator />}
+        {!this.state.showSelector && <RoutineCreator navTool={this.props.navigation} />}
       </View>
     )
   }
