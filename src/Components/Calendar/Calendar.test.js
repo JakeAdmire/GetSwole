@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import moment from 'moment'
 // 
 import { Calendar, mapStateToProps, mapDispatchToProps } from './Calendar';
 import { setDate, setSemanticDate } from '../../Actions/index';
@@ -30,11 +31,21 @@ describe('Calendar', () => {
   describe('grabDate(date)', () => {
 
     it('should call determineDate with the correct parameter', () => {
+      let mockDate = '1987-08-12';
+      let mockSpy = jest.spyOn(wrapper.instance(), 'determineDate');
 
+      wrapper.instance().grabDate(mockDate);
+
+      expect(mockSpy).toHaveBeenCalledWith('1987', '08', '12');
     })
 
     it('should call setDate and fetchRoutines', () => {
+      let mockDate = '1987-08-12';
 
+      wrapper.instance().grabDate(mockDate);
+
+      expect(setDateMock).toHaveBeenCalledWith(mockDate);
+      expect(fetchRoutinesMock).toHaveBeenCalledWith(mockDate);
     })
 
   })
@@ -42,7 +53,11 @@ describe('Calendar', () => {
   describe('determineDay(day)', () => {
 
     it('should return a day string', () => {
+      let mockDay = '28';
 
+      let results = wrapper.instance().determineDay(mockDay);
+
+      expect(results).toEqual('28th');
     })
     
   })
@@ -50,7 +65,11 @@ describe('Calendar', () => {
   describe('determineMonth(month)', () => {
 
     it('should return a month string', () => {
-      
+      let mockMonth = '12';
+
+      let results = wrapper.instance().determineMonth(mockMonth);
+
+      expect(results).toEqual('December');
     })
     
   })
@@ -58,11 +77,19 @@ describe('Calendar', () => {
   describe('determineDate(year, month, day)', () => {
 
     it('should call determineDay and determineMonth', () => {
+      let mockDaySpy = jest.spyOn(wrapper.instance(), 'determineDay');
+      let mockMonthSpy = jest.spyOn(wrapper.instance(), 'determineMonth');
 
+      wrapper.instance().determineDate('2019', '12', '15');
+
+      expect(mockDaySpy).toHaveBeenCalledWith('15');
+      expect(mockMonthSpy).toHaveBeenCalledWith('12');
     })
 
     it('should call setSemanticDate', () => {
-      
+      wrapper.instance().determineDate('2019', '12', '15');
+
+      expect(setSemanticDateMock).toHaveBeenCalledWith("15th December 2019");
     })
     
   })
