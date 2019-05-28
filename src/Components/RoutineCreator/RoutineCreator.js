@@ -18,7 +18,8 @@ export class RoutineCreator extends Component {
       exercisesCleaned: [],
       selectedExercise: {},
       exerciseList: [],
-      RoutineName: ''
+      routineName: '',
+      showError: false
     }
   }
 
@@ -36,7 +37,8 @@ export class RoutineCreator extends Component {
 
   handleChange = (name) => {
     this.setState({
-      RoutineName: name,
+      routineName: name,
+      showError: false
     });
   }
 
@@ -59,16 +61,20 @@ export class RoutineCreator extends Component {
     const exerciseIds = this.state.exerciseList.map(exercise => {
       return exercise.id
     });
-    const url = 'https://warm-cove-89223.herokuapp.com/api/v1/routines?user_id=1';
-    const options = {
-      method: 'POST',
-      body: JSON.stringify({ name: this.state.RoutineName, exerciseIds }),
-      headers: {
-        'Content-Type': 'application/json'
+    if (this.state.routineName === '') {
+      this.setState({ showError: true })
+    } else {
+      const url = 'https://warm-cove-89223.herokuapp.com/api/v1/routines?user_id=1';
+      const options = {
+        method: 'POST',
+        body: JSON.stringify({ name: this.state.routineName, exerciseIds }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       }
+      const response = await fetch(url, options);
+      this.props.navTool.navigate('homePage');
     }
-    const response = await fetch(url, options)
-    this.props.navTool.navigate('homePage')
   }
 
   render() {
@@ -88,6 +94,9 @@ export class RoutineCreator extends Component {
           <View style={styles.exercises}>
             <Input placeholder='Enter a name for routine'
               onChangeText={this.handleChange} />
+              {this.state.showError && 
+                <Text>Please enter Routine Name</Text>
+              }
             {this.state.exerciseList.map(exercise => {
               return <Text style={styles.exerciseItem} key={exercise.name}>{exercise.name}</Text>
             })}
