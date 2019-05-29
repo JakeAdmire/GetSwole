@@ -55,7 +55,7 @@ import { RoutineContainer, mapStateToProps } from './RoutineContainer'
     ]
   };
   let mockState = {
-    name: 'Helen',
+    user: mockUser.name,
     date: mockDate,
     semanticDate: semanticDateMock,
     routines: routinesMock,
@@ -64,21 +64,22 @@ import { RoutineContainer, mapStateToProps } from './RoutineContainer'
     hasError: false  };
 
 describe('RoutineContainer', () => {
-  // it('should match the snapshot', () => {
-  //   let wrapper = shallow(<RoutineContainer />)
-  //   expect(wrapper).toMatchSnapshot()
-  // })
+  it('should match the snapshot', () => {
+    let wrapper = shallow(<RoutineContainer />)
+    expect(wrapper).toMatchSnapshot()
+  })
 
   describe('mapStateToProps', () => {
     it('should mapStateToProps', () => {
       const expected = {
         date: mockDate,
         newRoutine: routinesMock.data[0],
-        user: mockUser.name,
-        hasError: false
+        user: mockUser.name
       }
       const results = mapStateToProps(mockState)
       expect(results).toEqual(expected)
     })
   })
+
+  
 })

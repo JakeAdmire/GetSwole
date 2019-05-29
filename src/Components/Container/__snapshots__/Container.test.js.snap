@@ -66,6 +66,7 @@ exports[`Container displayCards() should match snapshot 2`] = `
               type="font-awesome"
             />
           }
+          onPress={[Function]}
           rightIcon={
             <Themed.Icon
               color="#2D71A8"
@@ -106,6 +107,7 @@ exports[`Container displayCards() should match snapshot 2`] = `
               type="font-awesome"
             />
           }
+          onPress={[Function]}
           rightIcon={
             <Themed.Icon
               color="#2D71A8"
@@ -258,6 +260,7 @@ exports[`Container displayCards() should match snapshot 3`] = `
               type="font-awesome"
             />
           }
+          onPress={[Function]}
           rightIcon={
             <Themed.Icon
               color="#2D71A8"
@@ -298,6 +301,7 @@ exports[`Container displayCards() should match snapshot 3`] = `
               type="font-awesome"
             />
           }
+          onPress={[Function]}
           rightIcon={
             <Themed.Icon
               color="#2D71A8"
