@@ -9,6 +9,8 @@ cache:
     - .jest
 before_script:
   - npm install -g npm@latest
+notifications:
+  email: false
 script:
   - npm ci
   - npx jest --ci
