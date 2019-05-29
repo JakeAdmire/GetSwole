@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import { Button, Header } from 'react-native-elements';
 // 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import { fetchRoutineDetails } from '../../Thunks/fetchRoutineDetails';
-import * as palette from '../../Utilities/styleIndex';
+import { palette, flexibleHeader } from '../../Utilities/styleIndex';
 
 
 export class RoutineDetails extends Component {
@@ -26,21 +26,44 @@ export class RoutineDetails extends Component {
   renderExercises(exercises) {
     return exercises.map((exercise, index) => (
       <View key={exercise.id}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
 
-        <View>
-          <Text>{exercise.name}</Text>
-          <Text>Muscle: <Text>{exercise.muscle}</Text></Text>
-          <Text>Equipment: <Text>{exercise.equipment_required}</Text></Text>
+          <View>
+            <Text style={{ fontSize: 16, color: palette.backgroundColor, fontFamily: 'raleway-bold' }}>{exercise.name}</Text>
+            <Text style={styles.labelText}>Muscle: 
+              <Text style={{ color: palette.lightAccent }}> {exercise.muscle}</Text>
+            </Text>
+            <Text style={styles.labelText}>Equipment: 
+              <Text style={{ color: palette.lightAccent }}> {exercise.equipment_required}</Text>
+            </Text>
+          </View>
+
+          <View style={{ justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+            { 
+              exercise.sets 
+                &&  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                      <Text style={styles.labelText}>Sets: </Text>
+                      <View style={{ width: 20 }}><Text style={styles.integerStyle}>{exercise.sets}</Text></View>
+                    </View> 
+            }
+            { 
+              exercise.reps 
+                &&  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                      <Text style={styles.labelText}>Reps: </Text>
+                      <View style={{ width: 20 }}><Text style={styles.integerStyle}>{exercise.reps}</Text></View>
+                    </View> 
+            }
+            { 
+              exercise.duration 
+                &&  <Text style={styles.labelText}>Duration: 
+                      <Text> {exercise.duration}</Text>
+                    </Text> 
+            }
+          </View>
+
+
         </View>
-
-        <View>
-          { exercise.sets && <Text>Sets: <Text>{exercise.sets}</Text></Text> }
-          { exercise.reps && <Text>Reps: <Text>{exercise.reps}</Text></Text> }
-          { exercise.duration && <Text>Duration: <Text>{exercise.duration}</Text></Text> }
-        </View>
-
-        { exercises.length !== index + 1 && <View style={styles.lineBreak}></View> }
-
+          { exercises.length !== index + 1 && <View style={styles.lineBreak}></View> }
       </View>
     ))
   }
@@ -56,28 +79,35 @@ export class RoutineDetails extends Component {
   }
 
   render() {
-    const { semanticDate, loading, selectedRoutine } = this.props;
+    const { semanticDate, loading, selectedRoutine, user } = this.props;
 
     return (
       <View style={{ backgroundColor: palette.backgroundColor, height: '100%' }}>
-        <Header leftComponent={{ icon: 'chevron-left', color: palette.backgroundColor, onPress: this.handleBack }}
-                centerComponent={this.welcomeText()}
-                containerStyle={{ backgroundColor: '#FFF', elevation: 12 }} />
 
-        <Text>Viewing { selectedRoutine.data && selectedRoutine.data.attributes.name} routine for {semanticDate}</Text>
-        {
-          !loading && selectedRoutine.data
-            ? <View style={{ width: '80%', backgroundColor: '#FFF', borderRadius: 10 }}>
-                <Text>{selectedRoutine.data.attributes.name}</Text>
-                <View style={styles.lineBreak}></View>
-                { 
-                  selectedRoutine.data.attributes.exercises.length
-                    ? this.renderExercises(selectedRoutine.data.attributes.exercises)
-                    : <Text>No Exercises Found</Text>
-                }
-              </View>
-            : <Text>Loading..</Text>
-        }
+        { flexibleHeader('chevron-left', this.handleBack, this.welcomeText(user.name), null, null) }
+
+        <ScrollView style={{ padding: 20 }}>
+
+          <Text style={{ fontSize: 18, color: palette.lightAccent, fontFamily: 'raleway' }}>Viewing 
+            <Text style={{ fontFamily: 'raleway-bold', color: '#FFF' }}> { selectedRoutine.data && selectedRoutine.data.attributes.name} </Text>
+          routine for</Text>
+          <Text style={{ fontSize: 18, color: '#FFF', fontFamily: 'raleway-bold' }}>{semanticDate}</Text>
+          {
+            !loading && selectedRoutine.data
+              ? <View style={{ width: '100%', backgroundColor: '#FFF', borderRadius: 10, marginTop: 10 }}>
+                  <Text style={styles.routineName}>{selectedRoutine.data.attributes.name}</Text>
+                  <View style={styles.lineBreak}></View>
+                  { 
+                    selectedRoutine.data.attributes.exercises.length
+                      ? this.renderExercises(selectedRoutine.data.attributes.exercises)
+                      : <Text style={styles.splashText}>No Exercises Found</Text>
+                  }
+                </View>
+              : <View style={{ alignItems: 'center' }}>
+                  <Image style={{ marginTop: 100 }} source={require('../../../assets/images/loading.gif')} />
+                </View>
+          }
+        </ScrollView>
       </View>
     )
   }
@@ -98,8 +128,39 @@ export default connect(mapStateToProps, mapDispatchToProps)(RoutineDetails);
 
 const styles = StyleSheet.create({
 
-  viewContainer: {
-
+  routineName: { 
+    width: '100%', 
+    textAlign: 'center', 
+    fontSize: 18, 
+    fontFamily: 'raleway-bold',
+    color: palette.backgroundColor,
+    margin: 10
   },
+
+  lineBreak: {
+    width: '100%',
+    height: 1,
+    backgroundColor: palette.lightAccent
+  },
+
+  splashText: {
+    width: '100%',
+    textAlign: 'center', 
+    margin: 20, 
+    fontFamily: 'raleway-bold'
+  },
+
+  labelText: { 
+    fontSize: 14, 
+    fontFamily: 'raleway', 
+    color: palette.backgroundColor,
+    marginTop: 10
+  },
+
+  integerStyle: {
+    color: palette.lightAccent,
+    backgroundColor: palette.backgroundColor,
+    textAlign: 'center'
+  }
 
 })
