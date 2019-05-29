@@ -1,6 +1,6 @@
 import { isLoading, hasError } from '../Actions'
 
-export const deleteRoutineThunk = (user, routineId, date) => {
+export const deleteRoutine = (user, routineId, date) => {
   return async (dispatch) => {
     try {
       dispatch(isLoading(true))

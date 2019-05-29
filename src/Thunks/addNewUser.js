@@ -1,6 +1,6 @@
 import { addUser, isLoading, hasError } from '../Actions'
 
-export const addUserThunk = (name) => {
+export const addNewUser = (name) => {
   return async (dispatch) => {
     try {
       dispatch(isLoading(true))
