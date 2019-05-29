@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
     flex: 3,
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: palette.backgroundColor,
+    // backgroundColor: palette.backgroundColor,
+    backgroundColor: 'red',
     padding: 20,
   },
 
