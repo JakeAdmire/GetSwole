@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Input } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { InputAutoSuggest } from 'react-native-autocomplete-search';
 import Dimensions from 'Dimensions';
+import * as palette from '../../Utilities/styleIndex';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -17,7 +17,10 @@ export class RoutineCreator extends Component {
     this.state = {
       exercisesCleaned: [],
       selectedExercise: {},
-      exerciseList: []
+      exerciseList: [],
+      routineName: '',
+      showError: false,
+      displayedExercises: []
     }
   }
 
@@ -33,11 +36,17 @@ export class RoutineCreator extends Component {
     this.setState({ exercisesCleaned: cleanedArray })
   }
 
-  saveExercise = () => {
-    const { selectedExercise } = this.state;
+  handleChange = (name) => {
+    this.setState({
+      routineName: name,
+      showError: false
+    });
+  }
+
+  saveExercise = (selectedExercise) => {
     let foundExercise;
 
-    if(selectedExercise) {
+    if (selectedExercise) {
       foundExercise = this.props.exercises.data.find(exercise => {
         return exercise.attributes.name === selectedExercise.name
       });
@@ -52,34 +61,58 @@ export class RoutineCreator extends Component {
     const exerciseIds = this.state.exerciseList.map(exercise => {
       return exercise.id
     });
-    const url = 'https://warm-cove-89223.herokuapp.com/api/v1/routines?user_id=1';
-    const options = {
-      method: 'POST',
-      body: JSON.stringify({ name: 'swolio', exerciseIds }),
-      headers: {
-        'Content-Type': 'application/json'
+    if (this.state.routineName === '') {
+      this.setState({ showError: true })
+    } else {
+      const url = 'https://warm-cove-89223.herokuapp.com/api/v1/routines?user_id=1';
+      const options = {
+        method: 'POST',
+        body: JSON.stringify({ name: this.state.routineName, exerciseIds }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       }
+      const response = await fetch(url, options);
+      this.props.navTool.navigate('homePage');
     }
-    const response = await fetch(url, options)
+  }
+
+  handleSearch = (event) => {
+    let searchQuery = event.toLowerCase();
+    let displayedExercises = this.state.exercisesCleaned.filter(function (el) {
+      let searchValue = el.name.toLowerCase();
+
+      return searchValue.indexOf(searchQuery) !== -1;
+    });
+
+    this.setState({
+      displayedExercises: displayedExercises.slice(0,10)
+    });
   }
 
   render() {
+    console.log(this.state.displayedExercises)
     return (
       <DismissKeyboard>
         <View style={styles.container}>
-          <InputAutoSuggest
-            inputStyle={styles.input}
-            itemTextStyle={styles.item}
-            staticData={this.state.exercisesCleaned}
-            onDataSelectedChange={data => this.setState({ selectedExercise: data })}
-          />
-          <Button titleStyle={styles.text}
-            buttonStyle={styles.button}
-            title='Add Exercise to Routine'
-            onPress={this.saveExercise} />
-          <View>
+          <Text style={styles.introText}>Search and select exercises to create your custom routine:</Text>
+          <Input inputContainerStyle={{...styles.nameInput, borderColor: palette.deepAccent}}
+            inputStyle={{ marginLeft: 5, color: palette.darkAccent }}
+            onChangeText={this.handleSearch}
+            placeholder='Search an Exercise' />
+          {
+            this.state.displayedExercises.map(exercise => {
+              return <Text onPress={() => this.saveExercise(exercise)}>{exercise.name}</Text>
+            })
+          }
+          <View style={styles.exercises}>
+            <Input placeholder='Enter a Title'
+              onChangeText={this.handleChange} />
+            {this.state.showError &&
+              <Text>Please enter Routine Name</Text>
+            }
             {this.state.exerciseList.map(exercise => {
-              return <Text style={styles.text} key={exercise.name}>{exercise.name}</Text>
+              return <Text key={exercise.id} style={styles.exerciseItem} key={exercise.name}>{exercise.name}</Text>
             })}
           </View>
           <Button titleStyle={styles.text}
@@ -94,31 +127,60 @@ export class RoutineCreator extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#667D90',
+    backgroundColor: '#2D71A8',
     height: 400,
     width: Dimensions.get('window').width,
     alignItems: 'center'
   },
   item: {
-    color: '#667D90',
-    backgroundColor: '#ACC6D0',
+    color: '#2D71A8',
+    backgroundColor: '#FFFFFF',
     fontFamily: 'raleway-bold'
   },
   input: {
-    color: '#FFFFFF',
-    backgroundColor: '#7C9DB1',
+    color: '#53CFFF',
+    backgroundColor: '#FFFFFF',
     fontFamily: 'raleway-bold',
     width: Dimensions.get('window').width * .90,
-    marginTop: 60,
-    height: 40
+    marginTop: 30,
+    height: 40,
   },
   button: {
-    backgroundColor: '#7C9DB1',
-    width: Dimensions.get('window').width * .90
+    backgroundColor: '#FFFFFF',
+    width: Dimensions.get('window').width * .90,
+    borderRadius: 10,
+    marginTop: 20,
+    height: 40
   },
   text: {
     fontFamily: 'raleway-bold',
-    color: '#FFFFFF'
+    color: '#2D71A8',
+  },
+  introText: {
+    color: palette.lightAccent,
+    fontFamily: 'raleway-bold',
+    fontSize: 20
+  },
+  exercises: {
+    backgroundColor: '#FFFFFF',
+    width: Dimensions.get('window').width * .90,
+  },
+  exerciseItem: {
+    color: '#2D71A8',
+    marginLeft: 10,
+    fontSize: 20
+  },
+  addButton: {
+    backgroundColor: '#FFFFFF',
+    width: Dimensions.get('window').width * .90,
+    borderRadius: 10,
+    height: 40,
+    marginBottom: 10
+  },
+  nameInput: {
+    backgroundColor: '#FFF',
+    borderWidth: 2,
+    borderRadius: 50,
   }
 });
 

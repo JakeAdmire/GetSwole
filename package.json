@@ -19,7 +19,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-native-autocomplete-search": "^1.0.8",
     "react-native-calendar-strip": "^1.3.8",
     "react-native-elements": "^1.1.0",
     "react-navigation": "^3.11.0",
@@ -50,7 +49,9 @@
       "node_modules/(?!((jest-)?react-native|react-clone-referenced-element|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|sentry-expo|native-base))"
     ],
     "collectCoverage": true,
-    "collectCoverageFrom": ["src/**/*.{js,jsx}"]
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ]
   },
   "private": true
 }
