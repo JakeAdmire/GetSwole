@@ -11,7 +11,13 @@
 
 [Link to Back End repository here](https://github.com/timnallen/BE-GetSwole)
 
-## Preview
+## Wireframe
+
+<img width="1128" alt="Screen Shot 2019-05-29 at 1 43 45 AM" src="https://user-images.githubusercontent.com/39415039/58538858-4350ab00-81b3-11e9-9f00-5f628222a3b7.png">
+<img width="423" alt="Screen Shot 2019-05-29 at 1 45 31 AM" src="https://user-images.githubusercontent.com/39415039/58538938-7c891b00-81b3-11e9-82b6-5c22d759b94e.png">
+<img width="414" alt="Screen Shot 2019-05-29 at 1 46 10 AM" src="https://user-images.githubusercontent.com/39415039/58538971-90cd1800-81b3-11e9-8562-5fd6bc68f801.png">
+
+## Screenshots
 
 `Insert screenshots here`
 
