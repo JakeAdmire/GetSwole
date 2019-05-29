@@ -40,7 +40,6 @@ describe('RoutineCreator', () => {
       expect(wrapper.state('showError')).toEqual(newMockState.showError)
     })
   })
-
 })
 
 describe('mapStateToProps', () => {
