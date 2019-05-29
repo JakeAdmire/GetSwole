@@ -26,9 +26,9 @@ These instructions will get a copy of the project up and running on your local m
 
 
 ## Future Iterations
-- 
-- 
-- 
+- Use OAuth for sign-in
+- Edit Routines by sets/reps/duration
+
 
 ## Tech Stack
 ### GetSwole was built using: 
