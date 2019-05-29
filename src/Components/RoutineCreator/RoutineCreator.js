@@ -91,7 +91,6 @@ export class RoutineCreator extends Component {
   }
 
   render() {
-    console.log(this.state.displayedExercises)
     return (
       <DismissKeyboard>
         <View style={styles.container}>
