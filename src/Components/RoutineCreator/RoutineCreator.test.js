@@ -1,14 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-// 
 import { RoutineCreator, mapStateToProps } from './RoutineCreator';
 
-let exercisesMock = { data: [] }; // make this some real shit
+let mockUser = { name: 'John' }
+let exercisesMock = { data: [] };
+let semanticDateMock = '25th March, 2019';
+let loadingMock = false;
 
 describe('RoutineCreator', () => {
 
   let wrapper;
-  // 
+  
   beforeEach(() => {
     wrapper = shallow(
       <RoutineCreator exercises={exercisesMock} />
@@ -19,20 +21,43 @@ describe('RoutineCreator', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
+  describe.skip('componentDidMount', () => {
+    it('should call this.exercisesCleaner', () => {
+      let mockExercisesCleaner = jest.fn()
+      wrapper.instance().componentDidMount()
+      expect(mockExercisesCleaner).toHaveBeenCalled()
+    })
+  })
+
+  describe('handleChange', () => {
+    it('should set state with a new routineName and showError: false', () => {
+      const mockState = {routineName: '', showError: false}
+      const newMockState = {routineName: 'Leg Day', showError: false}
+      expect(wrapper.state('routineName')).toEqual(mockState.routineName)
+      expect(wrapper.state('showError')).toBe(false)
+      wrapper.instance().handleChange('Leg Day')
+      expect(wrapper.state('routineName')).toEqual(newMockState.routineName)
+      expect(wrapper.state('showError')).toEqual(newMockState.showError)
+    })
+  })
 })
 
 describe('mapStateToProps', () => {
-
-  let mockState = {
-    exercises: exercisesMock
-    // put actual stuff in here
-  }
-
   it('should return a props object', () => {
-    let results = mapStateToProps(mockState);
-    let expected = { exercises: mockState }
+    let mockState = {
+      user: mockUser.name,
+      semanticDate: semanticDateMock,
+      loading: loadingMock,
+      hasError: false,
+      exercises: exercisesMock
+    };
 
-    expect(results).toEqual(expected.exercises)
+    let expected = {
+      exercises: exercisesMock,
+      user: mockUser.name
+    }
+    let results = mapStateToProps(mockState);
+    expect(results).toEqual(expected)
   })
 
 })
