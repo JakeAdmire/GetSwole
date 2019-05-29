@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { InputAutoSuggest } from 'react-native-autocomplete-search';
 import Dimensions from 'Dimensions';
 
 const DismissKeyboard = ({ children }) => (
@@ -96,12 +95,6 @@ export class RoutineCreator extends Component {
     return (
       <DismissKeyboard>
         <View style={styles.container}>
-          {/* <InputAutoSuggest
-            inputStyle={styles.input}
-            itemTextStyle={styles.item}
-            staticData={this.state.exercisesCleaned}
-            onDataSelectedChange={data => this.setState({ selectedExercise: data })}
-          /> */}
           <Input onChangeText={this.handleSearch}
             placeholder='Search' />
           {
