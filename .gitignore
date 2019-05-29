@@ -14,9 +14,11 @@ package-lock.json
 
 # testing
 /coverage
-
 # production
 /build
+# continuous integration
+/.circleci
+.travis.yml
 
 # misc
 .DS_Store
