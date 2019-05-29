@@ -17,7 +17,7 @@ package-lock.json
 # production
 /build
 # continuous integration
-/.circleci
+
 .travis.yml
 
 # misc

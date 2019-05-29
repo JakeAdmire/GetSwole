@@ -1,0 +1,44 @@
+
+version: 2
+publish: &publish
+  working_directory: ~/FE
+  docker:
+    - image: circleci/node:10.4.1
+  steps:
+    - checkout
+
+    - run:
+        name: Installing dependencies
+        command: npm install
+
+    - run:
+        name: Login into Expo
+        command: npx expo login -u JakeAdmire -p iFxgsRx2_m@q3WFKamGE
+
+    - run:
+        name: Publish to Expo
+        command: npx expo publish --non-interactive --max-workers 1
+
+jobs:
+  publish_to_expo_dev:
+    environment:
+      EXPO_RELEASE_CHANNEL: dev
+    <<: *publish
+
+  publish_to_expo_prod:
+    environment:
+      EXPO_RELEASE_CHANNEL: default
+    <<: *publish
+
+workflows:
+  version: 2
+  my_app:
+    jobs:
+      - publish_to_expo_dev:
+          filters:
+            branches:
+              only: development
+      - publish_to_expo_prod:
+          filters:
+            branches:
+              only: master
