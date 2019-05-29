@@ -1,7 +1,7 @@
 import * as actions from '../../Actions'
-import { addUserThunk } from '../addUserThunk'
+import { addNewUser } from '../addNewUser'
 
-describe('addUserThunk', () => {
+describe('addNewUser', () => {
 
   let mockUser
   let mockDispatch
@@ -12,7 +12,7 @@ describe('addUserThunk', () => {
   })
 
   it('should dispatch isLoading(true)', () => {
-    const thunk = addUserThunk(mockUser.name)
+    const thunk = addNewUser(mockUser.name)
     thunk(mockDispatch)
     expect(mockDispatch).toHaveBeenCalledWith(actions.isLoading(true))
   })
@@ -22,7 +22,7 @@ describe('addUserThunk', () => {
       ok: false,
       statusText: 'Something went wrong.'
     }))
-    const thunk = addUserThunk(mockUser.name)
+    const thunk = addNewUser(mockUser.name)
     await thunk(mockDispatch)
     expect(mockDispatch).toHaveBeenCalledWith(actions.hasError('Something went wrong.'))
   })

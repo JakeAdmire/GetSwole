@@ -17,8 +17,9 @@ exports[`Container displayCards() should match snapshot 2`] = `
             "backgroundColor": "#2D71A8",
             "color": "#ACC6D0",
             "height": "100%",
+            "minHeight": 1065,
             "padding": 20,
-            "width": 750,
+            "width": "100%",
           }
         }
       >
@@ -55,24 +56,25 @@ exports[`Container displayCards() should match snapshot 2`] = `
             Object {
               "backgroundColor": "#FFF",
               "borderRadius": 10,
+              "marginBottom": 10,
               "width": 730,
             }
           }
           leftIcon={
-            <Themed.Icon
-              color="#2D71A8"
-              name="trash"
-              onPress={[Function]}
-              type="font-awesome"
-            />
+            Object {
+              "color": "#2D71A8",
+              "name": "trash",
+              "onPress": [Function],
+              "type": "font-awesome",
+            }
           }
-          onPress={[Function]}
           rightIcon={
-            <Themed.Icon
-              color="#2D71A8"
-              name="chevron-circle-right"
-              type="font-awesome"
-            />
+            Object {
+              "color": "#2D71A8",
+              "name": "angle-double-right",
+              "onPress": [Function],
+              "type": "font-awesome",
+            }
           }
           subtitle="1 exercises"
           subtitleStyle={
@@ -100,20 +102,20 @@ exports[`Container displayCards() should match snapshot 2`] = `
             }
           }
           leftIcon={
-            <Themed.Icon
-              color="#2D71A8"
-              name="trash"
-              onPress={[Function]}
-              type="font-awesome"
-            />
+            Object {
+              "color": "#2D71A8",
+              "name": "trash",
+              "onPress": [Function],
+              "type": "font-awesome",
+            }
           }
-          onPress={[Function]}
           rightIcon={
-            <Themed.Icon
-              color="#2D71A8"
-              name="chevron-circle-right"
-              type="font-awesome"
-            />
+            Object {
+              "color": "#2D71A8",
+              "name": "angle-double-right",
+              "onPress": [Function],
+              "type": "font-awesome",
+            }
           }
           subtitle="1 exercises"
           subtitleStyle={
@@ -161,21 +163,35 @@ exports[`Container displayCards() should match snapshot 2`] = `
               Object {
                 "backgroundColor": "#FFF",
                 "borderRadius": 10,
+                "elevation": 4,
+                "position": "relative",
+                "shadowColor": "#000",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.23,
+                "shadowRadius": 2.62,
+                "width": "100%",
               }
             }
             icon={
-              <Themed.Icon
-                color="#2D71A8"
-                iconStyle={
-                  Object {
-                    "position": "absolute",
-                    "right": -75,
-                  }
-                }
-                name="plus"
-                size={18}
-                type="font-awesome"
-              />
+              Object {
+                "color": "#104D80",
+                "iconStyle": Object {
+                  "position": "absolute",
+                  "right": 10,
+                },
+                "name": "add-circle-outline",
+                "size": 25,
+                "type": undefined,
+              }
+            }
+            iconContainerStyle={
+              Object {
+                "position": "absolute",
+                "right": 0,
+              }
             }
             iconRight={true}
             onPress={[Function]}
@@ -183,8 +199,9 @@ exports[`Container displayCards() should match snapshot 2`] = `
             title="Add New Routine"
             titleStyle={
               Object {
-                "color": "#2D71A8",
+                "color": "#104D80",
                 "fontFamily": "raleway-bold",
+                "fontSize": 20,
               }
             }
           />
@@ -211,8 +228,9 @@ exports[`Container displayCards() should match snapshot 3`] = `
             "backgroundColor": "#2D71A8",
             "color": "#ACC6D0",
             "height": "100%",
+            "minHeight": 1065,
             "padding": 20,
-            "width": 750,
+            "width": "100%",
           }
         }
       >
@@ -249,24 +267,25 @@ exports[`Container displayCards() should match snapshot 3`] = `
             Object {
               "backgroundColor": "#FFF",
               "borderRadius": 10,
+              "marginBottom": 10,
               "width": 730,
             }
           }
           leftIcon={
-            <Themed.Icon
-              color="#2D71A8"
-              name="trash"
-              onPress={[Function]}
-              type="font-awesome"
-            />
+            Object {
+              "color": "#2D71A8",
+              "name": "trash",
+              "onPress": [Function],
+              "type": "font-awesome",
+            }
           }
-          onPress={[Function]}
           rightIcon={
-            <Themed.Icon
-              color="#2D71A8"
-              name="chevron-circle-right"
-              type="font-awesome"
-            />
+            Object {
+              "color": "#2D71A8",
+              "name": "angle-double-right",
+              "onPress": [Function],
+              "type": "font-awesome",
+            }
           }
           subtitle="1 exercises"
           subtitleStyle={
@@ -294,20 +313,20 @@ exports[`Container displayCards() should match snapshot 3`] = `
             }
           }
           leftIcon={
-            <Themed.Icon
-              color="#2D71A8"
-              name="trash"
-              onPress={[Function]}
-              type="font-awesome"
-            />
+            Object {
+              "color": "#2D71A8",
+              "name": "trash",
+              "onPress": [Function],
+              "type": "font-awesome",
+            }
           }
-          onPress={[Function]}
           rightIcon={
-            <Themed.Icon
-              color="#2D71A8"
-              name="chevron-circle-right"
-              type="font-awesome"
-            />
+            Object {
+              "color": "#2D71A8",
+              "name": "angle-double-right",
+              "onPress": [Function],
+              "type": "font-awesome",
+            }
           }
           subtitle="1 exercises"
           subtitleStyle={
@@ -355,21 +374,35 @@ exports[`Container displayCards() should match snapshot 3`] = `
               Object {
                 "backgroundColor": "#FFF",
                 "borderRadius": 10,
+                "elevation": 4,
+                "position": "relative",
+                "shadowColor": "#000",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.23,
+                "shadowRadius": 2.62,
+                "width": "100%",
               }
             }
             icon={
-              <Themed.Icon
-                color="#2D71A8"
-                iconStyle={
-                  Object {
-                    "position": "absolute",
-                    "right": -75,
-                  }
-                }
-                name="plus"
-                size={18}
-                type="font-awesome"
-              />
+              Object {
+                "color": "#104D80",
+                "iconStyle": Object {
+                  "position": "absolute",
+                  "right": 10,
+                },
+                "name": "add-circle-outline",
+                "size": 25,
+                "type": undefined,
+              }
+            }
+            iconContainerStyle={
+              Object {
+                "position": "absolute",
+                "right": 0,
+              }
             }
             iconRight={true}
             onPress={[Function]}
@@ -377,8 +410,9 @@ exports[`Container displayCards() should match snapshot 3`] = `
             title="Add New Routine"
             titleStyle={
               Object {
-                "color": "#2D71A8",
+                "color": "#104D80",
                 "fontFamily": "raleway-bold",
+                "fontSize": 20,
               }
             }
           />
@@ -394,8 +428,9 @@ exports[`Container displayCards() should match snapshot 3`] = `
             "backgroundColor": "#2D71A8",
             "color": "#ACC6D0",
             "height": "100%",
+            "minHeight": 1065,
             "padding": 20,
-            "width": 750,
+            "width": "100%",
           }
         }
       >
@@ -457,21 +492,35 @@ exports[`Container displayCards() should match snapshot 3`] = `
               Object {
                 "backgroundColor": "#FFF",
                 "borderRadius": 10,
+                "elevation": 4,
+                "position": "relative",
+                "shadowColor": "#000",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.23,
+                "shadowRadius": 2.62,
+                "width": "100%",
               }
             }
             icon={
-              <Themed.Icon
-                color="#2D71A8"
-                iconStyle={
-                  Object {
-                    "position": "absolute",
-                    "right": -75,
-                  }
-                }
-                name="plus"
-                size={18}
-                type="font-awesome"
-              />
+              Object {
+                "color": "#104D80",
+                "iconStyle": Object {
+                  "position": "absolute",
+                  "right": 10,
+                },
+                "name": "add-circle-outline",
+                "size": 25,
+                "type": undefined,
+              }
+            }
+            iconContainerStyle={
+              Object {
+                "position": "absolute",
+                "right": 0,
+              }
             }
             iconRight={true}
             onPress={[Function]}
@@ -479,8 +528,9 @@ exports[`Container displayCards() should match snapshot 3`] = `
             title="Add New Routine"
             titleStyle={
               Object {
-                "color": "#2D71A8",
+                "color": "#104D80",
                 "fontFamily": "raleway-bold",
+                "fontSize": 20,
               }
             }
           />

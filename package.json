@@ -5,7 +5,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "jest --watch --coverage --changedSince=origin/master -u"
+    "test": "NODE_ENV=test jest --watch --coverage --changedSince=origin/master -u"
   },
   "test": {
     "preset": "react-native"
@@ -31,6 +31,7 @@
     "babel-preset-expo": "^5.0.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
+    "expo-cli": "^2.18.5",
     "jest-expo": "^32.0.1",
     "react-test-renderer": "^16.8.6",
     "schedule": "^0.4.0"

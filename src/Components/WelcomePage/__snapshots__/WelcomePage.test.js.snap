@@ -15,30 +15,35 @@ exports[`WelcomePage renderSubmit() should match snapshot 1`] = `
       Object {
         "backgroundColor": "#FFF",
         "borderRadius": 10,
-        "elevation": 2,
+        "elevation": 4,
         "position": "relative",
         "shadowColor": "#000",
         "shadowOffset": Object {
-          "height": 1,
+          "height": 2,
           "width": 0,
         },
-        "shadowOpacity": 0.2,
-        "shadowRadius": 1.41,
+        "shadowOpacity": 0.23,
+        "shadowRadius": 2.62,
+        "width": "100%",
       }
     }
     icon={
-      <Themed.Icon
-        color="#104D80"
-        iconStyle={
-          Object {
-            "position": "absolute",
-            "right": -125,
-          }
-        }
-        name="angle-double-right"
-        size={25}
-        type="font-awesome"
-      />
+      Object {
+        "color": "#104D80",
+        "iconStyle": Object {
+          "position": "absolute",
+          "right": 10,
+        },
+        "name": "angle-double-right",
+        "size": 25,
+        "type": "font-awesome",
+      }
+    }
+    iconContainerStyle={
+      Object {
+        "position": "absolute",
+        "right": 0,
+      }
     }
     iconRight={true}
     onPress={[Function]}
@@ -70,30 +75,35 @@ exports[`WelcomePage renderSubmit() should match snapshot 2`] = `
       Object {
         "backgroundColor": "#FFF",
         "borderRadius": 10,
-        "elevation": 2,
+        "elevation": 4,
         "position": "relative",
         "shadowColor": "#000",
         "shadowOffset": Object {
-          "height": 1,
+          "height": 2,
           "width": 0,
         },
-        "shadowOpacity": 0.2,
-        "shadowRadius": 1.41,
+        "shadowOpacity": 0.23,
+        "shadowRadius": 2.62,
+        "width": "100%",
       }
     }
     icon={
-      <Themed.Icon
-        color="#104D80"
-        iconStyle={
-          Object {
-            "position": "absolute",
-            "right": -125,
-          }
-        }
-        name="angle-double-right"
-        size={25}
-        type="font-awesome"
-      />
+      Object {
+        "color": "#104D80",
+        "iconStyle": Object {
+          "position": "absolute",
+          "right": 10,
+        },
+        "name": "angle-double-right",
+        "size": 25,
+        "type": "font-awesome",
+      }
+    }
+    iconContainerStyle={
+      Object {
+        "position": "absolute",
+        "right": 0,
+      }
     }
     iconRight={true}
     onPress={[Function]}
