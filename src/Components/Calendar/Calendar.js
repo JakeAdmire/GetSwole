@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
-import { connect } from 'react-redux'
-import Dimensions from 'Dimensions';
-import moment from 'moment'
+import { connect } from 'react-redux';
+import moment from 'moment';
+// 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import { setDate, setSemanticDate } from '../../Actions/index';
 import { fetchRoutines } from '../../Thunks/fetchRoutines';
-import * as palette from '../../Utilities/styleIndex';
+import { palette } from '../../Utilities/styleIndex';
 
 export class Calendar extends Component {
 
-  componentDidMount = () => {
+  componentDidMount() {
     let originalYear = JSON.stringify(moment().year());
     let originalMonth = JSON.stringify(moment().month() + 1);
     let originalDay = JSON.stringify(moment().date());
@@ -47,6 +47,9 @@ export class Calendar extends Component {
   render() {
     const { semanticDate } = this.props;
 
+    let day = this.determineDay(JSON.stringify(moment().date()));
+    let month = this.determineMonth(JSON.stringify(moment().month()));
+
     return (
       <View>
         <View style={styles.header}>
@@ -56,7 +59,10 @@ export class Calendar extends Component {
                 ? semanticDate.split(' ')[1]
                 : this.determineMonth(JSON.stringify(moment().month() + 1))
             }/>
-          <RalewayText style={styles.headerDate} text={semanticDate}/>
+          <View style={{ alignSelf: 'flex-end' }}>
+            <RalewayText style={{ color: palette.lightAccent, alignSelf: 'flex-end' }} text="today" />
+            <RalewayText style={styles.headerDate} text={`${day} ${month} ${JSON.stringify(moment().year())}`} />
+          </View>
         </View>
         <View style={styles.accentStrip}></View>
         <CalendarStrip
@@ -102,13 +108,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: Dimensions.get('window').width,
+    width: '100%',
     height: 50,
     padding: 10,
   },
 
   accentStrip: {
-    width: Dimensions.get('window').width,
+    width: '100%',
     height: 1,
     backgroundColor: palette.backgroundColor
   },
@@ -120,7 +126,6 @@ const styles = StyleSheet.create({
 
   headerDate: {
     color: '#FFF',
-    alignSelf: 'flex-end',
     fontSize: 18,
   },
 })

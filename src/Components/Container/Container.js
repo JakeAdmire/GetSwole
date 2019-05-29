@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import { Card, Icon, ListItem, Button } from 'react-native-elements';
+// 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import { setSelectedRoutine } from '../../Actions';
-import * as palette from '../../Utilities/styleIndex';
-import { deleteRoutineThunk } from '../../Thunks/deleteRoutineThunk'
+import { palette, flexibleButton } from '../../Utilities/styleIndex';
+import { deleteRoutine } from '../../Thunks/deleteRoutine'
 import { fetchRoutines } from '../../Thunks/fetchRoutines'
+
 
 export class Container extends Component {
   constructor() {
@@ -33,53 +35,49 @@ export class Container extends Component {
 
     return routines.data && routines.data.length
       ? <View style={styles.cardContainer}>
-          <View style={styles.fullText}>
+          <View style={{ width: Dimensions.get('window').width - 20 }}>
             <RalewayText style={{color: palette.lightAccent, fontSize: 16}} text="Here's the schedule for" />
             <RalewayBoldText style={{color: '#FFF', fontSize: 16, marginBottom: 10 }} text={semanticDate} />
           </View>
           {
             routines.data.map((routine, index) => (
               <ListItem key={routine.id}
-                        containerStyle=
-                        {
-                          routines.data.length - 1 === index
-                            ? {...styles.listItem, marginBottom: 10}
-                            : {...styles.listItem}
-                        }
+                        containerStyle={styles.listItem}
                         rightIcon=
-                        {
-                          <Icon name='chevron-circle-right'
-                                type='font-awesome' 
-                                color={palette.backgroundColor} />
-                        }
+                          {{ 
+                            name: 'angle-double-right', 
+                            type: 'font-awesome', 
+                            color: palette.backgroundColor ,
+                            onPress: () => this.routeToDetails(routine.id)
+                          }}
 
                         leftIcon=
-                        {
-                          <Icon name= 'trash'
-                                type='font-awesome' 
-                                color={palette.backgroundColor}
-                                onPress={() => this.handleDeleteRoutine(routine.id)} />
-                        }
+                          {{
+                            name: 'trash',
+                            type: 'font-awesome',
+                            color: palette.backgroundColor,
+                            onPress: () => this.handleDeleteRoutine(routine.id)
+                          }}
+
                         bottomDivider={ routines.data.length > 1 ? true : false }
                         title={routine.attributes.name}
                         titleStyle={{ color: palette.backgroundColor, fontFamily: 'raleway' }}
                         subtitle={`${routine.attributes.exercises.length} exercises`}
-                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }}
-                        onPress={() => this.routeToDetails(routine.id)} />
+                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }} />
             ))
           }
-          <View style={styles.fullText}>
+          <View style={{ width: Dimensions.get('window').width - 20 }}>
             <RalewayText  text="Still not tired? Add another routine:" 
                           style={{ color: palette.lightAccent, fontSize: 16, marginTop: 30, marginBottom: 10 }} />
           </View>
           { this.renderButton() }
         </View>
       : <View style={styles.cardContainer}>
-          <View style={styles.fullText}>
+          <View style={{ width: Dimensions.get('window').width - 20 }}>
             <RalewayText style={{color: palette.lightAccent, fontSize: 16}} text="You don't yet have anything scheduled for" />
             <RalewayBoldText style={{color: '#FFF', fontSize: 16, marginBottom: 10 }} text={semanticDate} />
           </View>
-          <View style={styles.fullText}>
+          <View style={{ width: Dimensions.get('window').width - 20 }}>
             <RalewayText  text="Let's Fix That:" 
                           style={{ color: palette.lightAccent, fontSize: 16, marginTop: 30, marginBottom: 10 }} />
           </View>
@@ -89,20 +87,7 @@ export class Container extends Component {
 
   renderButton() {
     return  <View style={{ width: Dimensions.get('window').width - 20 }}>
-              <Button  buttonStyle={{ backgroundColor: '#FFF', borderRadius: 10 }}
-                    title="Add New Routine" 
-                    titleStyle={{ fontFamily: 'raleway-bold', color: palette.backgroundColor }} 
-                    icon=
-                    {
-                      <Icon name='plus'
-                            type='font-awesome'
-                            size={18}
-                            iconStyle={{ position: 'absolute', right: -75 }} 
-                            color={palette.backgroundColor} />
-                    } 
-                    iconRight
-                    testID="add-routine-button"
-                    onPress={this.handleAddNewRoutine} />
+              { flexibleButton("Add New Routine", "add-circle-outline", "add-routine-button", this.handleAddNewRoutine) }
             </View>
   }
 
@@ -112,7 +97,7 @@ export class Container extends Component {
     return loading
 
       ? <View style={styles.loadingContainer}>
-          <Image style={styles.loader} source={require('../../../assets/images/loading.gif')} />
+          <Image style={{ marginTop: 100 }} source={require('../../../assets/images/loading.gif')} />
         </View>
         
       : <View>{ this.displayCards() }</View>
@@ -128,7 +113,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  deleteRoutine: (user, routineId, date) => dispatch(deleteRoutineThunk(user, routineId, date)),
+  deleteRoutine: (user, routineId, date) => dispatch(deleteRoutine(user, routineId, date)),
   fetchRoutines: (date, user) => dispatch(fetchRoutines(date, user)),
   setSelectedRoutine: (routine) => dispatch(setSelectedRoutine(routine))
 })
@@ -138,8 +123,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(Container);
 const styles = StyleSheet.create({
 
   cardContainer: {
+    minHeight: Dimensions.get('window').height - 269,
     height: '100%',
-    width: Dimensions.get('window').width,
+    width: '100%',
     backgroundColor: palette.backgroundColor,
     color: '#ACC6D0',
     padding: 20,
@@ -147,28 +133,18 @@ const styles = StyleSheet.create({
   },
 
   loadingContainer: {
-    height: '100%',
-    width: Dimensions.get('window').width,
+    minHeight: Dimensions.get('window').height - 269,
+    height: '100%', 
+    width: '100%',
     backgroundColor: palette.backgroundColor,
     alignItems: 'center'
-  },
-
-  loader: {
-    marginTop: 100
-  },
-
-  emptyMessage: {
-    color: '#ACC6D0',
-    fontSize: 16,
-  },
-
-  fullText: {
-    width: Dimensions.get('window').width - 20
   },
 
   listItem: {
     backgroundColor: '#FFF', 
     borderRadius: 10,
-    width: Dimensions.get('window').width - 20
-  }
+    width: Dimensions.get('window').width - 20,
+    marginBottom: 10
+  },
+
 })

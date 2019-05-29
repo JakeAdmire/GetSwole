@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, BackHandler } from 'react-native';
+import { StyleSheet, Text, View, BackHandler, ScrollView } from 'react-native';
 import { Header } from 'react-native-elements';
 import { connect } from 'react-redux';
+import Dimensions from 'Dimensions';
 // 
 import { addExercises } from '../../Actions';
 import Calendar from '../Calendar/Calendar';
-import Dimensions from 'Dimensions';
 import Container from '../Container/Container';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
-import * as palette from '../../Utilities/styleIndex';
+import { palette, flexibleHeader } from '../../Utilities/styleIndex';
 
 export class Homepage extends React.Component {
   static navigationOptions = {
@@ -49,23 +49,25 @@ export class Homepage extends React.Component {
     return (
       <View style={styles.HomePage}>
 
-        <Header centerComponent={this.welcomeText}
-                containerStyle={{ backgroundColor: '#FFF', elevation: 12 }} />
+        { flexibleHeader(null, null, this.welcomeText) }
 
-        <View style={styles.prompt}>
-          <Text style={styles.promptText}>Select a day to start scheduling workouts</Text>
-        </View>
+        <ScrollView bounces>
+          <View style={styles.prompt}>
+            <Text style={styles.promptText}>Select a day to start scheduling workouts</Text>
+          </View>
 
-        <Calendar />
-        { 
-          date 
-            ? <View>
-                <Container navTool={navigation} />
-              </View>
-            : <View style={styles.placeholder}>
-              <Text style={styles.placeholderText}>Please select a date</Text>
-            </View>
-        }
+          <Calendar />
+          { 
+            date 
+              ? <View>
+                  <Container navTool={navigation} />
+                </View>
+              : <View style={styles.placeholder}>
+                  <Text style={styles.placeholderText}>Please select a date</Text>
+                </View>
+          }
+        </ScrollView>
+
       </View>
     );
   }
@@ -85,22 +87,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
 const styles = StyleSheet.create({
 
   HomePage: {
-    // backgroundColor: '#667D90',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height
-  },
-
-  header: {
-    position: 'relative',
-    top: -10,
-
-    backgroundColor: '#FFF',
-    height: 80,
-    paddingTop: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-    elevation: 12
+    width: '100%',
+    height: '100%',
   },
 
   headerText: {
@@ -124,7 +112,8 @@ const styles = StyleSheet.create({
 
   placeholder: {
     backgroundColor: palette.backgroundColor,
-    height: Dimensions.get('window').height - 185,
+    minHeight: Dimensions.get('window').height - 269,
+    height: '100%',
     padding: 30,
     alignItems: 'center'
   },
