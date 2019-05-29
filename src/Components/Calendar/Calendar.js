@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
-import { Icon } from 'react-native-elements';
 import CalendarStrip from 'react-native-calendar-strip';
 import { connect } from 'react-redux'
 import Dimensions from 'Dimensions';
 import moment from 'moment'
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
-import { setDate, loadRoutines, setSemanticDate } from '../../Actions/index';
+import { setDate, setSemanticDate } from '../../Actions/index';
 import { fetchRoutines } from '../../Thunks/fetchRoutines';
 import * as palette from '../../Utilities/styleIndex';
-
 
 export class Calendar extends Component {
 
@@ -47,11 +45,7 @@ export class Calendar extends Component {
   }
 
   render() {
-    const { date, semanticDate } = this.props;
-
-    let originalYear = JSON.stringify(moment().year());
-    let originalMonth = JSON.stringify(moment().month() + 1);
-    let originalDay = JSON.stringify(moment().date());
+    const { semanticDate } = this.props;
 
     return (
       <View>
@@ -81,8 +75,7 @@ export class Calendar extends Component {
           iconLeft={require('../../../assets/images/left-arrow.png')}
           iconRight={require('../../../assets/images/right-arrow.png')}
           onDateSelected={(date) => this.grabDate(date)}
-        />
-         
+        />  
       </View>
     )
   }
@@ -130,5 +123,4 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     fontSize: 18,
   },
-
 })

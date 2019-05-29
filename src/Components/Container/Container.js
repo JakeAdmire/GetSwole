@@ -4,8 +4,10 @@ import Dimensions from 'Dimensions';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import { Card, Icon, ListItem, Button } from 'react-native-elements';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
+import { setSelectedRoutine } from '../../Actions';
 import * as palette from '../../Utilities/styleIndex';
-
+import { deleteRoutineThunk } from '../../Thunks/deleteRoutineThunk'
+import { fetchRoutines } from '../../Thunks/fetchRoutines'
 
 export class Container extends Component {
   constructor() {
@@ -14,6 +16,16 @@ export class Container extends Component {
 
   handleAddNewRoutine = () => {
     this.props.navTool.navigate('routinePage');
+  }
+
+  handleDeleteRoutine = async (routineId) => {
+    await this.props.deleteRoutine(this.props.user, routineId, this.props.date)
+    this.props.fetchRoutines(this.props.date, this.props.user)
+  }
+    
+  routeToDetails = (id) => {
+    this.props.setSelectedRoutine({ id })
+    this.props.navTool.navigate('routineDetails');
   }
 
   displayCards = () => {
@@ -34,17 +46,26 @@ export class Container extends Component {
                             ? {...styles.listItem, marginBottom: 10}
                             : {...styles.listItem}
                         }
-                        chevron=
+                        rightIcon=
                         {
                           <Icon name='chevron-circle-right'
                                 type='font-awesome' 
                                 color={palette.backgroundColor} />
                         }
+
+                        leftIcon=
+                        {
+                          <Icon name= 'trash'
+                                type='font-awesome' 
+                                color={palette.backgroundColor}
+                                onPress={() => this.handleDeleteRoutine(routine.id)} />
+                        }
                         bottomDivider={ routines.data.length > 1 ? true : false }
                         title={routine.attributes.name}
                         titleStyle={{ color: palette.backgroundColor, fontFamily: 'raleway' }}
                         subtitle={`${routine.attributes.exercises.length} exercises`}
-                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }} />
+                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }}
+                        onPress={() => this.routeToDetails(routine.id)} />
             ))
           }
           <View style={styles.fullText}>
@@ -86,7 +107,7 @@ export class Container extends Component {
   }
 
   render() {
-    const { date, routines, loading } = this.props;
+    const { loading } = this.props;
 
     return loading
 
@@ -102,10 +123,17 @@ export const mapStateToProps = (state) => ({
   date: state.date,
   semanticDate: state.semanticDate,
   routines: state.routines,
-  loading: state.loading
+  loading: state.loading,
+  user: state.user
 })
 
-export default connect(mapStateToProps)(Container);
+export const mapDispatchToProps = (dispatch) => ({
+  deleteRoutine: (user, routineId, date) => dispatch(deleteRoutineThunk(user, routineId, date)),
+  fetchRoutines: (date, user) => dispatch(fetchRoutines(date, user)),
+  setSelectedRoutine: (routine) => dispatch(setSelectedRoutine(routine))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);
 
 const styles = StyleSheet.create({
 
@@ -143,5 +171,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: Dimensions.get('window').width - 20
   }
-
 })

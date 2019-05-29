@@ -50,7 +50,11 @@ export class RoutineContainer extends Component {
     }
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.handleSetRoutines()
+  }
+
+  handleSetRoutines = async () => {
     const url = 'https://warm-cove-89223.herokuapp.com/api/v1/routines';
     const response = await fetch(url);
     const routines = await response.json();
