@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Keyboard, TouchableWithoutFeedback } from 'reac
 import { Button, Input } from 'react-native-elements';
 import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
+import * as palette from '../../Utilities/styleIndex';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -41,7 +42,6 @@ export class RoutineCreator extends Component {
       showError: false
     });
   }
-
 
   saveExercise = (selectedExercise) => {
     let foundExercise;
@@ -95,15 +95,18 @@ export class RoutineCreator extends Component {
     return (
       <DismissKeyboard>
         <View style={styles.container}>
-          <Input onChangeText={this.handleSearch}
-            placeholder='Search' />
+          <Text style={styles.introText}>Search and select exercises to create your custom routine:</Text>
+          <Input inputContainerStyle={{...styles.nameInput, borderColor: palette.deepAccent}}
+            inputStyle={{ marginLeft: 5, color: palette.darkAccent }}
+            onChangeText={this.handleSearch}
+            placeholder='Search an Exercise' />
           {
             this.state.displayedExercises.map(exercise => {
               return <Text onPress={() => this.saveExercise(exercise)}>{exercise.name}</Text>
             })
           }
           <View style={styles.exercises}>
-            <Input placeholder='Enter a name for routine'
+            <Input placeholder='Enter a Title'
               onChangeText={this.handleChange} />
             {this.state.showError &&
               <Text>Please enter Routine Name</Text>
@@ -153,6 +156,11 @@ const styles = StyleSheet.create({
     fontFamily: 'raleway-bold',
     color: '#2D71A8',
   },
+  introText: {
+    color: palette.lightAccent,
+    fontFamily: 'raleway-bold',
+    fontSize: 20
+  },
   exercises: {
     backgroundColor: '#FFFFFF',
     width: Dimensions.get('window').width * .90,
@@ -168,6 +176,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 40,
     marginBottom: 10
+  },
+  nameInput: {
+    backgroundColor: '#FFF',
+    borderWidth: 2,
+    borderRadius: 50,
   }
 });
 
