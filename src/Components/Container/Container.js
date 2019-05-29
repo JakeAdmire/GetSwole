@@ -4,6 +4,7 @@ import Dimensions from 'Dimensions';
 import { View, StyleSheet, Image } from 'react-native';
 import { Icon, ListItem, Button } from 'react-native-elements';
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
+import { setSelectedRoutine } from '../../Actions';
 import * as palette from '../../Utilities/styleIndex';
 import { deleteRoutineThunk } from '../../Thunks/deleteRoutineThunk'
 import { fetchRoutines } from '../../Thunks/fetchRoutines'
@@ -20,6 +21,11 @@ export class Container extends Component {
   handleDeleteRoutine = async (routineId) => {
     await this.props.deleteRoutine(this.props.user, routineId, this.props.date)
     this.props.fetchRoutines(this.props.date, this.props.user)
+  }
+    
+  routeToDetails = (id) => {
+    this.props.setSelectedRoutine({ id })
+    this.props.navTool.navigate('routineDetails');
   }
 
   displayCards = () => {
@@ -58,7 +64,8 @@ export class Container extends Component {
                         title={routine.attributes.name}
                         titleStyle={{ color: palette.backgroundColor, fontFamily: 'raleway' }}
                         subtitle={`${routine.attributes.exercises.length} exercises`}
-                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }} />            
+                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }}
+                        onPress={() => this.routeToDetails(routine.id)} />
             ))
           }
           <View style={styles.fullText}>
@@ -122,7 +129,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   deleteRoutine: (user, routineId, date) => dispatch(deleteRoutineThunk(user, routineId, date)),
-  fetchRoutines: (date, user) => dispatch(fetchRoutines(date, user))
+  fetchRoutines: (date, user) => dispatch(fetchRoutines(date, user)),
+  setSelectedRoutine: (routine) => dispatch(setSelectedRoutine(routine))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Container);
