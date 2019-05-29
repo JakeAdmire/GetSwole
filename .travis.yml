@@ -19,6 +19,7 @@ jobs:
     - stage: deploy
       node_js: lts/*
       script:
+        - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
         - npm ci
         - npx expo login -u JakeAdmire -p iFxgsRx2_m@q3WFKamGE
         - npx expo publish --non-interactive
