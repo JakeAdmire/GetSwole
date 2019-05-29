@@ -5,6 +5,7 @@ import { Text, View, StyleSheet, Image } from 'react-native';
 import { Card, Icon, ListItem, Button } from 'react-native-elements';
 // 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
+import { setSelectedRoutine } from '../../Actions';
 import * as palette from '../../Utilities/styleIndex';
 
 
@@ -15,6 +16,11 @@ export class Container extends Component {
 
   handleAddNewRoutine = () => {
     this.props.navTool.navigate('routinePage');
+  }
+
+  routeToDetails = (id) => {
+    this.props.setSelectedRoutine({ id })
+    this.props.navTool.navigate('routineDetails');
   }
 
   displayCards = () => {
@@ -45,7 +51,8 @@ export class Container extends Component {
                         title={routine.attributes.name}
                         titleStyle={{ color: palette.backgroundColor, fontFamily: 'raleway' }}
                         subtitle={`${routine.attributes.exercises.length} exercises`}
-                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }} />
+                        subtitleStyle={{ color: palette.lightAccent, fontFamily: 'raleway' }}
+                        onPress={() => this.routeToDetails(routine.id)} />
             ))
           }
           <View style={styles.fullText}>
@@ -106,7 +113,11 @@ export const mapStateToProps = (state) => ({
   loading: state.loading
 })
 
-export default connect(mapStateToProps)(Container);
+export const mapDispatchToProps = (dispatch) => ({
+  setSelectedRoutine: (routine) => dispatch(setSelectedRoutine(routine))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);
 
 const styles = StyleSheet.create({
 
