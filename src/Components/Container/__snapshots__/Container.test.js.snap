@@ -51,19 +51,27 @@ exports[`Container displayCards() should match snapshot 2`] = `
         </Component>
         <Themed.ListItem
           bottomDivider={true}
-          chevron={
-            <Themed.Icon
-              color="#2D71A8"
-              name="chevron-circle-right"
-              type="font-awesome"
-            />
-          }
           containerStyle={
             Object {
               "backgroundColor": "#FFF",
               "borderRadius": 10,
               "width": 730,
             }
+          }
+          leftIcon={
+            <Themed.Icon
+              color="#2D71A8"
+              name="trash"
+              onPress={[Function]}
+              type="font-awesome"
+            />
+          }
+          rightIcon={
+            <Themed.Icon
+              color="#2D71A8"
+              name="chevron-circle-right"
+              type="font-awesome"
+            />
           }
           subtitle="1 exercises"
           subtitleStyle={
@@ -82,13 +90,6 @@ exports[`Container displayCards() should match snapshot 2`] = `
         />
         <Themed.ListItem
           bottomDivider={true}
-          chevron={
-            <Themed.Icon
-              color="#2D71A8"
-              name="chevron-circle-right"
-              type="font-awesome"
-            />
-          }
           containerStyle={
             Object {
               "backgroundColor": "#FFF",
@@ -96,6 +97,21 @@ exports[`Container displayCards() should match snapshot 2`] = `
               "marginBottom": 10,
               "width": 730,
             }
+          }
+          leftIcon={
+            <Themed.Icon
+              color="#2D71A8"
+              name="trash"
+              onPress={[Function]}
+              type="font-awesome"
+            />
+          }
+          rightIcon={
+            <Themed.Icon
+              color="#2D71A8"
+              name="chevron-circle-right"
+              type="font-awesome"
+            />
           }
           subtitle="1 exercises"
           subtitleStyle={
@@ -227,19 +243,27 @@ exports[`Container displayCards() should match snapshot 3`] = `
         </Component>
         <Themed.ListItem
           bottomDivider={true}
-          chevron={
-            <Themed.Icon
-              color="#2D71A8"
-              name="chevron-circle-right"
-              type="font-awesome"
-            />
-          }
           containerStyle={
             Object {
               "backgroundColor": "#FFF",
               "borderRadius": 10,
               "width": 730,
             }
+          }
+          leftIcon={
+            <Themed.Icon
+              color="#2D71A8"
+              name="trash"
+              onPress={[Function]}
+              type="font-awesome"
+            />
+          }
+          rightIcon={
+            <Themed.Icon
+              color="#2D71A8"
+              name="chevron-circle-right"
+              type="font-awesome"
+            />
           }
           subtitle="1 exercises"
           subtitleStyle={
@@ -258,13 +282,6 @@ exports[`Container displayCards() should match snapshot 3`] = `
         />
         <Themed.ListItem
           bottomDivider={true}
-          chevron={
-            <Themed.Icon
-              color="#2D71A8"
-              name="chevron-circle-right"
-              type="font-awesome"
-            />
-          }
           containerStyle={
             Object {
               "backgroundColor": "#FFF",
@@ -272,6 +289,21 @@ exports[`Container displayCards() should match snapshot 3`] = `
               "marginBottom": 10,
               "width": 730,
             }
+          }
+          leftIcon={
+            <Themed.Icon
+              color="#2D71A8"
+              name="trash"
+              onPress={[Function]}
+              type="font-awesome"
+            />
+          }
+          rightIcon={
+            <Themed.Icon
+              color="#2D71A8"
+              name="chevron-circle-right"
+              type="font-awesome"
+            />
           }
           subtitle="1 exercises"
           subtitleStyle={
