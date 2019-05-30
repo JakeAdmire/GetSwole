@@ -3,18 +3,11 @@
 
 ## Overview
 
-### GetSwole was the capstone project for Module 4 students at Turing School of Software and Design.  Students from both the Frontend and Backend programs are put in groups of 4 and given 13 days to create a full-stack application.  This project gave us further insight into how teams communicate and collaborate if efforts to smoothly integrate both sides of the project team into a cohesive unit.  As well, our group chose to work in React Native, a framework that was new to the entire team.  
+### GetSwole was the capstone project for Module 4 students at Turing School of Software and Design.  Students from both the Frontend and Backend programs were put in groups of 4 and given 13 days to create a full-stack application.  This project gave us further insight into how teams communicate and collaborate if effort to smoothly integrate both sides of the project team into a cohesive unit.  As well, our group chose to work in React Native, a framework that was new to the entire team.  
 
 ## Learning Goals
 
 [More information about original assignment can be found here](http://frontend.turing.io/projects/capstone.html)
-
-## Screenshots
-
-![2019-05-30 07 22 47|344 × 682](https://user-images.githubusercontent.com/41882380/58638179-6a8da200-82b1-11e9-984d-2401e6945afe.gif)
-![2019-05-30 07 42 59|344 × 682](https://user-images.githubusercontent.com/41882380/58638190-74afa080-82b1-11e9-962d-27e300a9cf25.gif)
-![2019-05-30 07 43 22|344 × 682](https://user-images.githubusercontent.com/41882380/58638202-7d07db80-82b1-11e9-8973-eb690395d464.gif)
-
 
 ## Wireframe
 
@@ -22,6 +15,11 @@
 <img width="423" alt="Screen Shot 2019-05-29 at 1 45 31 AM" src="https://user-images.githubusercontent.com/39415039/58538938-7c891b00-81b3-11e9-82b6-5c22d759b94e.png">
 <img width="414" alt="Screen Shot 2019-05-29 at 1 46 10 AM" src="https://user-images.githubusercontent.com/39415039/58538971-90cd1800-81b3-11e9-8562-5fd6bc68f801.png">
 
+## Screenshots
+
+![2019-05-30 07 22 47](https://user-images.githubusercontent.com/41882380/58638179-6a8da200-82b1-11e9-984d-2401e6945afe.gif)
+![2019-05-30 07 42 59](https://user-images.githubusercontent.com/41882380/58638190-74afa080-82b1-11e9-962d-27e300a9cf25.gif)
+![2019-05-30 07 43 22](https://user-images.githubusercontent.com/41882380/58638202-7d07db80-82b1-11e9-8973-eb690395d464.gif)
 
 ## Getting Started
 
@@ -34,7 +32,26 @@ These instructions will get a copy of the project up and running on your local m
 ```
 npm install -g expo-cli
 ```
-## 2.  
+## 2.  Download the Expo app onto your iOs or Android device from the Google store or Apple store.
+## 3.  Clone the repo
+
+```
+https://github.com/JakeAdmire/JA-DC-EF-TA--GetSwole.git
+```
+
+## 4.  Install Dependencies
+
+```
+npm install
+```
+
+## 5.  Start the application
+```
+npm start
+```
+
+## 6.  Use your device to view the application
+### Expo will display a QR code that can be scanned with your device's camera.  This will open the application on your device.  Enjoy!
 
 ## BackEnd instructions
 ## 1. Clone down the repo:
@@ -79,12 +96,12 @@ rails s
 - Use OAuth for sign-in
 - Edit Routines by sets/reps/duration
 
-
 ## Tech Stack
 ### GetSwole was built using: 
 - ReactNative
 - React Native Elements
 - React Navigation
+- Expo
 - Redux
 - Redux Thunk
 - Sass
