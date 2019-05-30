@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Keyboard, TouchableWithoutFeedback } from 'reac
 import { Button, Input } from 'react-native-elements';
 import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
-import * as palette from '../../Utilities/styleIndex';
+import { palette } from '../../Utilities/styleIndex';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -91,7 +91,6 @@ export class RoutineCreator extends Component {
   }
 
   render() {
-    console.log(this.state.displayedExercises)
     return (
       <DismissKeyboard>
         <View style={styles.container}>
@@ -100,11 +99,13 @@ export class RoutineCreator extends Component {
             inputStyle={{ marginLeft: 5, color: palette.darkAccent }}
             onChangeText={this.handleSearch}
             placeholder='Search an Exercise' />
-          {
-            this.state.displayedExercises.map(exercise => {
-              return <Text onPress={() => this.saveExercise(exercise)}>{exercise.name}</Text>
-            })
-          }
+            <View style={styles.exerciseList}>
+            {
+              this.state.displayedExercises.map(exercise => {
+                return <Text style={styles.textColor} onPress={() => this.saveExercise(exercise)}>{exercise.name}</Text>
+              })
+            }
+            </View>
           <View style={styles.exercises}>
             <Input placeholder='Enter a Title'
               onChangeText={this.handleChange} />
@@ -159,7 +160,9 @@ const styles = StyleSheet.create({
   introText: {
     color: palette.lightAccent,
     fontFamily: 'raleway-bold',
-    fontSize: 20
+    fontSize: 25,
+    marginBottom: 20,
+    marginTop: 40
   },
   exercises: {
     backgroundColor: '#FFFFFF',
@@ -181,6 +184,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderWidth: 2,
     borderRadius: 50,
+  },
+  exerciseList: {
+    textAlign: 'left',
+    backgroundColor: '#ffffff',
+    width: Dimensions.get('window').width * .90,
+    marginBottom: 20
+  },
+  textColor: {
+    color: palette.darkAccent,
+    fontFamily: 'raleway-bold',
+    fontSize: 20,
   }
 });
 
