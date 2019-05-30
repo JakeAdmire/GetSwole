@@ -56,7 +56,7 @@ export class RoutineDetails extends Component {
             { 
               exercise.duration 
                 &&  <Text style={styles.labelText}>Duration: 
-                      <Text> {exercise.duration}</Text>
+                      <Text> {this.durationConvertor(exercise.duration)}</Text>
                     </Text> 
             }
           </View>
@@ -66,6 +66,19 @@ export class RoutineDetails extends Component {
           { exercises.length !== index + 1 && <View style={styles.lineBreak}></View> }
       </View>
     ))
+  }
+
+  durationConvertor(seconds) {
+    if (seconds > 90) {
+    let minutes = String(seconds / 60);
+
+    return minutes.includes('.')
+      ? `${minutes.split('.')[0]}min ${('.' + minutes.split('.')[1] * 60).slice(1, 3)}sec`
+      : minutes + 'min';
+
+    } else {
+      return seconds + 'sec';
+    }
   }
 
   welcomeText = () => {
