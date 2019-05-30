@@ -14,9 +14,9 @@ package-lock.json
 
 # testing
 /coverage
-
 # production
 /build
+# continuous integration
 
 # misc
 .DS_Store

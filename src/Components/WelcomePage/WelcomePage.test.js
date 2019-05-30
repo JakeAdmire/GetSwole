@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { WelcomePage, mapDispatchToProps } from './WelcomePage';
-import { addUserThunk } from '../../Thunks/addUserThunk';
+import { addNewUser } from '../../Thunks/addNewUser';
 
 describe('WelcomePage', () => {
 
@@ -100,7 +100,7 @@ describe('mapDispatchToProps', () => {
   it('should dispatch an addNewUser method', () => {
     let mockName = 'Joel';
     const mockDispatch = jest.fn();
-    const actionToDispatch = addUserThunk(mockName);
+    const actionToDispatch = addNewUser(mockName);
     const mappedProps = mapDispatchToProps(mockDispatch);
 
     mappedProps.addNewUser(mockName);
