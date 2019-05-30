@@ -9,10 +9,9 @@
 
 [More information about original assignment can be found here](http://frontend.turing.io/projects/capstone.html)
 
-## Screenshots
+## Preview
 
-<img src="https://user-images.githubusercontent.com/41882380/58638179-6a8da200-82b1-11e9-984d-2401e6945afe.gif" width="287"><img src="https://user-images.githubusercontent.com/41882380/58638190-74afa080-82b1-11e9-962d-27e300a9cf25.gif" width="287"><img src="https://user-images.githubusercontent.com/41882380/58638202-7d07db80-82b1-11e9-8973-eb690395d464.gif" width="287">
-
+<img src="https://user-images.githubusercontent.com/41882380/58638179-6a8da200-82b1-11e9-984d-2401e6945afe.gif" width="287"><img src="https://user-images.githubusercontent.com/41882380/58638202-7d07db80-82b1-11e9-8973-eb690395d464.gif" width="287"><img src="https://user-images.githubusercontent.com/41882380/58640416-43859f00-82b6-11e9-849b-e5c7cf57f08b.gif" width="287">
 
 ## Wireframe
 
