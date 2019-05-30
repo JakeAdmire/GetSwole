@@ -27,6 +27,12 @@ These instructions will get a copy of the project up and running on your local m
 
 ## FrontEnd instructions
 
+### To Only View The App
+#### Download Expo on your ios/Android device
+#### Using the Expo app on your device, navigate to https://expo.io/@jakeadmire/getSwole
+
+### For Developers wanting to make contributions
+
 ## 1.  Install the Expo CLI
 
 ```
