@@ -1,20 +1,22 @@
 import * as actions from '../../Actions'
-import { addNewUser } from '../addNewUser'
+import { deleteRoutine } from '../deleteRoutine'
 
-describe('addNewUser', () => {
+describe('deleteRoutine', () => {
 
   let mockUser
   let mockDispatch
-  let mockId
+  let mockRoutineId
+  let mockDate
 
   beforeEach(() => {
+    mockRoutineId = 10
+    mockDate = '2019-05-29'
     mockUser = { name: "John" }
     mockDispatch = jest.fn()
-    mockId = 1
   })
 
   it('should dispatch isLoading(true)', () => {
-    const thunk = addNewUser(mockUser.name)
+    const thunk = deleteRoutine(mockUser.name)
     thunk(mockDispatch)
     expect(mockDispatch).toHaveBeenCalledWith(actions.isLoading(true))
   })
@@ -24,9 +26,9 @@ describe('addNewUser', () => {
       ok: false,
       statusText: 'Something went wrong.'
     }))
-    const thunk = addNewUser(mockUser.name)
+    const thunk = deleteRoutine(mockUser.name)
     await thunk(mockDispatch)
     expect(mockDispatch).toHaveBeenCalledWith(actions.hasError('Something went wrong.'))
   })
-  
+
 })

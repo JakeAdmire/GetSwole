@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { Container, mapStateToProps } from './Container';
 
 let wrapper;
-// 
+
 let mockDate = '2019 5 25';
 let semanticDateMock = '25th March, 2019';
 let loadingMock = false;
@@ -115,7 +115,7 @@ describe('Container', () => {
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-    wrapper.setProps({ loading: true }); // you can use setProps to change the component props from within the testing suite
+    wrapper.setProps({ loading: true });
     expect(wrapper).toMatchSnapshot();
   })
 
@@ -125,9 +125,8 @@ describe('Container', () => {
       let mockSpy = jest.spyOn(wrapper.instance(), 'handleAddNewRoutine');
       const addRoutineButton = wrapper
         .findWhere(node => node.prop('testID') === 'add-routine-button');
-        // we can add a 'testID' prop to our components to replace standard JSX id's and classes
 
-      addRoutineButton.props().onPress(); // simulate does not have an onPress function
+      addRoutineButton.props().onPress(); 
 
       expect(mockSpy).toHaveBeenCalled();
     })

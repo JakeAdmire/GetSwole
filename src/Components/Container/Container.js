@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
-import { Text, View, StyleSheet, Image } from 'react-native';
-import { Card, Icon, ListItem, Button } from 'react-native-elements';
+import { View, StyleSheet, Image } from 'react-native';
+import { ListItem } from 'react-native-elements';
 // 
 import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import { setSelectedRoutine } from '../../Actions';
@@ -145,6 +145,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: Dimensions.get('window').width - 20,
     marginBottom: 10
-  },
-
+  }
 })

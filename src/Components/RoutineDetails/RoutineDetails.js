@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Dimensions from 'Dimensions';
 import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
-import { Button, Header } from 'react-native-elements';
 // 
-import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import { fetchRoutineDetails } from '../../Thunks/fetchRoutineDetails';
 import { palette, flexibleHeader } from '../../Utilities/styleIndex';
 
@@ -60,8 +57,6 @@ export class RoutineDetails extends Component {
                     </Text> 
             }
           </View>
-
-
         </View>
           { exercises.length !== index + 1 && <View style={styles.lineBreak}></View> }
       </View>

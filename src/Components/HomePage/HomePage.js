@@ -7,7 +7,6 @@ import Dimensions from 'Dimensions';
 import { addExercises } from '../../Actions';
 import Calendar from '../Calendar/Calendar';
 import Container from '../Container/Container';
-import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
 import { palette, flexibleHeader } from '../../Utilities/styleIndex';
 
 export class Homepage extends React.Component {
