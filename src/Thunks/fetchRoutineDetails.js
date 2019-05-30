@@ -6,6 +6,9 @@ export const fetchRoutineDetails = (id) => {
     try {
       dispatch(isLoading(true));
       let url = `https://warm-cove-89223.herokuapp.com/api/v1/routines/${id}`;
+      if (!response.ok) {
+        throw new Error(response.statusText)
+      }
       const response = await fetch(url);
       let routine = await response.json();
       dispatch(setSelectedRoutine(routine));
@@ -16,3 +19,4 @@ export const fetchRoutineDetails = (id) => {
     }
   }
 }
+
