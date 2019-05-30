@@ -4,71 +4,63 @@ import { RoutineContainer, mapStateToProps, mapDispatchToProps } from './Routine
 import { setPreMadeRoutine } from '../../Thunks/setPreMadeRoutine'
 
 let mockDate = '2019 5 25';
-let semanticDateMock = '25th March, 2019';
-let loadingMock = false;
-let mockUser = { name: 'John' }
-
-
-let routinesMock = {
-  data: [
-    {
-      id: "4",
-      type: "routine",
-      attributes: {
-        name: "Arm Day",
-        exercises: [
-          {
-            id: 50,
-            name: "Pushups",
-            category: "Strength",
-            equipment_required: "Body Only",
-            muscle: "Chest",
-            reps: 10,
-            sets: 4,
-            duration: null,
-            weight: null
-          },
-          {
-            id: 70,
-            name: "Chin-Up",
-            category: "Strength",
-            equipment_required: "Body Only",
-            muscle: "Lats",
-            reps: 5,
-            sets: 4,
-            duration: null,
-            weight: null
-          },
-          {
-            id: 104,
-            name: "Barbell Curl",
-            category: "Strength",
-            equipment_required: "Barbell",
-            muscle: "Biceps",
-            reps: 10,
-            sets: 4,
-            duration: null,
-            weight: null
-          }
-        ]
+let mockUser = { name: 'John', id: 1 };
+let mockNavigation = { navigate: jest.fn() };
+let mockFetchRoutines = jest.fn();
+let mockAddPremadeRoutine = jest.fn();
+let mockNewRoutine = {
+  id: "4",
+  type: "routine",
+  attributes: {
+    name: "Arm Day",
+    exercises: [
+      {
+        id: 50,
+        name: "Pushups",
+        category: "Strength",
+        equipment_required: "Body Only",
+        muscle: "Chest",
+        reps: 10,
+        sets: 4,
+        duration: null,
+        weight: null
+      },
+      {
+        id: 70,
+        name: "Chin-Up",
+        category: "Strength",
+        equipment_required: "Body Only",
+        muscle: "Lats",
+        reps: 5,
+        sets: 4,
+        duration: null,
+        weight: null
+      },
+      {
+        id: 104,
+        name: "Barbell Curl",
+        category: "Strength",
+        equipment_required: "Barbell",
+        muscle: "Biceps",
+        reps: 10,
+        sets: 4,
+        duration: null,
+        weight: null
       }
-    }
-  ]
-};
-
-let mockState = {
-  user: mockUser.name,
-  date: mockDate,
-  semanticDate: semanticDateMock,
-  routines: routinesMock,
-  loading: loadingMock,
-  newRoutine: routinesMock.data[0],
-  hasError: false
+    ]
+  }
 };
 
 let wrapper;
 beforeEach(() => {
-  wrapper = shallow(<RoutineContainer />)
+  wrapper = shallow(
+    <RoutineContainer addPremadeRoutine={mockAddPremadeRoutine}
+                      fetchRoutines={mockFetchRoutines}
+                      navigation={mockNavigation}
+                      date={mockDate}
+                      user={mockUser}
+                      newRoutine={mockNewRoutine} />
+  )
 })
 
 describe('RoutineContainer', () => {
@@ -98,10 +90,10 @@ describe('RoutineContainer', () => {
     it('should mapStateToProps', () => {
       const expected = {
         date: mockDate,
-        newRoutine: routinesMock.data[0],
+        newRoutine: mockNewRoutine,
         user: mockUser.name
       }
-      const results = mapStateToProps(mockState)
+      const results = mapStateToProps(expected)
       expect(results).toEqual(expected)
     })
   })
