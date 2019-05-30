@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Button, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
 import { connect } from 'react-redux';
 import moment from 'moment';

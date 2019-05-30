@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableHighlight } from 'react-native'
 import Dimensions from 'Dimensions'
-import { Button } from 'react-native-elements'
 import { connect } from 'react-redux';
 import RoutineCreator from '../RoutineCreator/RoutineCreator'
 import { setPreMadeRoutine } from '../../Thunks/setPreMadeRoutine'

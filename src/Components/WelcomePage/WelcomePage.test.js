@@ -100,12 +100,11 @@ describe('mapDispatchToProps', () => {
   it('should dispatch an addNewUser method', () => {
     let mockName = 'Joel';
     const mockDispatch = jest.fn();
-    const actionToDispatch = addNewUser(mockName);
     const mappedProps = mapDispatchToProps(mockDispatch);
 
     mappedProps.addNewUser(mockName);
 
-    expect(mockDispatch).toHaveBeenCalled(); // should be toHaveBeenCalledWith()
+    expect(mockDispatch).toHaveBeenCalled();
   })
 
 })

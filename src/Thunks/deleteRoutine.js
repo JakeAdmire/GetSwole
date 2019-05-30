@@ -12,7 +12,7 @@ export const deleteRoutine = (user, routineId, date) => {
         }
       })
       if (!response.ok) {
-        throw new Error(error.statusText)
+        throw new Error(response.statusText)
       }
       dispatch(isLoading(false))
     } catch (error) {

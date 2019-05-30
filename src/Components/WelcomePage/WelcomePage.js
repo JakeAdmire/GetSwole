@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import Dimensions from 'Dimensions';
-import { Button, Input, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 // 
-import { RalewayText, RalewayBoldText } from '../../Utilities/RalewayText';
+import { RalewayText } from '../../Utilities/RalewayText';
 import { addNewUser } from '../../Thunks/addNewUser';
 import { palette, flexibleInput, flexibleButton } from '../../Utilities/styleIndex';
 
@@ -131,6 +130,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     width: windowWidth - 20,
-  },
+  }
 
 });

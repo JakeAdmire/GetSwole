@@ -72,7 +72,6 @@ export class RoutineCreator extends Component {
           'Content-Type': 'application/json'
         }
       }
-      const response = await fetch(url, options);
       this.props.navTool.navigate('homePage');
     }
   }

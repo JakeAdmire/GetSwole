@@ -6,7 +6,6 @@ import { addExercises } from '../../Actions';
 describe('HomePage', () => {
 
   let wrapper;
-  
   let navigationMock = { navigate: jest.fn() };
   let addExercisesMock = jest.fn();
   let userMock = { id: 1, name: 'Jim' };
