@@ -3,13 +3,11 @@
 
 ## Overview
 
-### GetSwole was the capstone project for Module 4 students at Turing School of Software and Design.  Students from both the Frontend and Backend programs are put in groups of 4 and given 13 days to create a full-stack application.  This project gave us further insight into how teams communicate and collaborate so that the development process flows smoothly.  As well, our group chose to work in React Native, a framework that was new to the entire team.  
+### GetSwole was the capstone project for Module 4 students at Turing School of Software and Design.  Students from both the Frontend and Backend programs are put in groups of 4 and given 13 days to create a full-stack application.  This project gave us further insight into how teams communicate and collaborate if efforts to smoothly integrate both sides of the project team into a cohesive unit.  As well, our group chose to work in React Native, a framework that was new to the entire team.  
 
 ## Learning Goals
 
 [More information about original assignment can be found here](http://frontend.turing.io/projects/capstone.html)
-
-[Link to Back End repository here](https://github.com/timnallen/BE-GetSwole)
 
 ## Wireframe
 
@@ -25,11 +23,53 @@
 
 These instructions will get a copy of the project up and running on your local machine for usage and testing purposes.
 
-### FrontEnd instructions
+## FrontEnd instructions
 
+## 1.  Install the Expo CLI
 
-### BackEnd instructions
+```
+npm install -g expo-cli
+```
+## 2.  
 
+## BackEnd instructions
+## 1. Clone down the repo:
+```
+git clone git@github.com:timnallen/BE-GetSwole.git
+```
+### 2. Install the dependencies in the Gemfile:
+
+```
+bundle install
+```
+
+## Set up the database:
+
+### 1. Create and migrate:
+
+```
+rake db:{create,migrate}
+```
+
+### 2. Import the exercises from the .csv file in the /lib directory:
+
+```
+rake import:exercises
+```
+
+#### 3. Seed the other db items in the seed file:
+
+```
+rake db:seed
+```
+
+#### 4. Run the code in development mode:
+
+```
+rails s
+```
+
+#### 5. Open your browser and visit http://localhost:3000
 
 ## Future Iterations
 - Use OAuth for sign-in
