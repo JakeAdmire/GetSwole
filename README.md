@@ -11,9 +11,9 @@
 
 ## Screenshots
 
-![2019-05-30 07 22 47 |688 × 1364, 20%](https://user-images.githubusercontent.com/41882380/58638179-6a8da200-82b1-11e9-984d-2401e6945afe.gif)
-![2019-05-30 07 42 59 |688 × 1364, 20%](https://user-images.githubusercontent.com/41882380/58638190-74afa080-82b1-11e9-962d-27e300a9cf25.gif)
-![2019-05-30 07 43 22 |688 × 1364, 20%](https://user-images.githubusercontent.com/41882380/58638202-7d07db80-82b1-11e9-8973-eb690395d464.gif)
+![2019-05-30 07 22 47|688 × 1364,20%](https://user-images.githubusercontent.com/41882380/58638179-6a8da200-82b1-11e9-984d-2401e6945afe.gif)
+![2019-05-30 07 42 59|688 × 1364,20%](https://user-images.githubusercontent.com/41882380/58638190-74afa080-82b1-11e9-962d-27e300a9cf25.gif)
+![2019-05-30 07 43 22|688 × 1364,20%](https://user-images.githubusercontent.com/41882380/58638202-7d07db80-82b1-11e9-8973-eb690395d464.gif)
 
 
 ## Wireframe
