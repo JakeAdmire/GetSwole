@@ -52,7 +52,7 @@ export class RoutineCreator extends Component {
     const exerciseIds = this.state.exerciseList.map(exercise => {
       return exercise.id
     });
-    const url = 'https://warm-cove-89223.herokuapp.com/api/v1/routines?user_id=1';
+    const url = `https://warm-cove-89223.herokuapp.com/api/v1/routines?user_id=${this.props.user.id}`;
     const options = {
       method: 'POST',
       body: JSON.stringify({ name: 'swolio', exerciseIds }),
