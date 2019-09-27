@@ -3,7 +3,7 @@
 
 ## Overview
 
-### GetSwole was the capstone project for Module 4 students at Turing School of Software and Design.  Students from both the Frontend and Backend programs are put in groups of 4 and given 13 days to create a full-stack application.  This project gave us further insight into how teams communicate and collaborate if efforts to smoothly integrate both sides of the project team into a cohesive unit.  As well, our group chose to work in React Native, a framework that was new to the entire team.  
+GetSwole was the capstone project for Module 4 students at Turing School of Software and Design.  Students from both the Frontend and Backend programs are put in groups of 4 and given 13 days to create a full-stack application.  This project gave us further insight into how teams communicate and collaborate if efforts to smoothly integrate both sides of the project team into a cohesive unit.  As well, our group chose to work in React Native, a framework that was new to the entire team.  
 
 ## Learning Goals
 
