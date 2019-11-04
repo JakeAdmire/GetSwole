@@ -1,7 +1,6 @@
 # [GetSwole](https://expo.io/@jakeadmire/getSwole)
 
 [![Build Status](https://travis-ci.org/JakeAdmire/GetSwole.svg?branch=master)](https://travis-ci.org/JakeAdmire/GetSwole)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=em-ja-palette-picker)](https://em-ja-palette-picker.herokuapp.com/)
 
 GetSwole is a convenient way of scheduling your fitness life, in the form of a native app. During this project I led a group of 3 other engineers through the challenges that came with learning a new framework on the go. This was during the 4th quarter of the Turing School of Software & Design
 
@@ -11,12 +10,12 @@ GetSwole is a convenient way of scheduling your fitness life, in the form of a n
 
 ## README Directory
 
-- [Project Goals](https://github.com/JakeAdmire/Palette-Picker#what-were-my-goals-for-this-project)
-  - [Technical Goals](https://github.com/JakeAdmire/Palette-Picker#technical-goals)
-- [Screenshots](https://github.com/JakeAdmire/Palette-Picker#screenshots--explanation)
-- [Future Iterations](https://github.com/JakeAdmire/Palette-Picker#future-development-notes)
-- [Dependencies](https://github.com/JakeAdmire/Palette-Picker#dependencies)
-- [Credits](https://github.com/JakeAdmire/Palette-Picker#credits)
+- [Project Goals](https://github.com/JakeAdmire/GetSwole#what-were-my-goals-for-this-project)
+  - [Technical Goals](https://github.com/JakeAdmire/GetSwole#technical-goals)
+- [Screenshots](https://github.com/JakeAdmire/GetSwole#screenshots--explanation)
+- [Future Iterations](https://github.com/JakeAdmire/GetSwole#future-development-notes)
+- [Dependencies](https://github.com/JakeAdmire/GetSwole#dependenciess)
+- [Credits](https://github.com/JakeAdmire/GetSwole#credits)
 
 ## What were my goals for this project?
 
@@ -49,7 +48,7 @@ In the event that I do rebuild GetSwole, here are some updates I'd like to inclu
 
 ## Dependencies
 
-Palette Picker was built using: 
+GetSwole was built using: 
 - [React Native](https://facebook.github.io/react-native/)
 - [Redux](https://react-redux.js.org/)
 - [Redux Thunk Middleware](https://github.com/reduxjs/redux-thunk)
@@ -73,4 +72,4 @@ This project was assigned by David Whitaker and Will Mitchell
 *@ Turing School of Software & Design in Denver, CO.*
 
 ---
-**[Back to top](https://github.com/JakeAdmire/Palette-Picker#palette-picker)**
+**[Back to top](https://github.com/JakeAdmire/GetSwole#getswole)**
