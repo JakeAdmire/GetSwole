@@ -11,7 +11,7 @@
     "preset": "react-native"
   },
   "dependencies": {
-    "expo": "^32.0.0",
+    "expo": "^46.0.16",
     "jest": "^24.8.0",
     "jest-util": "^24.8.0",
     "jsdom": "^15.1.0",
